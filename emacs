@@ -33,6 +33,23 @@
 	  (while (re-search-forward rxp nil t)
 	    (replace-match "" t t)))))))
 
+(defun unmangle-email ()
+  "Fix formatting stuff in emails."
+  (interactive)
+  (save-excursion
+    (save-restriction
+      (save-match-data
+	(goto-char (point-min))
+	(while (search-forward "=20" nil t)
+	  (replace-match "" t t))
+	(goto-char (point-min))
+	(while (search-forward "=\n" nil t)
+	  (replace-match "" t t))
+	(goto-char (point-min))
+	(while (search-forward "=B9" nil t)
+	  (replace-match "'" t t))
+	))))
+
 ;;-----------------------------------------------------------------------
 ;; Matlab mode
 ;;-----------------------------------------------------------------------
