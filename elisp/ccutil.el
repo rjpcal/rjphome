@@ -249,23 +249,28 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 (defun fixup-whitespace ()
   "Untabify the buffer, and kill trailing whitespace on all lines."
   (interactive)
+  (untabify (point-min) (point-max))
+  (save-excursion
+    (save-restriction
+      (save-match-data
+	(widen)
+	(goto-char (point-min))
+	(let ((rxp "[ \t]+$"))
+	  (while (re-search-forward rxp nil t)
+	    (replace-match "" t t)))))))
+
+(defun safe-fixup-whitespace ()
+  "Untabify the buffer, and kill trailing whitespace on all lines."
+  (interactive)
   ;; Skip fixup-whitespace for [.CH] files (i.e. those from iLab cvs system)
   (if (or (string= (substring (buffer-name) -2) ".C")
 	  (string= (substring (buffer-name) -2) ".H"))
       ()
-    (untabify (point-min) (point-max))
-    (save-excursion
-      (save-restriction
-	(save-match-data
-	  (widen)
-	  (goto-char (point-min))
-	  (let ((rxp "[ \t]+$"))
-	    (while (re-search-forward rxp nil t)
-	      (replace-match "" t t))))))))
+    (fixup-whitespace)))
 
 (defun my-c++-mode-hook ()
   (add-hook 'local-write-file-hooks 'update-writestamps)
-  (add-hook 'local-write-file-hooks 'fixup-whitespace)
+  (add-hook 'local-write-file-hooks 'safe-fixup-whitespace)
 
   ;; key bindings
   (local-unset-key "\C-c\C-f")
