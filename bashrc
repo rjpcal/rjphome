@@ -99,7 +99,7 @@ if test "$PS1" != ""; then
     export LC_COLLATE=C
 fi
 
-export GRSH_LIB_DIR=${HOME}/projects/grsh/share
+export GROOVX_LIB_DIR=${HOME}/projects/groovx/share
 
 export MAILTO=rjpeters@klab.caltech.edu
 
