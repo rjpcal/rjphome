@@ -21,7 +21,9 @@ else if (`uname -m` == "Power Macintosh") then
     setenv ARCH "ppc"
 endif
 
-setenv MANPATH ${HOME}/local/$ARCH/man:/usr/share/man:/usr/man
+setenv MANPATH ${HOME}/local/$ARCH/man
+setenv MANPATH ${MANPATH}:/usr/share/man:/usr/man
+setenv MANPATH ${MANPATH}:/usr/local/share/man:/usr/local/man
 
 setenv PATH .:${HOME}/local/bin:${HOME}/local/${ARCH}/bin:/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/sbin:/sbin
 
@@ -46,7 +48,7 @@ endsw
 # for interactive shells:
 if ($?prompt) then
 
-    set filec  # enables filename completion in csh
+    set filec  # enable filename completion
     set matchbeep nomatch # only beep for missing, but not for ambiguous, matches
     set fignore=("~")  # filename suffixes to be ignored by completion
     set time=10
@@ -54,14 +56,8 @@ if ($?prompt) then
     set autolist # automatically list possible filename completions
 
     set prompt="%B[%m %T \!]%%%b "
-    if (-f ~/.aliases) then
-          source ~/.aliases
-    endif
 
     switch ($HOST)
-	case socrates*:
-	case goethe*:
-	case soma*:
 	case curie*:
 	    alias ls 'ls -F'
 	    breaksw
