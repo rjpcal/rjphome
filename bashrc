@@ -69,6 +69,22 @@ if test "$PS1" != ""; then
     # substituting the time in 24-hour format, so we use the 12-hour am/pm
     # sequence \@ instead
 
+    prompt_color="40;37;1"  # default color is bold-white-on-black
+    case $HOSTNAME in
+	sideswipe*)
+	    prompt_color="40;33;1" # yellow on black
+	    ;;
+	*.klab.caltech.edu)
+	    prompt_color="40;32;1" # green on black
+	    ;;
+	ilab*|iLab*)
+	    prompt_color="40;31;1" # red on black
+	    ;;
+	fortune*)
+	    prompt_color="40;34;1" # blue on black
+	    ;;
+    esac
+
     case $TERM in
 	dumb)
 	    PS1="[\h \@ \!]$ "
@@ -77,11 +93,11 @@ if test "$PS1" != ""; then
 	    case $BASH_VERSION in
 		2.02*|2.04*)
 		    # [hostname HH:MMam/pm]$
-		    PS1="\[\e[40;33;1m\][\h \@ \!]$\[\e[0m\] "
+		    PS1="\[\e[${prompt_color}m\][\h \@ \!]$\[\e[0m\] "
 		    ;;
 		*)
 		    # [hostname HH:MM]$
-		    PS1="\[\e[40;33;1m\][\h \A \!]$\[\e[0m\] "
+		    PS1="\[\e[${prompt_color}m\][\h \A \!]$\[\e[0m\] "
 		    ;;
 	    esac
     esac
