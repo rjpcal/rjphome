@@ -219,6 +219,8 @@
   (setq s (replace-regexp-in-string "^.*projects/" "p::" s))
   (setq s (replace-regexp-in-string "^/cit/rjpeters/" "c::" s))
   (setq s (replace-regexp-in-string "^/home/rjpeters/" "h::" s))
+  (setq s (replace-regexp-in-string "^/lab/rjpeters/" "h::" s))
+  (setq s (replace-regexp-in-string "^~/" "h::" s))
   (setq s (replace-regexp-in-string "/$" "" s))
   )
 
@@ -251,6 +253,18 @@
 
 ;; flash the screen instead of beeping the system bell
 (setq visible-bell t)
+
+;; don't load site-lisp/default.el
+(setq inhibit-default-init t)
+
+(when window-system
+  ;; enable wheelmouse support by default
+  (mwheel-install)
+  ;; make switching frames works properly under the default click-to-focus
+  (setq focus-follows-mouse nil))
+
+;; automatically read compressed files
+(auto-compression-mode t)
 
 ;;-----------------------------------------------------------------------
 ;; Mail Settings and Aliases
