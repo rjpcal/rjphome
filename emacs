@@ -18,11 +18,28 @@
 (autoload 'w3 "w3" "WWW Browser" t)
 
 ;;-----------------------------------------------------------------------
+;; General function definitions
+;;-----------------------------------------------------------------------
+(defun fixup-whitespace ()
+  "Untabify the buffer, and kill trailing whitespace on all lines."
+  (interactive)
+  (untabify (point-min) (point-max))
+  (save-excursion
+    (save-restriction
+      (save-match-data
+	(widen)
+	(goto-char (point-min))
+	(let ((rxp "[ \t]+$"))
+	  (while (re-search-forward rxp nil t)
+	    (replace-match "" t t)))))))
+
+;;-----------------------------------------------------------------------
 ;; Matlab mode
 ;;-----------------------------------------------------------------------
 (autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
 (setq auto-mode-alist (cons '("\\.m$" . matlab-mode) auto-mode-alist))
 (defun my-matlab-mode-hook ()
+  (add-hook 'local-write-file-hooks 'fixup-whitespace)
   (setq matlab-indent-function nil)
   (setq matlab-return-function 'matlab-plain-ret)
   (setq matlab-verify-on-save-flag nil)
