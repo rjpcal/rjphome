@@ -57,12 +57,21 @@ if test "$PS1" != ""; then
     # Background color codes:
     # 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
 
-    # [hostname HH:MM]$
+    # Apparently older bash versions don't have the \A sequence for
+    # substituting the time in 24-hour format, so we use the 12-hour am/pm
+    # sequence \@ instead
 
-    PS1="\[\e[40;33;1m\][\h \A \!]$\[\e[0m\] "
+    case $BASH_VERSION in
+	2.02*)
+	    PS1="\[\e[40;33;1m\][\h \@ \!]$\[\e[0m\] " # [hostname HH:MMam/pm]$
+	    ;;
+	*)
+	    PS1="\[\e[40;33;1m\][\h \A \!]$\[\e[0m\] " # [hostname HH:MM]$
+	    ;;
+    esac
 
     case $HOST in
-	curie*)
+	goethe*|curie*)
 	    alias ls='ls -F'
 	    ;;
 	*)
