@@ -6,8 +6,12 @@
 
 (font-lock-add-keywords
  'c++-mode
- '(("\\<\\(FIXME\\)" 1 font-lock-warning-face t)))
-(modify-face (quote font-lock-warning-face) "Red" "yellow" nil t nil t nil nil)
+ '(("\\<\\(FIXME\\)" 1 'font-lock-warning-face t)))
+(set-face-attribute 'font-lock-warning-face nil
+		    :foreground "red"
+		    :background "yellow"
+		    :weight 'bold
+		    :underline "true")
 
 ;(defun reset-font-lock ()
 ;  "Just calls font-lock-mode twice. Can be used to fix annoying font-lock
