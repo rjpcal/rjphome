@@ -104,7 +104,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
       (goto-char (point-max))
       (insert
        "\n"
-       "static const char " vcid-string "[] = \"$" "Header" "$\";\n"
+       "static const char " vcid-string "[] = \"$" "Id" "$ $" "URL" "$\";\n"
        "#endif // !" include-guard "_DEFINED\n")
       )
     )
