@@ -13,7 +13,7 @@
 ;; LISP search path
 ;;-----------------------------------------------------------------------
 (setq load-path (append load-path (list "/usr/share/emacs/site-lisp")))
-(setq load-path (append load-path (list "~/.home/emacs_lisp")))
+(setq load-path (append load-path (list "~/.home/elisp")))
 
 (autoload 'w3 "w3" "WWW Browser" t)
 
