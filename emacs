@@ -134,6 +134,11 @@
 (setq auto-mode-alist (cons '("\\.[ch]+$" . c++-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.dxy$" . c++-mode) auto-mode-alist))
 
+;Need to explicitly load "smgl-mode" in order to avoid weird problems where
+;sgml documents (eg *.xsl) don't get fontified properly, UNLESS a *.html
+;document gets loaded first. This involves errors of this variety:
+;"key sequence C-c C-c - uses invalid prefix characters"
+(load "sgml-mode")
 (setq auto-mode-alist (cons '("\\.xsl$" . sgml-mode) auto-mode-alist))
 
 (setq-default column-number-mode t)
