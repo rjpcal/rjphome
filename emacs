@@ -124,17 +124,18 @@
 (setq auto-mode-alist (cons '("\\.m$" . matlab-mode) auto-mode-alist))
 (defun my-matlab-mode-hook ()
   (add-hook 'local-write-file-hooks 'fixup-whitespace)
-  ;; This line controls whether code inside a function gets indented one
-  ;; level, or is completely left-justified... I've just changed my opinion
-  ;; on this -- I used to not like the extra indentation level, but now I
-  ;; think that having the code indented helps to visually separate the
-  ;; multiple functions that can exist in a single matlab source file.
+  ;; This line controls whether code inside a function gets indented
+  ;; one level, or is completely left-justified... I've just changed
+  ;; my opinion on this -- I used to not like the extra indentation
+  ;; level, but now I think that having the code indented helps to
+  ;; visually separate the multiple functions that can exist in a
+  ;; single matlab source file.
   (setq matlab-indent-function t)
   (setq matlab-return-function 'matlab-plain-ret)
   (setq matlab-verify-on-save-flag nil)
   (setq matlab-indent-level 4)
   (setq matlab-case-level 4)
-  (setq fill-column 76)
+  (setq fill-column 70)
   (turn-on-auto-fill))
 (setq matlab-mode-hook 'my-matlab-mode-hook)
 (autoload 'matlab-shell "matlab" "Interactive Matlab mode." t)
