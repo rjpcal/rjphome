@@ -1,0 +1,10 @@
+O wonderous emacs, please be in -*- text -*- mode!
+
+Notes on 'home' module
+
+Rob Peters <rjpeters@klab.caltech.edu>
+
+$Id$
+
+* gnome_init requires some manual configuration: need to specify somewhere
+  in the Gnome preferences that ~/.gnome_init should be executed at startup
