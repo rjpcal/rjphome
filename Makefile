@@ -7,7 +7,6 @@
 TARGETS := \
 $(HOME)/.cshrc \
 $(HOME)/.emacs \
-$(HOME)/.gnome_init \
 $(HOME)/.login \
 $(HOME)/.Xdefaults \
 $(HOME)/.Xmodmap \
