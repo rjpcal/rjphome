@@ -79,6 +79,16 @@
 	  (replace-match " " t t))
 
 	(goto-char (point-min))
+	(while (search-forward "  " nil t)
+	  ;; space
+	  (replace-match " " t t))
+
+	(goto-char (point-min))
+	(while (search-forward " " nil t)
+	  ;; space
+	  (replace-match " " t t))
+
+	(goto-char (point-min))
 	(while (search-forward "=AD" nil t)
 	  ;; non-breaking space
 	  (replace-match "-" t t))
