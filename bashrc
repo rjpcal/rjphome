@@ -59,7 +59,7 @@ if test "$PS1" != ""; then
 
     # [hostname HH:MM]$
 
-    PS1="\[\e[40;37;1m\][\h \A \!]$\[\e[0m\] "
+    PS1="\[\e[40;33;1m\][\h \A \!]$\[\e[0m\] "
 
     case $HOST in
 	curie*)
