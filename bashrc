@@ -46,6 +46,7 @@ function setup_prompt ()
 
     escape1=""
     main_prompt=""
+    prompt_content=""
     escape2=""
     term_title=""
 
@@ -55,11 +56,20 @@ function setup_prompt ()
     case $BASH_VERSION in
 	2.02*|2.04*)
 	    # [hostname HH:MMam/pm]$
-	    main_prompt="[\h \@ \!]$"
+	    prompt_content="\h \@ \!"
 	    ;;
 	*)
 	    # [hostname HH:MM]$
-	    main_prompt="[\h \A \!]$"
+	    prompt_content="\h \A \!"
+	    ;;
+    esac
+
+    case $SSH_CLIENT in
+	"")
+	    main_prompt="[${prompt_content}]$"
+	    ;;
+	*)
+	    main_prompt="<${prompt_content}>$"
 	    ;;
     esac
 
