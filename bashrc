@@ -188,8 +188,6 @@ if test "$PS1" != ""; then
     export LC_COLLATE=C
 fi
 
-export GROOVX_LIB_DIR=${HOME}/projects/groovx/share
-
 ### Output from cron jobs gets sent to $MAILTO
 export MAILTO=rjpeters@klab.caltech.edu
 
