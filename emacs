@@ -140,6 +140,7 @@
 ;"key sequence C-c C-c - uses invalid prefix characters"
 (load "sgml-mode")
 (setq auto-mode-alist (cons '("\\.xsl$" . sgml-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.gvx$" . sgml-mode) auto-mode-alist))
 
 (setq-default column-number-mode t)
 
