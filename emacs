@@ -194,6 +194,15 @@
 (setq display-time-day-and-date t)
 (display-time)
 
+(setq directory-abbrev-alist
+      (quote (("^.*science/projects/" . "sp:")
+	      ("^.*projects/" . "p:")
+	      )))
+
+(setq frame-title-format
+      (concat "+" (abbreviate-file-name default-directory)
+	      " [" (invocation-name) "@" (system-name) "]"))
+
 ;;-----------------------------------------------------------------------
 ;; Mail Settings and Aliases
 ;;-----------------------------------------------------------------------
