@@ -108,11 +108,11 @@ if test "$PS1" != ""; then
 	    case $BASH_VERSION in
 		2.02*|2.04*)
 		    # [hostname HH:MMam/pm]$
-		    PS1="\[\e[${prompt_color}m\][\h \@ \!]$\[\e[0m\]\[\e]0;\w@\H\a\] "
+		    PS1="\[\e[${prompt_color}m\][\h \@ \!]$\[\e[0m\]\[\e]0;\W@\H\a\] "
 		    ;;
 		*)
 		    # [hostname HH:MM]$
-		    PS1="\[\e[${prompt_color}m\][\h \A \!]$\[\e[0m\]\[\e]0;\w@\H\a\] "
+		    PS1="\[\e[${prompt_color}m\][\h \A \!]$\[\e[0m\]\[\e]0;\W@\H\a\] "
 		    ;;
 	    esac
     esac
