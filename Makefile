@@ -22,9 +22,19 @@ $(HOME)/.Xresources \
 DARWIN_TARGETS := \
 $(HOME)/.xinitrc \
 
-default: $(TARGETS)
+default: $(TARGETS) worldread
 
 darwin: $(DARWIN_TARGETS)
+
+worldread:
+	@for f in plan; do \
+		/usr/bin/install \
+			--mode=0444 \
+			--preserve-timestamps \
+			--verbose \
+			$$f $(HOME)/.$$f; \
+	done
+
 
 $(HOME)/.%:
 	ln -s `pwd`/$* $@
