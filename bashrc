@@ -90,14 +90,29 @@ if test "$PS1" != ""; then
 	    PS1="[\h \@ \!]$ "
 	    ;;
 	*)
+
+            # This fragment: \[\e[${prompt_color}m\] is for setting
+            # the text properties (color, bold, underlining, etc.) of
+            # the prompt text
+
+	    # This fragment: [\h \@ \!]$ is the actual prompt itself,
+	    # giving the hostname, the current time, and the history
+	    # number
+
+	    # This fragment: \[\e[0m\] is for restoring the text
+	    # properties to their default values following the prompt
+
+	    # This fragment: \[\e]0;\w@\H\a\] is for setting the
+	    # window title of the containing terminal
+
 	    case $BASH_VERSION in
 		2.02*|2.04*)
 		    # [hostname HH:MMam/pm]$
-		    PS1="\[\e[${prompt_color}m\][\h \@ \!]$\[\e[0m\] "
+		    PS1="\[\e[${prompt_color}m\][\h \@ \!]$\[\e[0m\]\[\e]0;\w@\H\a\] "
 		    ;;
 		*)
 		    # [hostname HH:MM]$
-		    PS1="\[\e[${prompt_color}m\][\h \A \!]$\[\e[0m\] "
+		    PS1="\[\e[${prompt_color}m\][\h \A \!]$\[\e[0m\]\[\e]0;\w@\H\a\] "
 		    ;;
 	    esac
     esac
