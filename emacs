@@ -115,6 +115,10 @@
 	(while (search-forward "" nil t)
 	  (replace-match "\"" t t))
 
+	(goto-char (point-min))
+	(while (search-forward "" nil t)
+	  (replace-match "---" t t))
+
 	))))
 
 ;;-----------------------------------------------------------------------
