@@ -243,8 +243,22 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 				(replace-match (current-time-string) t t nil 1))))))
   nil)
 
+(defun fixup-whitespace ()
+  "Untabify the buffer, and kill trailing whitespace on all lines."
+  (interactive)
+  (untabify (point-min) (point-max))
+  (save-excursion
+	 (save-restriction
+		(save-match-data
+		  (widen)
+		  (goto-char (point-min))
+		  (let ((rxp "[ \t]+$"))
+			 (while (re-search-forward rxp nil t)
+				(replace-match "" t t)))))))
+
 (defun my-c++-mode-hook ()
   (add-hook 'local-write-file-hooks 'update-writestamps)
+  (add-hook 'local-write-file-hooks 'fixup-whitespace)
 
   ;; key bindings
   (local-unset-key "\C-c\C-f")
