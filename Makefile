@@ -10,6 +10,7 @@ $(HOME)/.emacs \
 $(HOME)/.gnome_init \
 $(HOME)/.login \
 $(HOME)/.Xdefaults \
+$(HOME)/.Xmodmap \
 $(HOME)/.Xresources \
 
 default: $(TARGETS)
