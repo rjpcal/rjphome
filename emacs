@@ -44,8 +44,8 @@
 	  (replace-match "\n" t t))
 
 	(goto-char (point-min))
-	(while (re-search-forward "<[^>]+>" nil t)
-	  (replace-match "" t t))
+	(while (re-search-forward "\\(<[^>]+>\\)+" nil t)
+	  (replace-match " " t t))
 
 	(goto-char (point-min))
 	(while (search-forward "&nbsp;" nil t)
@@ -65,8 +65,8 @@
 	  (replace-match "\n" t t))
 
 	(goto-char (point-min))
-	(while (re-search-forward "<[^>]+>" nil t)
-	  (replace-match "" t t))
+	(while (re-search-forward "\\(<[^>]+>\\)+" nil t)
+	  (replace-match " " t t))
 
 	(goto-char (point-min))
 	(while (search-forward "&nbsp;" nil t)
