@@ -39,8 +39,8 @@ case $ARCH in
 	fi
 
 	# Darwin for some reason has a limited stacksize by default
-	ulimit -s unlimited #stacksize
-	ulimit -d unlimited #datasize
+	#ulimit -s unlimited #stacksize
+	#ulimit -d unlimited #datasize
 	;;
 esac
 
