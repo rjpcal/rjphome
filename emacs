@@ -44,6 +44,14 @@
 	  (replace-match "" t t))
 
 	(goto-char (point-min))
+	(while (search-forward "=92" nil t)
+	  (replace-match "'" t t))
+
+	(goto-char (point-min))
+	(while (search-forward "=96" nil t)
+	  (replace-match "-" t t))
+
+	(goto-char (point-min))
 	(while (search-forward "=\n" nil t)
 	  (replace-match "" t t))
 
@@ -51,6 +59,10 @@
 	(while (search-forward "
 " nil t)
 	  (replace-match "" t t))
+
+	(goto-char (point-min))
+	(while (search-forward "=B7" nil t)
+	  (replace-match "*" t t))
 
 	(goto-char (point-min))
 	(while (search-forward "=B9" nil t)
