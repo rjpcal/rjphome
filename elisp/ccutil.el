@@ -171,19 +171,28 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   "Regex to match white space in C++ code.")
 (defvar cc-opt-white (concat "[ \t\n]*")
   "Regex to match optional white space in C++ code.")
-(defvar cc-ident "[A-Za-z_][A-Za-z01-9_]*"
+(defvar cc-ident "[A-Za-z_][A-Za-z01-9_<>,]*"
   "Regex to match a C++ identifier.")
-(defvar cc-typename (concat "\\(unsigned\\)?" cc-opt-white cc-ident)
-  "Regex to match a C++ type name.")
-(defvar cc-namespace (concat "\\(" cc-ident "\\)?" cc-opt-white "::" cc-opt-white)
+(defvar cc-namespace
+  (concat "\\(" cc-ident "\\)?"
+	  cc-opt-white "::" cc-opt-white)
   "Regex to match a C++ namespace qualifier")
-(defvar cc-opt-namespace (concat "\\(" cc-namespace "\\)?")
-  "Regex to match an option C++ namespace qualifier")
-(defvar cc-arg-list "([]\\[, \t\nA-Za-z_01-9\\*&\\:]*)"
+(defvar cc-opt-namespace (concat "\\(" cc-namespace "\\)*")
+  "Regex to match an optional C++ namespace qualifier")
+(defvar cc-qualified-ident
+  (concat cc-opt-namespace
+	  cc-ident)
+  "Regex to match a namespace-qualified C++ identifier.")
+(defvar cc-typename
+  (concat "\\(unsigned\\|const\\)*" cc-opt-white
+	  cc-qualified-ident
+	  cc-opt-white "[*&]*")
+  "Regex to match a C++ type name.")
+(defvar cc-arg-list "([]\\[, \t\nA-Za-z_01-9\\*&\\:<>]*)"
   "Regex to match a C++ argument list.")
 (defvar cc-func-decl 
   (concat "^"                            ;beginning of line
-          "\\(" cc-typename "[*&]*" cc-white "\\)?" ;return type optional
+          "\\(" cc-typename cc-white "\\)?" ;return type optional
           "\\("
             "\\(" cc-namespace "\\)*"   ;optional scope specifier
             "~?"                         ;optional ~ for destructor
@@ -210,7 +219,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   (interactive)
   (save-excursion
     (re-search-backward cc-func-decl)
-    (setq str (match-string 3))
+    (setq str (match-string 5))
     (re-search-forward "{")
     (insert "\nDOTRACE(\"" str "\");")
     (message "traced %s." str)))
