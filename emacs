@@ -40,7 +40,12 @@
 (setq auto-mode-alist (cons '("\\.m$" . matlab-mode) auto-mode-alist))
 (defun my-matlab-mode-hook ()
   (add-hook 'local-write-file-hooks 'fixup-whitespace)
-  (setq matlab-indent-function nil)
+  ;; This line controls whether code inside a function gets indented one
+  ;; level, or is completely left-justified... I've just changed my opinion
+  ;; on this -- I used to not like the extra indentation level, but now I
+  ;; think that having the code indented helps to visually separate the
+  ;; multiple functions that can exist in a single matlab source file.
+  (setq matlab-indent-function t)
   (setq matlab-return-function 'matlab-plain-ret)
   (setq matlab-verify-on-save-flag nil)
   (setq fill-column 78)
