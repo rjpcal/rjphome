@@ -19,8 +19,13 @@ umask 077  # turns off all permissions for other+group by default
 # Find out what kind of machine we are on.
 if (-x /bin/arch) then
     setenv ARCH `/bin/arch`
+else if (-x /usr/bin/arch) then
+    setenv ARCH `/usr/bin/arch`
 else if (`uname -m` == "Power Macintosh") then
     setenv ARCH "ppc"
+else
+    echo "Warning: unknown architecture, setting ARCH to 'unknown'"
+    setenv ARCH "unknown"
 endif
 
 setenv MANPATH ${HOME}/local/$ARCH/man
