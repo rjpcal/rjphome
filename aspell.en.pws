@@ -1,4 +1,4 @@
-personal_ws-1.1 en 235
+personal_ws-1.1 en 247
 AIC
 Acknowledgements
 Adami
@@ -81,6 +81,7 @@ KnowltonSquire
 KochUllman
 KolesnikBarlit
 KowlerAndersonDosher
+Krieger
 KriegerRentschlerHauske
 Kruschke
 KustovRobinson
@@ -124,10 +125,12 @@ PettetGilbert
 PoggioGirosi
 PolatSagi
 PosnerCohen
+Privitera
 PriviteraStark
 RSD
 RSDs
 RXM
+Reinagel
 ReinagelZador
 RiesenhuberPoggio
 RizzolattiRiggioDascola
@@ -135,12 +138,14 @@ Rosch
 RoschMervisGray
 Rosseel
 RutishauserWaltherKoch
+SIGGRAPH
 SPC
 Scheier
 SheligaRiggioRizzolatti
 Shimojo
 SigalaGabbianiLogothetis
 SigalaLogothetis
+SimoncelliOlshausen
 SloutskyLo
 SmithMinda
 SomersNelsonSur
@@ -150,6 +155,7 @@ SugiharaEdelmanTanaka
 Tailarach
 TanakaShimojo
 TanakaTaylor
+TangMedioniLee
 TarrGauthier
 Treue
 UngerleiderMishkin
@@ -166,23 +172,27 @@ Wandell
 Wilcoxon
 WorgotterKoch
 Yarbus
+Zador
 ZengerBraunKoch
 ZengerSagi
 advisor
 analyses
 automata
 axonal
+biomimetic
 chinrest
 conspicuity
 decorrelates
 discretization
 discriminability
+downloadable
 electrophysiogical
 electrophysiological
 electrophysiology
 eyeblink
 fMRI
 foveal
+gabor
 grayscale
 gyrus
 hypercolumn
@@ -191,6 +201,7 @@ iLab
 iNVT
 ij
 illuminator
+immersive
 inferotemporal
 internet
 intersubject
@@ -233,4 +244,5 @@ striatum
 strived
 synergize
 thalamocortical
+transsaccadic
 validities

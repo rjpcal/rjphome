@@ -270,7 +270,7 @@
 (defun my-latex-mode-hook ()
   (setq line-spacing 4)
   (turn-on-auto-fill)
-  ;;(set-face-attribute 'default nil :family "helvetica" :height 110)
+  ;;(set-face-attribute 'default nil :font "-*-LucidaTypewriter-Medium-R-Normal-Sans-12-120-*-*-*-*-*-*")
 )
 
 (add-hook 'latex-mode-hook 'my-latex-mode-hook)
