@@ -61,13 +61,21 @@ if test "$PS1" != ""; then
     # substituting the time in 24-hour format, so we use the 12-hour am/pm
     # sequence \@ instead
 
-    case $BASH_VERSION in
-	2.02*|2.04*)
-	    PS1="\[\e[40;33;1m\][\h \@ \!]$\[\e[0m\] " # [hostname HH:MMam/pm]$
+    case $TERM in
+	dumb)
+	    PS1="[\h \@ \!]$ "
 	    ;;
 	*)
-	    PS1="\[\e[40;33;1m\][\h \A \!]$\[\e[0m\] " # [hostname HH:MM]$
-	    ;;
+	    case $BASH_VERSION in
+		2.02*|2.04*)
+		    # [hostname HH:MMam/pm]$
+		    PS1="\[\e[40;33;1m\][\h \@ \!]$\[\e[0m\] "
+		    ;;
+		*)
+		    # [hostname HH:MM]$
+		    PS1="\[\e[40;33;1m\][\h \A \!]$\[\e[0m\] "
+		    ;;
+	    esac
     esac
 
     case $HOSTNAME in
