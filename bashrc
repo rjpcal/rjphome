@@ -15,6 +15,7 @@ fi
 export MANPATH=${HOME}/local/${ARCH}/man
 export MANPATH=${MANPATH}:/usr/share/man:/usr/man
 export MANPATH=${MANPATH}:/usr/local/share/man:/usr/local/man
+export MANPATH=${MANPATH}:/usr/X11R6/man
 
 export PATH=.:${HOME}/local/bin:${HOME}/local/${ARCH}/bin:/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/sbin:/sbin
 
@@ -100,6 +101,8 @@ export MAILTO=rjpeters@klab.caltech.edu
 export PVM_ROOT=/usr/share/pvm3
 
 export CVS_RSH=ssh
+
+export INPUTRC=${HOME}/.inputrc
 
 ### Source a system-local init file, if it exists
 if test -r ~/.bashrc_local; then
