@@ -95,6 +95,50 @@ if test "$PS1" != ""; then
 	    ;;
     esac
 
+    # A color init string consists of one or more of the following numeric codes:
+    # (run /usr/bin/dircolors --print-database for more detail)
+
+    # Attribute codes:
+    # 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
+
+    # Text color codes:
+    # 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
+
+    # Background color codes:
+    # 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
+
+    # file types:
+    # no = normal, default
+    # fi = normal file
+    # di = directory
+    # ln = symbolic link
+    # pi = pipe
+    # so = socket
+    # do = door
+    # bd = block device driver
+    # cd = character device driver
+    # or = orphan link to nonexistent file
+    # ex = file with execute permission
+    LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:'
+
+    # file extensions for archive files
+    archive_style="01;31"
+    archive_exts="tar tgz arj taz lzh zip z Z gz bz2 deb rpm jar"
+    for ext in $archive_exts; do
+	LS_COLORS="${LS_COLORS}*.${ext}=${archive_style}:"
+    done
+
+    # file extensions for media files
+    media_style="01;35"
+    media_exts="jpg jpeg gif bmp pbm pgm ppm pnm tga xbm xpm tif tiff png mpg mpeg avi fli gl dl xcf xwd ogg mp3 wav"
+    for ext in $media_exts; do
+	LS_COLORS="${LS_COLORS}*.${ext}=${media_style}:"
+    done
+
+    LS_COLORS=${LS_COLORS}'*.ps=01:*.pdf=01:'
+
+    export LS_COLORS
+
     alias pwd='dirs -l'
     alias matlab='matlab -nojvm -nosplash'
 
