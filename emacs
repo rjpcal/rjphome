@@ -113,3 +113,5 @@
   ;; Your init file should contain only one such instance.
  '(cursor ((t (:background "salmon1"))))
  '(scroll-bar ((t (:background "gray60" :foreground "black")))))
+
+(put 'upcase-region 'disabled nil)
