@@ -111,6 +111,7 @@
  '(blink-cursor-interval 0.25)
  '(confirm-kill-emacs (quote yes-or-no-p))
  '(rmail-enable-mime t t)
+ '(show-trailing-whitespace t)
  '(user-mail-address "rjpeters@klab.caltech.edu")
  '(widget-image-enable nil))
 (custom-set-faces
