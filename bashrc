@@ -62,7 +62,7 @@ if test "$PS1" != ""; then
     # sequence \@ instead
 
     case $BASH_VERSION in
-	2.02*)
+	2.02*|2.04*)
 	    PS1="\[\e[40;33;1m\][\h \@ \!]$\[\e[0m\] " # [hostname HH:MMam/pm]$
 	    ;;
 	*)
@@ -71,7 +71,7 @@ if test "$PS1" != ""; then
     esac
 
     case $HOST in
-	goethe*|curie*)
+	goethe*)
 	    alias ls='ls -F'
 	    ;;
 	*)
