@@ -1,4 +1,4 @@
-;; Application initialization file for emacs
+;; Application initialization file for emacs -*- emacs-lisp -*-
 
 ;; Rob Peters <rjpeters@klab.caltech.edu>
 
@@ -421,22 +421,26 @@
 ;;-----------------------------------------------------------------------
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(blink-cursor-delay 1.0)
  '(blink-cursor-interval 0.25)
  '(confirm-kill-emacs (quote yes-or-no-p))
  '(rmail-enable-mime t)
+ '(rmail-user-mail-address-regexp ".*rjpeter.*")
  '(show-trailing-whitespace t)
  '(user-mail-address "rjpeters@klab.caltech.edu")
  '(widget-image-enable nil))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
- '(cursor ((t (:background "salmon1"))))
+  ;; If there is more than one, they won't work right.
+ '(cursor ((t (:background "salmon1"))) t)
  '(font-lock-comment-face ((((class color) (background dark)) (:foreground "firebrick1"))))
  '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "dodger blue" :weight bold))))
  '(font-lock-keyword-face ((((class color) (background dark)) (:foreground "Cyan" :weight bold))))
  '(font-lock-string-face ((((class color) (background dark)) (:foreground "LightSalmon"))))
- '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "gold"))))
-)
+ '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "gold")))))
