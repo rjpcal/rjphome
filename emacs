@@ -267,10 +267,10 @@
 
 (font-lock-add-keywords
  'outline-mode
- '( ("^[ \t]*<< \\(.*\\)$" 1 'outline-done-face t)
-    ("^[ \t]*>> \\(.*\\)$" 1 'outline-todo-face t)
-    ("^[ \t]*>> \\(HOME.*\\)$" 1 'outline-todo-home-face t)
-    ("^[ \t]*>> \\(LAB.*\\)$" 1 'outline-todo-lab-face t)
+ '( ("^[ \t\\*]*<< \\(.*\\)$" 1 'outline-done-face t)
+    ("^[ \t\\*]*>> \\(.*\\)$" 1 'outline-todo-face t)
+    ("^[ \t\\*]*>> \\(HOME.*\\)$" 1 'outline-todo-home-face t)
+    ("^[ \t\\*]*>> \\(LAB.*\\)$" 1 'outline-todo-lab-face t)
     ))
 
 ;;-----------------------------------------------------------------------
