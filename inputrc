@@ -1,3 +1,4 @@
 set show-all-if-ambiguous On
 set visible-stats On
 set page-completions Off
+set completion-query-items 2000
