@@ -200,6 +200,9 @@
 ;; to get Mac OSX <return> key to do the same as <kp-enter>
 (define-key function-key-map [return] [?\C-m])
 
+(defun use-fancy-splash-screens-p () nil)
+(setq inhibit-startup-message t)
+
 ;;-----------------------------------------------------------------------
 ;; Mail Settings and Aliases
 ;;-----------------------------------------------------------------------
