@@ -1,4 +1,6 @@
-# csh/tcsh init file -*- shell-script -*-
+#!/bin/tcsh -*- shell-script -*-
+
+# csh/tcsh init file
 
 # Rob Peters <rjpeters@klab.caltech.edu>
 
