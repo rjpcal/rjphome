@@ -13,9 +13,7 @@ function identify_location ()
 {
     if test -r $HOME/.location; then
 	export LOCATION=`cat $HOME/.location`
-	echo "Location is '$LOCATION'"
     else
-	echo "Warning! Location unknown!"
 	export LOCATION="unknown"
     fi
 }
@@ -242,6 +240,12 @@ export PATH=${HOME}/local/bin:${HOME}/local/${ARCH}/bin:${PATH}
 
 # for interactive shells:
 if test "$PS1" != ""; then
+
+    if test x$LOCATION = xunknown; then
+	echo "Warning! Location unknown!"
+    else
+	echo "Location is '$LOCATION'"
+    fi
 
     FIGNORE=""   # filename suffixes to be ignored by completion
     HISTSIZE=500 # number of commands to store in history
