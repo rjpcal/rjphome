@@ -261,6 +261,8 @@ case $- in
 
         # specify location of readline startup file
 	export INPUTRC=${HOME}/.inputrc
+
+	export COLUMNS
 	;;
     *)    # non-interactive shell
 	;;
