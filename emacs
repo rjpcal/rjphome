@@ -200,6 +200,8 @@
 (defun abbreviate-frame-title (s)
   (setq s (replace-regexp-in-string "^.*science/projects/" "sp::" s))
   (setq s (replace-regexp-in-string "^.*projects/" "p::" s))
+  (setq s (replace-regexp-in-string "^/cit/rjpeters/" "c::" s))
+  (setq s (replace-regexp-in-string "^/home/rjpeters/" "h::" s))
   (setq s (replace-regexp-in-string "/$" "" s))
   )
 
