@@ -28,7 +28,7 @@ darwin: $(DARWIN_TARGETS)
 
 worldread:
 	@for f in plan; do \
-		/usr/bin/install \
+		install \
 			--mode=0444 \
 			--preserve-timestamps \
 			--verbose \
