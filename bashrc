@@ -69,7 +69,7 @@ function setup_prompt ()
 	    main_prompt="[${prompt_content}]$"
 	    ;;
 	*)
-	    main_prompt="<${prompt_content}>$"
+	    main_prompt="((${prompt_content}))$"
 	    ;;
     esac
 
