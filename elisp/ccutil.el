@@ -262,7 +262,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 
 (defun my-c++-mode-hook ()
   (add-hook 'local-write-file-hooks 'update-writestamps)
-  (add-hook 'local-write-file-hooks 'fixup-whitespace)
+;  (add-hook 'local-write-file-hooks 'fixup-whitespace)
 
   ;; key bindings
   (local-unset-key "\C-c\C-f")
