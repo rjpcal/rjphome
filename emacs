@@ -232,6 +232,9 @@
 (defun use-fancy-splash-screens-p () nil)
 (setq inhibit-startup-message t)
 
+;; flash the screen instead of beeping the system bell
+(setq visible-bell t)
+
 ;;-----------------------------------------------------------------------
 ;; Mail Settings and Aliases
 ;;-----------------------------------------------------------------------
