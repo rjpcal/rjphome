@@ -1,4 +1,4 @@
-# csh/tcsh init file
+# csh/tcsh init file -*- shell-script -*-
 
 # Rob Peters <rjpeters@klab.caltech.edu>
 
@@ -75,3 +75,7 @@ setenv MAILTO rjpeters@klab.caltech.edu
 setenv PVM_ROOT /usr/share/pvm3
 
 setenv CVS_RSH ssh
+
+if (-r ~/.cshrc_local) then
+    source ~/.cshrc_local
+endif
