@@ -96,6 +96,7 @@ if test "$PS1" != ""; then
     esac
 
     alias pwd='dirs -l'
+    alias matlab='matlab -nojvm -nosplash'
 
     # to keep case-sensitive sorting for 'ls', for example
     export LC_COLLATE=C
