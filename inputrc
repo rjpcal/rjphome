@@ -1,4 +1,5 @@
-set show-all-if-ambiguous On
+set show-all-if-ambiguous Off
 set visible-stats On
 set page-completions Off
-set completion-query-items 2000
+set completion-query-items 200
+$include ~/.inputrc_local
