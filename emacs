@@ -48,6 +48,8 @@
 	(goto-char (point-min))
 	(while (search-forward "=B9" nil t)
 	  (replace-match "'" t t))
+	(while (search-forward "" nil t)
+	  (replace-match "'" t t))
 	))))
 
 ;;-----------------------------------------------------------------------
