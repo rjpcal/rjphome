@@ -86,7 +86,7 @@ if test "$PS1" != ""; then
 
     case $HOSTNAME in
 	goethe*)
-	    alias ls='ls -F'
+	    alias ls='ls -F --color=tty'
 	    ;;
 	*)
 	    alias ls='ls -F --color=tty'
