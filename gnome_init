@@ -5,6 +5,3 @@
 # Rob Peters <rjpeters@klab.caltech.edu
 
 # $Id$
-
-### Turn off that pesky caps lock key...
-xmodmap -e "keycode 66 = "
