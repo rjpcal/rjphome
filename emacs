@@ -408,8 +408,8 @@
 (setq mail-mode-hook 'turn-on-auto-fill)
 (setq mail-yank-prefix "> ")
 
-(setq rmail-file-name "~/mail/Inbox")
-(setq mail-archive-file-name "~/mail/Outbox")
+(setq rmail-file-name "~/home/mail/Inbox")
+(setq mail-archive-file-name "~/home/mail/Outbox")
 
 ;;-----------------------------------------------------------------------
 ;; Variables set by emacs' customize wizard
