@@ -138,15 +138,10 @@
   (turn-on-auto-fill))
 (setq matlab-mode-hook 'my-matlab-mode-hook)
 (autoload 'matlab-shell "matlab" "Interactive Matlab mode." t)
-(defun my-matlab-shell-mode-hook ()
-	'())
-(setq matlab-shell-mode-hook 'my-matlab-shell-mode-hook)
 
 ;;-----------------------------------------------------------------------
 ;; C++ utilities
 ;;-----------------------------------------------------------------------
-(setq-default case-fold-search nil)
-(setq-default case-replace nil)
 (load "ccutil")
 
 ;;-----------------------------------------------------------------------
@@ -155,8 +150,11 @@
 (load "bibtexutil")
 
 ;;-----------------------------------------------------------------------
-;; Settings
+;; General settings
 ;;-----------------------------------------------------------------------
+
+(setq-default case-fold-search nil)
+(setq-default case-replace nil)
 
 (set-foreground-color "white")
 (set-background-color "black")
@@ -166,8 +164,6 @@
 
 (setq text-mode-hook 'turn-on-auto-fill)
 (setq latex-mode-hook 'turn-on-auto-fill)
-(setq mail-mode-hook 'turn-on-auto-fill)
-(setq mail-yank-prefix "> ")
 
 (setq auto-mode-alist (cons '("\\.[ch]+$" . c++-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.dxy$" . c++-mode) auto-mode-alist))
@@ -182,11 +178,8 @@
 
 (setq-default column-number-mode t)
 
-(setq fill-column 70)
-(setq default-fill-column 70)
-
-;;(setq-default tab-width 8)
-;;(setq-default default-tab-width 8)
+(setq-default fill-column 70)
+(setq-default default-tab-width 8)
 
 (setq display-time-day-and-date t) ; show date in addition to time
 (display-time)			   ; show time(+date) in mode line
@@ -200,14 +193,21 @@
       (concat "+" (abbreviate-file-name default-directory)
 	      " [" (invocation-name) "@" (system-name) "]"))
 
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
+;; to get Mac OSX <return> key to do the same as <kp-enter>
+(define-key function-key-map [return] [?\C-m])
+
 ;;-----------------------------------------------------------------------
 ;; Mail Settings and Aliases
 ;;-----------------------------------------------------------------------
 
+(setq mail-mode-hook 'turn-on-auto-fill)
+(setq mail-yank-prefix "> ")
+
 (setq rmail-file-name "~/mail/Inbox")
 (setq mail-archive-file-name "~/mail/Outbox")
-
-(put 'downcase-region 'disabled nil)
 
 ;;-----------------------------------------------------------------------
 ;; Variables set by emacs' customize wizard
@@ -233,8 +233,3 @@
  '(font-lock-string-face ((((class color) (background dark)) (:foreground "LightSalmon"))))
  '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "gold"))))
 )
-
-(put 'upcase-region 'disabled nil)
-
-;; to get Mac OSX <return> key to do the same as <kp-enter>
-(define-key function-key-map [return] [?\C-m])
