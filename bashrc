@@ -103,5 +103,5 @@ export CVS_RSH=ssh
 
 ### Source a system-local init file, if it exists
 if test -r ~/.bashrc_local; then
-    . ~/.cshrc_local
+    . ~/.bashrc_local
 fi
