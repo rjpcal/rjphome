@@ -15,7 +15,12 @@ $(HOME)/.Xdefaults \
 $(HOME)/.Xmodmap \
 $(HOME)/.Xresources \
 
+DARWIN_TARGETS := \
+$(HOME)/.xinitrc \
+
 default: $(TARGETS)
+
+darwin: $(DARWIN_TARGETS)
 
 $(HOME)/.%:
 	ln -s `pwd`/$* $@
