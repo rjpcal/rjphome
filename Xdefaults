@@ -1,0 +1,56 @@
+/*
+
+   X11 defaults file
+
+   Rob Peters <rjpeters@klab.caltech.edu>
+
+   $Id$
+
+*/
+
+
+#define WHITE_MOOD
+#define SMALL_FONT
+
+#ifndef SRVR_131_215_186_123
+
+#  ifdef SMALL_FONT
+	/* emacs*font: -B&H-LucidaTypewriter-Medium-R-Normal-Sans-12-*-*-*-*-*-*-* */
+	emacs*font: 7x13
+	emacs*geometry: 170x70+5+5
+#  endif
+
+#  ifdef LARGE_FONT
+	emacs*font: -B&H-LucidaTypewriter-Medium-R-Normal-Sans-14-*-*-*-*-*-*-*
+	emacs*geometry: 162x64+5+5
+#  endif
+
+#else
+	emacs*font: -misc-fixed-medium-r-normal--10-100-75-75-c-60-iso8859-1
+	/* emacs*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso8859-1 */
+	/* emacs*font: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-1 */
+	emacs*geometry: 160x70+2+2
+#endif
+
+#ifdef BLACK_MOOD
+	emacs*background: black
+	emacs*foreground: WhiteSmoke
+	emacs*pointerColor: gold1
+	emacs*borderColor: WhiteSmoke
+#endif
+
+#ifdef WHITE_MOOD
+	emacs*background: gray90
+	emacs*foreground: black
+	emacs*pointerColor: IndianRed3
+	emacs*borderColor: black
+#endif
+
+emacs*cursorColor: salmon1
+
+xterm*font: 9x15
+xterm*background:		black
+xterm*foreground:		gold
+xterm*scrollbar.on:		true
+xterm*scrollbar.background:	dark slate grey
+xterm*scrollbar.foreground:	light grey
