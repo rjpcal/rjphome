@@ -250,7 +250,7 @@
 (make-face 'outline-todo-face)
 (set-face-attribute 'outline-todo-face nil
 		    :foreground "maroon"
-		    :box t
+		    :box '(:line-width 1)
 		    )
 
 (font-lock-add-keywords
