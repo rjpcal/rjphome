@@ -99,8 +99,8 @@
 ;; Mail Settings and Aliases
 ;;-----------------------------------------------------------------------
 
-(setq rmail-file-name "~/people/Inbox")
-(setq mail-archive-file-name "~/people/Outbox")
+(setq rmail-file-name "~/mail/Inbox")
+(setq mail-archive-file-name "~/mail/Outbox")
 
 (setq nndraft-directory "~/.news")
 
