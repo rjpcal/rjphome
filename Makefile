@@ -4,7 +4,14 @@
 
 # $Id$
 
-default: $(HOME)/.cshrc
+TARGETS := \
+$(HOME)/.cshrc \
+$(HOME)/.emacs \
+$(HOME)/.gnome_init \
+$(HOME)/.login \
+$(HOME)/.Xdefaults \
 
-$(HOME)/.cshrc:
-	ln -s `pwd`/cshrc $@
+default: $(TARGETS)
+
+$(HOME)/.%:
+	ln -s `pwd`/$* $@
