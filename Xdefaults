@@ -18,7 +18,7 @@
 #  if (WIDTH < 1500) || (HEIGHT < 1000)
 	emacs*geometry: 150x56+5+5
 #  else
-	emacs*geometry: 150x70+5+5
+	emacs*geometry: 150x64+5+5
 #  endif
 #endif
 
@@ -27,7 +27,7 @@
 #  if (WIDTH < 1500) || (HEIGHT < 1000)
 	emacs*geometry: 150x56+5+5
 #  else
-	emacs*geometry: 150x70+5+5
+	emacs*geometry: 150x64+5+5
 #  endif
 #endif
 
