@@ -195,6 +195,10 @@
       (concat (abbreviate-frame-title default-directory)
 	      " [" (invocation-name) "@" (system-name) "]"))
 
+(setq icon-title-format
+      (concat (abbreviate-frame-title default-directory)
+	      " [" (invocation-name) "@" (system-name) "]"))
+
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
