@@ -12,7 +12,7 @@
 ;;-----------------------------------------------------------------------
 ;; LISP search path
 ;;-----------------------------------------------------------------------
-(setq load-path (append load-path (list "~/.home/elisp")))
+(setq load-path (append load-path (list "~/home/base/elisp")))
 
 (add-to-list 'vc-handled-backends 'SVN)
 
