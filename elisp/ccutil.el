@@ -8,10 +8,10 @@
  'c++-mode
  '(("\\<\\(FIXME\\)" 1 'font-lock-warning-face t)))
 (set-face-attribute 'font-lock-warning-face nil
-		    :foreground "red"
-		    :background "yellow"
-		    :weight 'bold
-		    :underline "true")
+                    :foreground "red"
+                    :background "yellow"
+                    :weight 'bold
+                    :underline "true")
 
 ;(defun reset-font-lock ()
 ;  "Just calls font-lock-mode twice. Can be used to fix annoying font-lock
@@ -75,26 +75,26 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
        "// created: " (current-time-string) "\n"
        "// commit: $" "Id" "$\n")
       (if (string-match "groovx" (buffer-file-name))
-	  (insert
-	   "//\n"
-	   "// --------------------------------------------------------------------\n"
-	   "//\n"
-	   "// This file is part of GroovX.\n"
-	   "//   [http://www.klab.caltech.edu/rjpeters/groovx/]\n"
-	   "//\n"
-	   "// GroovX is free software; you can redistribute it and/or modify it\n"
-	   "// under the terms of the GNU General Public License as published by\n"
-	   "// the Free Software Foundation; either version 2 of the License, or\n"
-	   "// (at your option) any later version.\n"
-	   "//\n"
-	   "// GroovX is distributed in the hope that it will be useful, but\n"
-	   "// WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-	   "// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
-	   "// General Public License for more details.\n"
-	   "//\n"
-	   "// You should have received a copy of the GNU General Public License\n"
-	   "// along with GroovX; if not, write to the Free Software Foundation,\n"
-	   "// Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.\n"))
+          (insert
+           "//\n"
+           "// --------------------------------------------------------------------\n"
+           "//\n"
+           "// This file is part of GroovX.\n"
+           "//   [http://www.klab.caltech.edu/rjpeters/groovx/]\n"
+           "//\n"
+           "// GroovX is free software; you can redistribute it and/or modify it\n"
+           "// under the terms of the GNU General Public License as published by\n"
+           "// the Free Software Foundation; either version 2 of the License, or\n"
+           "// (at your option) any later version.\n"
+           "//\n"
+           "// GroovX is distributed in the hope that it will be useful, but\n"
+           "// WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+           "// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+           "// General Public License for more details.\n"
+           "//\n"
+           "// You should have received a copy of the GNU General Public License\n"
+           "// along with GroovX; if not, write to the Free Software Foundation,\n"
+           "// Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.\n"))
       (insert
        "//\n"
        "///////////////////////////////////////////////////////////////////////\n"
