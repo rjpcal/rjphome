@@ -185,8 +185,8 @@
 
 (setq-default column-number-mode t)
 
-(setq fill-column 75)
-(setq default-fill-column 75)
+(setq fill-column 70)
+(setq default-fill-column 70)
 
 ;;(setq-default default-tab-width 3)
 ;;(setq-default tab-width 3)
