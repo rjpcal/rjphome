@@ -192,7 +192,9 @@
 (setq-default fill-column 70)
 (setq-default default-tab-width 8)
 
-(setq display-time-day-and-date t) ; show date in addition to time
+;(setq display-time-24hr-format t)  ; show time in 24hr format
+;(setq display-time-day-and-date t) ; show date in addition to time
+(setq display-time-format "%a%b%d:%H%M") ; specify mode line date format
 (display-time)			   ; show time(+date) in mode line
 
 (defun abbreviate-frame-title (s)
