@@ -238,30 +238,33 @@ esac
 
 export PATH=${HOME}/local/bin:${HOME}/local/${ARCH}/bin:${PATH}
 
-# for interactive shells:
-if test "$PS1" != ""; then
+case $- in
+    *i*)  # interactive shell
 
-    if test x$LOCATION = xunknown; then
-	echo "Warning! Location unknown!"
-    else
-	echo "Location is '$LOCATION'"
-    fi
+	if test x$LOCATION = xunknown; then
+	    echo "Warning! Location unknown!"
+	else
+	    echo "Location is '$LOCATION'"
+	fi
 
-    FIGNORE=""   # filename suffixes to be ignored by completion
-    HISTSIZE=500 # number of commands to store in history
-    HISTFILE=""  # don't save/load command history from a file
+	FIGNORE=""   # filename suffixes to be ignored by completion
+	HISTSIZE=500 # number of commands to store in history
+	HISTFILE=""  # don't save/load command history from a file
 
-    setup_prompt
+	setup_prompt
 
-    setup_ls_colors
+	setup_ls_colors
 
-    alias ls='ls -F --color=tty'
-    alias pwd='dirs -l'
-    alias matlab='matlab -nojvm -nosplash'
+	alias ls='ls -F --color=tty'
+	alias pwd='dirs -l'
+	alias matlab='matlab -nojvm -nosplash'
 
-    # specify location of readline startup file
-    export INPUTRC=${HOME}/.inputrc
-fi
+        # specify location of readline startup file
+	export INPUTRC=${HOME}/.inputrc
+	;;
+    *)    # non-interactive shell
+	;;
+esac
 
 ### Output from cron jobs gets sent to $MAILTO
 export MAILTO=rjpeters@klab.caltech.edu
