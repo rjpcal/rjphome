@@ -58,6 +58,7 @@ if ($?prompt) then
     set prompt="%B[%m %T \!]%%%b "
 
     switch ($HOST)
+	case goethe*:
 	case curie*:
 	    alias ls 'ls -F'
 	    breaksw
