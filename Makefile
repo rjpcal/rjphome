@@ -13,6 +13,7 @@ $(HOME)/.galeon \
 $(HOME)/.inputrc \
 $(HOME)/.login \
 $(HOME)/.profile \
+$(HOME)/.signature \
 $(HOME)/.Xdefaults \
 $(HOME)/.Xmodmap \
 $(HOME)/.Xresources \
