@@ -119,14 +119,7 @@ if test "$PS1" != ""; then
 	    esac
     esac
 
-    case $HOSTNAME in
-	goethe*)
-	    alias ls='ls -F --color=tty'
-	    ;;
-	*)
-	    alias ls='ls -F --color=tty'
-	    ;;
-    esac
+    alias ls='ls -F --color=tty'
 
     # A color init string consists of one or more of the following numeric codes:
     # (run /usr/bin/dircolors --print-database for more detail)
