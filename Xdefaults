@@ -12,25 +12,24 @@
 #define WHITE_MOOD
 #define SMALL_FONT
 
-#ifndef SRVR_131_215_186_123
-
-#  ifdef SMALL_FONT
+#ifdef SMALL_FONT
 	/* emacs*font: -B&H-LucidaTypewriter-Medium-R-Normal-Sans-12-*-*-*-*-*-*-* */
 	emacs*font: 7x13
+#  if (WIDTH < 1500) || (HEIGHT < 1000)
+	emacs*geometry: 161x56+5+5
+#  else
 	emacs*geometry: 170x70+5+5
-#  endif
+#   endif
+#endif
 
-#  ifdef LARGE_FONT
+#ifdef LARGE_FONT
 	emacs*font: -B&H-LucidaTypewriter-Medium-R-Normal-Sans-14-*-*-*-*-*-*-*
 	emacs*geometry: 162x64+5+5
-#  endif
-
-#else
-	emacs*font: -misc-fixed-medium-r-normal--10-100-75-75-c-60-iso8859-1
-	/* emacs*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso8859-1 */
-	/* emacs*font: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-1 */
-	emacs*geometry: 160x70+2+2
 #endif
+
+/*emacs*font: -misc-fixed-medium-r-normal--10-100-75-75-c-60-iso8859-1*/
+/* emacs*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso8859-1 */
+/* emacs*font: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-1 */
 
 #ifdef BLACK_MOOD
 	emacs*background: black
