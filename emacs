@@ -51,6 +51,10 @@
 	(while (search-forward "&nbsp;" nil t)
 	  (replace-match " " t t))
 
+	(goto-char (point-min))
+	(while (search-forward "&gt;" nil t)
+	  (replace-match ">" t t))
+
 	))))
 
 (defun unhtml-email ()
@@ -71,6 +75,10 @@
 	(goto-char (point-min))
 	(while (search-forward "&nbsp;" nil t)
 	  (replace-match " " t t))
+
+	(goto-char (point-min))
+	(while (search-forward "&gt;" nil t)
+	  (replace-match ">" t t))
 
 	))))
 
