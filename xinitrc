@@ -9,7 +9,7 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/usr/X11R6/lib/X11/xinit/.Xresources
 sysmodmap=/usr/X11R6/lib/X11/xinit/.Xmodmap
 
-# merge in defaults and keymaps
+### merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
@@ -27,12 +27,17 @@ if [ -f $usermodmap ]; then
     xmodmap $usermodmap
 fi
 
-# start some nice programs
+### start some nice programs
 
+### The standard twm window manager and a few apps:
 #twm &
 #xclock -geometry 50x50-1+1 &
 #xterm -geometry 80x50+494+51 &
 #xterm -geometry 80x20+494-0 &
 #exec xterm -geometry 80x66+0+0 -name login
 
-exec gnome-session
+### For a GNOME session:
+# exec gnome-session
+
+### For a KDE session:
+exec startkde
