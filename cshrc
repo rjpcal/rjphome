@@ -84,6 +84,8 @@ setenv PVM_ROOT /usr/share/pvm3
 
 setenv CVS_RSH ssh
 
+setenv MATLABPATH ${HOME}/local/matlab
+
 ### Source a system-local init file, if it exists
 if (-r ~/.cshrc_local) then
     source ~/.cshrc_local
