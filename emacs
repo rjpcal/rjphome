@@ -191,13 +191,23 @@
   (setq s (replace-regexp-in-string "/$" "" s))
   )
 
+(defun abbreviate-system-name (s)
+  (setq s (replace-regexp-in-string "\\.klab\\.caltech\\.edu" "" s))
+  (setq s (replace-regexp-in-string "\\.caltech\\.edu" "" s))
+  (setq s (replace-regexp-in-string "\\.usc.edu" "" s))
+  )
+
+;; can also use (invocation-name) here in the title formats if desired
+;; (it's part of the default title formats, but I've left it out for
+;; brevity of these customized formats)
+
 (setq frame-title-format
       (concat (abbreviate-frame-title default-directory)
-	      " [" (invocation-name) "@" (system-name) "]"))
+	      " [" (abbreviate-system-name system-name) "]"))
 
 (setq icon-title-format
       (concat (abbreviate-frame-title default-directory)
-	      " [" (invocation-name) "@" (system-name) "]"))
+	      " [" (abbreviate-system-name system-name) "]"))
 
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
