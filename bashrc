@@ -22,7 +22,7 @@ export MANPATH=${MANPATH}:/usr/share/man:/usr/man
 export MANPATH=${MANPATH}:/usr/local/share/man:/usr/local/man
 export MANPATH=${MANPATH}:/usr/X11R6/man
 
-export PATH=${HOME}/local/bin:${HOME}/local/${ARCH}/bin:/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/sbin:/sbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/sbin:/sbin
 
 export LD_LIBRARY_PATH=${HOME}/local/${ARCH}/lib
 
@@ -43,6 +43,8 @@ case $ARCH in
 	#ulimit -d unlimited #datasize
 	;;
 esac
+
+export PATH=${HOME}/local/bin:${HOME}/local/${ARCH}/bin:${PATH}
 
 # for interactive shells:
 if test "$PS1" != ""; then
