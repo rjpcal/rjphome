@@ -34,7 +34,7 @@ function setup_prompt ()
 		sideswipe*)
 		    prompt_color="40;33;1;4" # yellow on black
 		    ;;
-		*.klab.caltech.edu)
+		*.klab.caltech.edu|montaigne)
 		    prompt_color="40;32;1;4" # green on black
 		    ;;
 		ilab*|iLab*)
