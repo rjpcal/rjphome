@@ -1,0 +1,9 @@
+! Xmodmap file
+
+! Rob Peters <rjpeters@klab.caltech.edu>
+
+! $Id$
+
+! my default is to turn off caps lock
+! keycode 66 = Caps_Lock
+keycode 66 =
