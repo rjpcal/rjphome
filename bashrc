@@ -251,6 +251,12 @@ export CVS_RSH=ssh
 # to keep case-sensitive sorting for 'ls', for example
 export LC_COLLATE=C
 
+# MATLAB path
+# we don't need to add ${HOME}/matlab because this is done
+# automatically (somehow); if it is added explicitly here, then MATLAB
+# complains of a 'duplicate directory'
+export MATLABPATH=./matlab:${HOME}/local/matlab
+
 ### Source a system-local init file, if it exists
 if test -r ~/.bashrc_local; then
     . ~/.bashrc_local
