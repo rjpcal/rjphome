@@ -3,5 +3,4 @@ set visible-stats On
 set page-completions Off
 set completion-query-items 200
 set mark-symlinked-directories On
-set bell-style visible
 $include ~/.inputrc_local
