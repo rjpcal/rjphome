@@ -88,6 +88,16 @@
 	  (replace-match "'" t t))
 
 	(goto-char (point-min))
+	(while (search-forward "²" nil t)
+	  ;; superscript numeral 2
+	  (replace-match "\"" t t))
+
+	(goto-char (point-min))
+	(while (search-forward "³" nil t)
+	  ;; superscript numeral 3
+	  (replace-match "\"" t t))
+
+	(goto-char (point-min))
 	(while (search-forward "=\n" nil t)
 	  (replace-match "" t t))
 
