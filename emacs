@@ -252,7 +252,7 @@
 (setq inhibit-startup-message t)
 
 ;; flash the screen instead of beeping the system bell
-(setq visible-bell t)
+;; (setq visible-bell t)
 
 ;; don't load site-lisp/default.el
 (setq inhibit-default-init t)
