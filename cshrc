@@ -59,7 +59,6 @@ if ($?prompt) then
 
     switch ($HOST)
 	case goethe*:
-	case curie*:
 	    alias ls 'ls -F'
 	    breaksw
 	default:
