@@ -30,6 +30,23 @@
 	  (while (re-search-forward rxp nil t)
 	    (replace-match "" t t)))))))
 
+(defun unhtml-email ()
+  "Kill HTML tags in emails."
+  (interactive)
+  (save-excursion
+    (save-restriction
+      (save-match-data
+
+	(goto-char (point-min))
+	(while (re-search-forward "<[^>]+>" nil t)
+	  (replace-match "" t t))
+
+	(goto-char (point-min))
+	(while (search-forward "&nbsp;" nil t)
+	  (replace-match " " t t))
+
+	))))
+
 (defun unmangle-email ()
   "Fix formatting stuff in emails."
   (interactive)
