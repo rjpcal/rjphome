@@ -282,7 +282,7 @@ export LC_COLLATE=C
 # we don't need to add ${HOME}/matlab because this is done
 # automatically (somehow); if it is added explicitly here, then MATLAB
 # complains of a 'duplicate directory'
-export MATLABPATH=./matlab:${HOME}/local/matlab
+export MATLABPATH=./matlab:${HOME}/science/matlab
 
 ### Source a system-local init file, if it exists
 if test -r ~/.bashrc_local; then
