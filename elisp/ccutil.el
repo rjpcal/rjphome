@@ -294,6 +294,8 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 
   (local-unset-key "\M-\C-?")             ; i.e., ESC-DEL
   (local-set-key "\M-\C-?" 'backward-nomenclature-kill)
+
+  (setq column-number-mode t)
 )
 
 (setq c++-mode-hook 'my-c++-mode-hook)
