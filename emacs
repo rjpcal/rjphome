@@ -117,6 +117,14 @@
 	  (replace-match "'" t t))
 
 	(goto-char (point-min))
+	(while (search-forward "=93" nil t)
+	  (replace-match "\"" t t))
+
+	(goto-char (point-min))
+	(while (search-forward "=94" nil t)
+	  (replace-match "\"" t t))
+
+	(goto-char (point-min))
 	(while (search-forward "=96" nil t)
 	  (replace-match "-" t t))
 
@@ -157,6 +165,11 @@
 	(while (search-forward "=B9" nil t)
 	  ;; superscript numeral 1
 	  (replace-match "'" t t))
+
+	(goto-char (point-min))
+	(while (search-forward "=E9" nil t)
+	  ;; 'e' with accent acute
+	  (replace-match "e" t t))
 
 	(goto-char (point-min))
 	(while (search-forward "¹" nil t)
