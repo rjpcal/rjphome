@@ -2,4 +2,5 @@ set show-all-if-ambiguous Off
 set visible-stats On
 set page-completions Off
 set completion-query-items 200
+set mark-symlinked-directories On
 $include ~/.inputrc_local
