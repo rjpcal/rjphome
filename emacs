@@ -242,12 +242,21 @@
 (autoload 'matlab-shell "matlab" "Interactive Matlab mode." t)
 
 ;;-----------------------------------------------------------------------
-;; C++ utilities
+;; C++
 ;;-----------------------------------------------------------------------
 (load "ccutil")
 
 ;;-----------------------------------------------------------------------
-;; BibTeX utilities
+;; LaTeX
+;;-----------------------------------------------------------------------
+(defun my-latex-mode-hook ()
+  (setq line-spacing 4)
+  (turn-on-auto-fill))
+
+(add-hook 'latex-mode-hook 'my-latex-mode-hook)
+
+;;-----------------------------------------------------------------------
+;; BibTeX
 ;;-----------------------------------------------------------------------
 (load "bibtexutil")
 
@@ -311,7 +320,6 @@
 (setq font-lock-maximum-decoration t)
 
 (setq text-mode-hook 'turn-on-auto-fill)
-(setq latex-mode-hook 'turn-on-auto-fill)
 
 (setq auto-mode-alist (cons '("\\.[ch]+$" . c++-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.dxy$" . c++-mode) auto-mode-alist))
