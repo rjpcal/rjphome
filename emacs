@@ -238,6 +238,27 @@
 (load "bibtexutil")
 
 ;;-----------------------------------------------------------------------
+;; outline-mode
+;;-----------------------------------------------------------------------
+
+(make-face 'outline-done-face)
+(set-face-attribute 'outline-done-face nil
+		    :foreground "dodgerblue4"
+		    :strike-through t
+		    )
+
+(make-face 'outline-todo-face)
+(set-face-attribute 'outline-todo-face nil
+		    :foreground "maroon"
+		    :box t
+		    )
+
+(font-lock-add-keywords
+ 'outline-mode
+ '( ("^[ \t]*<< \\(.*\\)$" 1 'outline-done-face t)
+    ("^[ \t]*>> \\(.*\\)$" 1 'outline-todo-face t) ))
+
+;;-----------------------------------------------------------------------
 ;; General settings
 ;;-----------------------------------------------------------------------
 
@@ -356,7 +377,7 @@
  '(blink-cursor-delay 1.0)
  '(blink-cursor-interval 0.25)
  '(confirm-kill-emacs (quote yes-or-no-p))
- '(rmail-enable-mime t t)
+ '(rmail-enable-mime t)
  '(show-trailing-whitespace t)
  '(user-mail-address "rjpeters@klab.caltech.edu")
  '(widget-image-enable nil))
