@@ -9,7 +9,7 @@
 */
 
 
-#define WHITE_MOOD
+#define BLACK_MOOD
 #define SMALL_FONT
 
 #ifdef SMALL_FONT
@@ -33,9 +33,9 @@
 
 #ifdef BLACK_MOOD
 	emacs*background: black
-	emacs*foreground: WhiteSmoke
+	emacs*foreground: white
 	emacs*pointerColor: gold1
-	emacs*borderColor: WhiteSmoke
+	emacs*borderColor: white
 #endif
 
 #ifdef WHITE_MOOD
