@@ -17,155 +17,155 @@
 (defun creators ()
   (interactive)
   (insert
-	"//////////////\n"
-	"// creators //\n"
-	"//////////////\n"))
+   "//////////////\n"
+   "// creators //\n"
+   "//////////////\n"))
 
 (defun accessors ()
   (interactive)
   (insert
-	"///////////////\n"
-	"// accessors //\n"
-	"///////////////\n"))
+   "///////////////\n"
+   "// accessors //\n"
+   "///////////////\n"))
 
 (defun manipulators ()
   (interactive)
   (insert
-	"//////////////////\n"
-	"// manipulators //\n"
-	"//////////////////\n"))
+   "//////////////////\n"
+   "// manipulators //\n"
+   "//////////////////\n"))
 
 (defun actions ()
   (interactive)
   (insert
-	"/////////////\n"
-	"// actions //\n"
-	"/////////////\n"))
+   "/////////////\n"
+   "// actions //\n"
+   "/////////////\n"))
 
 (defun big-doc ()
   (interactive)
   (insert 
-	"///////////////////////////////////////////////////////////////////////\n"
-	"/**\n"
-	" *\n"
-	" *\n"
-	" *\n"
-	" * @short \n"
-	" **/\n"
-	"///////////////////////////////////////////////////////////////////////\n"))
+   "///////////////////////////////////////////////////////////////////////\n"
+   "/**\n"
+   " *\n"
+   " *\n"
+   " *\n"
+   " * @short \n"
+   " **/\n"
+   "///////////////////////////////////////////////////////////////////////\n"))
 
 (defun med-doc ()
   (interactive)
   (insert 
-	"/**\n"
-	" *\n"
-	" *\n"
-	" *\n"
-	" **/\n"))
+   "/**\n"
+   " *\n"
+   " *\n"
+   " *\n"
+   " **/\n"))
 
 (defun small-doc ()
   (interactive)
   (insert 
-	"/**   */\n"))
+   "/**   */\n"))
 
 (defun doc-scope ()
   (interactive)
   (insert
-	"//@{\n"
-	"//@}\n"))
+   "//@{\n"
+   "//@}\n"))
 
 (defun big-comment ()
   (interactive)
   (insert 
-	"///////////////////////////////////////////////////////////////////////\n"
-	"//\n"
-	"//\n"
-	"//\n"
-	"///////////////////////////////////////////////////////////////////////\n"))
+   "///////////////////////////////////////////////////////////////////////\n"
+   "//\n"
+   "//\n"
+   "//\n"
+   "///////////////////////////////////////////////////////////////////////\n"))
 
 (defun med-comment ()
   (interactive)
   (insert 
-	"//---------------------------------------------------------------------\n"
-	"//\n"
-	"//\n"
-	"//\n"
-	"//---------------------------------------------------------------------\n"))
+   "//---------------------------------------------------------------------\n"
+   "//\n"
+   "//\n"
+   "//\n"
+   "//---------------------------------------------------------------------\n"))
 
 (defun small-comment ()
   (interactive)
   (insert 
-	"//---------------------------------------------------------------------\n"
-	"//\n"
-	"//\n"
-	"//\n"))
+   "//---------------------------------------------------------------------\n"
+   "//\n"
+   "//\n"
+   "//\n"))
 
 (defun init-cc-file ()
   "Place an appropriate comment at the beginning of a C++ source file, and
 insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   (interactive)
   (save-excursion
-	 (goto-char (point-min))
-	 (insert 
-	  "///////////////////////////////////////////////////////////////////////\n"
-	  "//\n"
-	  "// " (buffer-name) "\n"
-	  "//\n"
-	  "// Copyright (c) 1998-2001 Rob Peters rjpeters@klab.caltech.edu\n"
-	  "//\n"
-	  "// created: " (current-time-string) "\n"
-	  "// written: " (current-time-string) "\n"
-	  "// $Id$\n"
-	  "//\n"
-	  "///////////////////////////////////////////////////////////////////////\n"
-	  "\n#ifndef " (upcase (buffer-name)) "_DEFINED\n"
-	  "#define " (upcase (buffer-name)) "_DEFINED\n\n")
-	 (goto-char (point-max))
-	 (insert
-	  "\n"
-	  "static const char vcid_" (buffer-name) "[] = \"$Header$\";\n"
-	  "#endif // !" (upcase (buffer-name)) "_DEFINED\n")
-	 (goto-char (point-min))
-	 (replace-regexp "\\([A-Z]\\)\\.\\([CH]+_DEFINED\\)" "\\1_\\2")
-	 (goto-char (point-min))
-	 (replace-string ".h[]" "_h[]")
-	 (goto-char (point-min))
-	 (replace-string ".cc[]" "_cc[]")))
+    (goto-char (point-min))
+    (insert 
+     "///////////////////////////////////////////////////////////////////////\n"
+     "//\n"
+     "// " (buffer-name) "\n"
+     "//\n"
+     "// Copyright (c) 1998-2001 Rob Peters rjpeters@klab.caltech.edu\n"
+     "//\n"
+     "// created: " (current-time-string) "\n"
+     "// written: " (current-time-string) "\n"
+     "// $Id$\n"
+     "//\n"
+     "///////////////////////////////////////////////////////////////////////\n"
+     "\n#ifndef " (upcase (buffer-name)) "_DEFINED\n"
+     "#define " (upcase (buffer-name)) "_DEFINED\n\n")
+    (goto-char (point-max))
+    (insert
+     "\n"
+     "static const char vcid_" (buffer-name) "[] = \"$Header$\";\n"
+     "#endif // !" (upcase (buffer-name)) "_DEFINED\n")
+    (goto-char (point-min))
+    (replace-regexp "\\([A-Z]\\)\\.\\([CH]+_DEFINED\\)" "\\1_\\2")
+    (goto-char (point-min))
+    (replace-string ".h[]" "_h[]")
+    (goto-char (point-min))
+    (replace-string ".cc[]" "_cc[]")))
 
 (defun nocopy (classname)
   (interactive "sName of class: ")
   (insert
-	"  " classname "(const " classname "&);\n"
-	"  " classname "& operator=(const " classname "&);\n\n"))
+   "  " classname "(const " classname "&);\n"
+   "  " classname "& operator=(const " classname "&);\n\n"))
 
 (defun new-class (classname)
   "Generate appropriate skeleton files 'classname.h' and
 'classname.cc' for a new class. Does nothing if either file already exists."
   (interactive "sName for new class: ")
   (let ((h-file (downcase (concat classname ".h")))
-		  (cc-file (downcase (concat classname ".cc"))))
-	 (if (or (file-exists-p h-file) (file-exists-p cc-file))
-		  (message "files already exist.")
-		(find-file h-file)
-		(init-cc-file)
-		(re-search-forward "#define")
-		(forward-line 2)
-		(insert
-		 "class " classname " {\n"			 ;class declaration
-		 "public:\n"							 ;access specifier
-		 "\t" classname "();\n"				 ;default constructor
-		 "\tvirtual ~" classname "();\n"	 ;default destructor
-		 "};\n")
+        (cc-file (downcase (concat classname ".cc"))))
+    (if (or (file-exists-p h-file) (file-exists-p cc-file))
+        (message "files already exist.")
+      (find-file h-file)
+      (init-cc-file)
+      (re-search-forward "#define")
+      (forward-line 2)
+      (insert
+       "class " classname " {\n"          ;class declaration
+       "public:\n"                      ;access specifier
+       "\t" classname "();\n"             ;default constructor
+       "\tvirtual ~" classname "();\n"    ;default destructor
+       "};\n")
 
-		(find-file cc-file)
-		(init-cc-file)
-		(re-search-forward "#define")
-		(forward-line 2)
-		(insert
-		 "#include \"" h-file "\"\n"
-		 "\n"
-		 classname "::" classname " () {\n\n}\n\n"
-		 classname "::~" classname " () {\n\n}\n"))))
+      (find-file cc-file)
+      (init-cc-file)
+      (re-search-forward "#define")
+      (forward-line 2)
+      (insert
+       "#include \"" h-file "\"\n"
+       "\n"
+       classname "::" classname " () {\n\n}\n\n"
+       classname "::~" classname " () {\n\n}\n"))))
 
 ;; Regex variables for C++ grammar
 (defvar cc-white "[ \t\n]+"
@@ -183,14 +183,14 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 (defvar cc-arg-list "([]\\[, \t\nA-Za-z_01-9\\*&\\:]*)"
   "Regex to match a C++ argument list.")
 (defvar cc-func-decl 
-  (concat "^"									 ;beginning of line
-			 "\\(" cc-typename "[*&]*" cc-white "\\)?" ;return type optional
-			 "\\("
-			   "\\(" cc-namespace "\\)*"   ;optional scope specifier
-			   "~?"								 ;optional ~ for destructor
-			   "\\(" cc-ident cc-opt-white "\\)" ;function name
-			 "\\)"								 ;fully qualified name
-			 cc-arg-list)						 ;argument list
+  (concat "^"                            ;beginning of line
+          "\\(" cc-typename "[*&]*" cc-white "\\)?" ;return type optional
+          "\\("
+            "\\(" cc-namespace "\\)*"   ;optional scope specifier
+            "~?"                         ;optional ~ for destructor
+            "\\(" cc-ident cc-opt-white "\\)" ;function name
+          "\\)"                         ;fully qualified name
+          cc-arg-list)                   ;argument list
   "Regex to match a C++ function declaration.")
 
 (defun next-defun ()
@@ -210,11 +210,11 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   "Add a trace statement to the beginning of the current function body."
   (interactive)
   (save-excursion
-	 (re-search-backward cc-func-decl)
-	 (setq str (match-string 3))
-	 (re-search-forward "{")
-	 (insert "\nDOTRACE(\"" str "\");")
-	 (message "traced %s." str)))
+    (re-search-backward cc-func-decl)
+    (setq str (match-string 3))
+    (re-search-forward "{")
+    (insert "\nDOTRACE(\"" str "\");")
+    (message "traced %s." str)))
 
 (defun add-method (classname methodname access declaration)
   (interactive "sclass name: \nsmethod name: \nsaccess specifier: \ndeclaration: ")
@@ -229,22 +229,22 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 (defun backward-nomenclature-kill ()
   (interactive)
   (let ((end (point)))
-	 (c-backward-into-nomenclature 1)
-	 (let ((start (point)))
-		(delete-region start end))))
+    (c-backward-into-nomenclature 1)
+    (let ((start (point)))
+      (delete-region start end))))
 
 ;; Writestamps
 (defun update-writestamps ()
   "Find writestamps and replace them with the current time."
   (interactive)
   (save-excursion
-	 (save-restriction
-		(save-match-data
-		  (widen)
-		  (goto-char (point-min))
-		  (let ((rxp "^// written: \\(.*\\)$"))
-			 (while (re-search-forward rxp nil t)
-				(replace-match (current-time-string) t t nil 1))))))
+    (save-restriction
+      (save-match-data
+        (widen)
+        (goto-char (point-min))
+        (let ((rxp "^// written: \\(.*\\)$"))
+          (while (re-search-forward rxp nil t)
+            (replace-match (current-time-string) t t nil 1))))))
   nil)
 
 (defun fixup-whitespace ()
@@ -252,17 +252,17 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   (interactive)
   (untabify (point-min) (point-max))
   (save-excursion
-	 (save-restriction
-		(save-match-data
-		  (widen)
-		  (goto-char (point-min))
-		  (let ((rxp "[ \t]+$"))
-			 (while (re-search-forward rxp nil t)
-				(replace-match "" t t)))))))
+    (save-restriction
+      (save-match-data
+        (widen)
+        (goto-char (point-min))
+        (let ((rxp "[ \t]+$"))
+          (while (re-search-forward rxp nil t)
+            (replace-match "" t t)))))))
 
 (defun my-c++-mode-hook ()
   (add-hook 'local-write-file-hooks 'update-writestamps)
-;  (add-hook 'local-write-file-hooks 'fixup-whitespace)
+  (add-hook 'local-write-file-hooks 'fixup-whitespace)
 
   ;; key bindings
   (local-unset-key "\C-c\C-f")
@@ -283,7 +283,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 ;  (local-unset-key "\C-b")
 ;  (local-set-key "\C-b" 'c-backward-into-nomenclature)
 
-  (local-unset-key "\M-\C-?")				 ; i.e., ESC-DEL
+  (local-unset-key "\M-\C-?")             ; i.e., ESC-DEL
   (local-set-key "\M-\C-?" 'backward-nomenclature-kill)
 )
 
