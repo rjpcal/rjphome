@@ -1,59 +1,16 @@
 #!/bin/bash -*- shell-script -*-
+#
+# Rob Peters <rjpeters at klab dot caltech dot edu>
+#
+# $Id$
+######################################################################
 
-# Rob Peters <rjpeters@klab.caltech.edu>
 
-# $Header$
+######################################################################
+# Setup PS1 variable to define command-line prompt
 
-umask 077
-
-if test -x /bin/arch; then
-    export ARCH=`/bin/arch`
-elif test -x /usr/bin/arch; then
-    export ARCH=`/usr/bin/arch`
-elif test "`uname -m`" = "Power Macintosh"; then
-    export ARCH="ppc"
-else
-    echo "Warning: unknown architecture, setting ARCH to 'unknown'"
-    export ARCH="unknown"
-fi
-
-export MANPATH=${HOME}/local/${ARCH}/man
-export MANPATH=${MANPATH}:/usr/share/man:/usr/man
-export MANPATH=${MANPATH}:/usr/local/share/man:/usr/local/man
-export MANPATH=${MANPATH}:/usr/X11R6/man
-
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/sbin:/sbin
-
-export LD_LIBRARY_PATH=${HOME}/local/${ARCH}/lib
-
-case $ARCH in
-    hp9000s700)
-        export PATH=${PATH}:/opt/aCC/bin:/opt/langtools/bin:/opt/imake/bin:/usr/ucb:/usr/ccs/bin
-        export MANPATH=${MANPATH}:/opt/langtools/share/man:/opt/audio/share/man
-        breaksw
-	;;
-    ppc)
-	# Initialize Fink if we're on ppc and it's available
-	if test -r /sw/bin/init.sh; then
-	    . /sw/bin/init.sh
-	fi
-
-	# Darwin for some reason has a limited stacksize by default
-	#ulimit -s unlimited #stacksize
-	#ulimit -d unlimited #datasize
-	;;
-esac
-
-export PATH=${HOME}/local/bin:${HOME}/local/${ARCH}/bin:${PATH}
-
-# for interactive shells:
-if test "$PS1" != ""; then
-
-    set matchbeep nomatch # only beep for missing, but not for ambiguous, matches
-    FIGNORE="~"  # filename suffixes to be ignored by completion
-    HISTSIZE=500 # number of commands to store in history
-    HISTFILE=""  # don't save/load command history from a file
-
+function setup_prompt ()
+{
     #"\e[" is the start of the escape sequence
     #"1" means bold
     #"m" is end of escape sequence.
@@ -134,10 +91,16 @@ if test "$PS1" != ""; then
     esac
 
     PS1="${escape1}${main_prompt}${escape2}${term_title} "
+}
 
-    alias ls='ls -F --color=tty'
+######################################################################
+# Setup LS_COLORS environment variable to define what colors are used with ls
 
-    # A color init string consists of one or more of the following numeric codes:
+function setup_ls_colors ()
+{
+    # A color init string consists of one or more of the following
+    # numeric codes:
+
     # (run /usr/bin/dircolors --print-database for more detail)
 
     # Attribute codes:
@@ -180,12 +143,77 @@ if test "$PS1" != ""; then
     LS_COLORS=${LS_COLORS}'*.ps=01:*.pdf=01:'
 
     export LS_COLORS
+}
 
+######################################################################
+# Setup ARCH enviroment variable giving the host machine's architecture
+
+function setup_arch ()
+{
+    if test -x /bin/arch; then
+	ARCH=`/bin/arch`
+    elif test -x /usr/bin/arch; then
+	ARCH=`/usr/bin/arch`
+    elif test "`uname -m`" = "Power Macintosh"; then
+	ARCH="ppc"
+    else
+	echo "Warning: unknown architecture, setting ARCH to 'unknown'"
+	ARCH="unknown"
+    fi
+
+    export ARCH
+}
+
+######################################################################
+# main initialization code
+
+umask 077
+
+setup_arch
+
+export MANPATH=${HOME}/local/${ARCH}/man
+export MANPATH=${MANPATH}:/usr/share/man:/usr/man
+export MANPATH=${MANPATH}:/usr/local/share/man:/usr/local/man
+export MANPATH=${MANPATH}:/usr/X11R6/man
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/sbin:/sbin
+
+export LD_LIBRARY_PATH=${HOME}/local/${ARCH}/lib
+
+case $ARCH in
+    hp9000s700)
+        export PATH=${PATH}:/opt/aCC/bin:/opt/langtools/bin:/opt/imake/bin:/usr/ucb:/usr/ccs/bin
+        export MANPATH=${MANPATH}:/opt/langtools/share/man:/opt/audio/share/man
+        breaksw
+	;;
+    ppc)
+	# Initialize Fink if we're on ppc and it's available
+	if test -r /sw/bin/init.sh; then
+	    . /sw/bin/init.sh
+	fi
+	;;
+esac
+
+export PATH=${HOME}/local/bin:${HOME}/local/${ARCH}/bin:${PATH}
+
+# for interactive shells:
+if test "$PS1" != ""; then
+
+    set matchbeep nomatch # only beep for missing, but not for ambiguous, matches
+    FIGNORE=""   # filename suffixes to be ignored by completion
+    HISTSIZE=500 # number of commands to store in history
+    HISTFILE=""  # don't save/load command history from a file
+
+    setup_prompt
+
+    setup_ls_colors
+
+    alias ls='ls -F --color=tty'
     alias pwd='dirs -l'
     alias matlab='matlab -nojvm -nosplash'
 
-    # to keep case-sensitive sorting for 'ls', for example
-    export LC_COLLATE=C
+    # specify location of readline startup file
+    export INPUTRC=${HOME}/.inputrc
 fi
 
 ### Output from cron jobs gets sent to $MAILTO
@@ -195,7 +223,8 @@ export PVM_ROOT=/usr/share/pvm3
 
 export CVS_RSH=ssh
 
-export INPUTRC=${HOME}/.inputrc
+# to keep case-sensitive sorting for 'ls', for example
+export LC_COLLATE=C
 
 ### Source a system-local init file, if it exists
 if test -r ~/.bashrc_local; then
