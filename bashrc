@@ -148,6 +148,7 @@ fi
 
 export GROOVX_LIB_DIR=${HOME}/projects/groovx/share
 
+### Output from cron jobs gets sent to $MAILTO
 export MAILTO=rjpeters@klab.caltech.edu
 
 export PVM_ROOT=/usr/share/pvm3

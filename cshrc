@@ -79,8 +79,9 @@ if ($?prompt) then
     setenv LC_COLLATE C
 endif
 
-setenv GRSH_LIB_DIR ${HOME}/projects/grsh/share
+setenv GROOVX_LIB_DIR ${HOME}/projects/grovx/share
 
+### Output from cron jobs gets sent to $MAILTO
 setenv MAILTO rjpeters@klab.caltech.edu
 
 setenv PVM_ROOT /usr/share/pvm3
