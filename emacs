@@ -185,16 +185,16 @@
 (setq fill-column 70)
 (setq default-fill-column 70)
 
-;;(setq-default default-tab-width 3)
-;;(setq-default tab-width 3)
+;;(setq-default tab-width 8)
+;;(setq-default default-tab-width 8)
 
-(setq display-time-day-and-date t)
-(display-time)
+(setq display-time-day-and-date t) ; show date in addition to time
+(display-time)			   ; show time(+date) in mode line
 
-(setq directory-abbrev-alist
-      (quote (("^.*science/projects/" . "sp:")
-	      ("^.*projects/" . "p:")
-	      )))
+;;(setq directory-abbrev-alist
+;;      (quote (("^.*science/projects/" . "sp:")
+;;	      ("^.*projects/" . "p:")
+;;	      )))
 
 (setq frame-title-format
       (concat "+" (abbreviate-file-name default-directory)
@@ -206,8 +206,6 @@
 
 (setq rmail-file-name "~/mail/Inbox")
 (setq mail-archive-file-name "~/mail/Outbox")
-
-(setq nndraft-directory "~/.news")
 
 (put 'downcase-region 'disabled nil)
 
