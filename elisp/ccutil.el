@@ -44,7 +44,7 @@
 
 (defun big-doc ()
   (interactive)
-  (insert 
+  (insert
    "///////////////////////////////////////////////////////////////////////\n"
    "/**\n"
    " *\n"
@@ -55,7 +55,7 @@
 
 (defun med-doc ()
   (interactive)
-  (insert 
+  (insert
    "/**\n"
    " *\n"
    " *\n"
@@ -64,7 +64,7 @@
 
 (defun small-doc ()
   (interactive)
-  (insert 
+  (insert
    "/**   */\n"))
 
 (defun doc-scope ()
@@ -75,7 +75,7 @@
 
 (defun big-comment ()
   (interactive)
-  (insert 
+  (insert
    "///////////////////////////////////////////////////////////////////////\n"
    "//\n"
    "//\n"
@@ -84,7 +84,7 @@
 
 (defun med-comment ()
   (interactive)
-  (insert 
+  (insert
    "//---------------------------------------------------------------------\n"
    "//\n"
    "//\n"
@@ -93,7 +93,7 @@
 
 (defun small-comment ()
   (interactive)
-  (insert 
+  (insert
    "//---------------------------------------------------------------------\n"
    "//\n"
    "//\n"
@@ -105,7 +105,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   (interactive)
   (save-excursion
     (goto-char (point-min))
-    (insert 
+    (insert
      "///////////////////////////////////////////////////////////////////////\n"
      "//\n"
      "// " (buffer-name) "\n"
@@ -174,22 +174,22 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   "Regex to match a C++ identifier.")
 (defvar cc-namespace
   (concat "\\(" cc-ident "\\)?"
-	  cc-opt-white "::" cc-opt-white)
+          cc-opt-white "::" cc-opt-white)
   "Regex to match a C++ namespace qualifier")
 (defvar cc-opt-namespace (concat "\\(" cc-namespace "\\)*")
   "Regex to match an optional C++ namespace qualifier")
 (defvar cc-qualified-ident
   (concat cc-opt-namespace
-	  cc-ident)
+          cc-ident)
   "Regex to match a namespace-qualified C++ identifier.")
 (defvar cc-typename
   (concat "\\(unsigned\\|const\\)*" cc-opt-white
-	  cc-qualified-ident
-	  cc-opt-white "[*&]*")
+          cc-qualified-ident
+          cc-opt-white "[*&]*")
   "Regex to match a C++ type name.")
 (defvar cc-arg-list "([]\\[, \t\nA-Za-z_01-9\\*&\\:<>]*)"
   "Regex to match a C++ argument list.")
-(defvar cc-func-decl 
+(defvar cc-func-decl
   (concat "^"                            ;beginning of line
           "\\(" cc-typename cc-white "\\)?" ;return type optional
           "\\("
@@ -259,10 +259,11 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   (interactive)
   ;; Skip fixup-whitespace for [.CH] files (i.e. those from iLab cvs system)
   ;;(if (or (string= (substring (buffer-name) -2) ".C")
-  ;;	  (string= (substring (buffer-name) -2) ".H"))
+  ;;        (string= (substring (buffer-name) -2) ".H"))
   ;;    ()
-  ;;  (fixup-whitespace)))
-  (fixup-whitespace))
+  (fixup-whitespace)
+  ;;  )
+  )
 
 (defun my-c++-mode-hook ()
   (add-hook 'local-write-file-hooks 'update-writestamps)
@@ -283,7 +284,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 
 ;  (local-unset-key "\C-f")
 ;  (local-set-key "\C-f" 'c-forward-into-nomenclature)
-  
+
 ;  (local-unset-key "\C-b")
 ;  (local-set-key "\C-b" 'c-backward-into-nomenclature)
 
