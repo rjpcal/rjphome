@@ -1,0 +1,27 @@
+### Template ~/.procmailrc file for a 'vacation' auto-responder
+
+### $Id$
+
+LOGFILE=$HOME/procmail.log
+
+:0 h c
+* !^FROM_DAEMON
+* !^X-Loop: rjpeters@cns.caltech.edu
+| (formail -r -I"Precedence: junk" \
+        -A"X-Loop: rjpeters@cns.caltech.edu"; \
+        echo "((This is an automatic reply))"; \
+        echo ""; \
+        echo "I will no longer be using this email address as of Dec 31, 2004. You"; \
+        echo "can reach me at a number of other email addresses..."; \
+        echo ""; \
+        echo "But, to avoid spammers harvesting my alternate address, I won't give"; \
+        echo "it explicitly here..."; \
+        echo ""; \
+        echo "Instead, you can find my alternate email on my webpage, which is here:"; \
+        echo "http://www.klab.caltech.edu/rjpeters"; \
+        echo ""; \
+        echo "Cheers,"; \
+        echo "Rob";) | $SENDMAIL -t
+
+:0
+| formail -i"Subject: [fwd from rjpeters@cns.caltech.edu]" | $SENDMAIL -oi rjpeters@klab.caltech.edu
