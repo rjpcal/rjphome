@@ -9,73 +9,45 @@
  '(("\\<\\(FIXME\\)" 1 font-lock-warning-face t)))
 (modify-face (quote font-lock-warning-face) "Red" "yellow" nil t nil t nil nil)
 
-(defun reset-font-lock ()
-  "Just calls font-lock-mode twice. Can be used to fix annoying font-lock
- problem after checking in a file with version control."
-  (interactive)
-  (font-lock-mode)
-  (font-lock-mode))
+;(defun reset-font-lock ()
+;  "Just calls font-lock-mode twice. Can be used to fix annoying font-lock
+; problem after checking in a file with version control."
+;  (interactive)
+;  (font-lock-mode)
+;  (font-lock-mode))
 
-(defun creators ()
-  (interactive)
-  (insert
-   "//////////////\n"
-   "// creators //\n"
-   "//////////////\n"))
+;(defun big-doc ()
+;  (interactive)
+;  (insert
+;   "///////////////////////////////////////////////////////////////////////\n"
+;   "/**\n"
+;   " *\n"
+;   " *\n"
+;   " *\n"
+;   " **/\n"
+;   "///////////////////////////////////////////////////////////////////////\n"))
 
-(defun accessors ()
-  (interactive)
-  (insert
-   "///////////////\n"
-   "// accessors //\n"
-   "///////////////\n"))
+;(defun med-doc ()
+;  (interactive)
+;  (insert
+;   "/**\n"
+;   " *\n"
+;   " *\n"
+;   " *\n"
+;   " **/\n"))
 
-(defun manipulators ()
-  (interactive)
-  (insert
-   "//////////////////\n"
-   "// manipulators //\n"
-   "//////////////////\n"))
+;(defun small-doc ()
+;  (interactive)
+;  (insert
+;   "/**   */\n"))
 
-(defun actions ()
-  (interactive)
-  (insert
-   "/////////////\n"
-   "// actions //\n"
-   "/////////////\n"))
-
-(defun big-doc ()
-  (interactive)
-  (insert
-   "///////////////////////////////////////////////////////////////////////\n"
-   "/**\n"
-   " *\n"
-   " *\n"
-   " *\n"
-   " **/\n"
-   "///////////////////////////////////////////////////////////////////////\n"))
-
-(defun med-doc ()
-  (interactive)
-  (insert
-   "/**\n"
-   " *\n"
-   " *\n"
-   " *\n"
-   " **/\n"))
-
-(defun small-doc ()
-  (interactive)
-  (insert
-   "/**   */\n"))
-
-(defun doc-scope ()
+(defun ccutil-doc-scope ()
   (interactive)
   (insert
    "//@{\n"
    "//@}\n"))
 
-(defun big-comment ()
+(defun ccutil-big-comment ()
   (interactive)
   (insert
    "///////////////////////////////////////////////////////////////////////\n"
@@ -84,7 +56,7 @@
    "//\n"
    "///////////////////////////////////////////////////////////////////////\n"))
 
-(defun med-comment ()
+(defun ccutil-med-comment ()
   (interactive)
   (insert
    "//---------------------------------------------------------------------\n"
@@ -93,7 +65,7 @@
    "//\n"
    "//---------------------------------------------------------------------\n"))
 
-(defun small-comment ()
+(defun ccutil-small-comment ()
   (interactive)
   (insert
    "//---------------------------------------------------------------------\n"
@@ -101,45 +73,49 @@
    "//\n"
    "//\n"))
 
-(defun init-cc-file ()
+(defun ccutil-init-source-file ()
   "Place an appropriate comment at the beginning of a C++ source file, and
 insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   (interactive)
   (save-excursion
-    (goto-char (point-min))
-    (insert
-     "///////////////////////////////////////////////////////////////////////\n"
-     "//\n"
-     "// " (buffer-name) "\n"
-     "//\n"
-     "// Copyright (c) 2004-2004\n"
-     "// Rob Peters <rjpeters at klab dot caltech dot edu>\n"
-     "//\n"
-     "// created: " (current-time-string) "\n"
-     "// commit: $Id$\n"
-     "//\n"
-     "///////////////////////////////////////////////////////////////////////\n"
-     "\n#ifndef " (upcase (buffer-name)) "_DEFINED\n"
-     "#define " (upcase (buffer-name)) "_DEFINED\n\n")
-    (goto-char (point-max))
-    (insert
-     "\n"
-     "static const char vcid_" (buffer-name) "[] = \"$Header$\";\n"
-     "#endif // !" (upcase (buffer-name)) "_DEFINED\n")
-    (goto-char (point-min))
-    (replace-regexp "\\([A-Z]\\)\\.\\([CH]+_DEFINED\\)" "\\1_\\2")
-    (goto-char (point-min))
-    (replace-string ".h[]" "_h[]")
-    (goto-char (point-min))
-    (replace-string ".cc[]" "_cc[]")))
+    (let ((include-guard
+           (upcase (replace-regexp-in-string "\\." "_" fname)))
+          (vcid-string
+           (concat "vcid_" (replace-regexp-in-string "\\." "_" fname)))
+          )
 
-(defun nocopy (classname)
+      (goto-char (point-min))
+      (insert
+       "///////////////////////////////////////////////////////////////////////\n"
+       "//\n"
+       "// " (buffer-name) "\n"
+       "//\n"
+       "// Copyright (c) 2004-2004\n"
+       "// Rob Peters <rjpeters at klab dot caltech dot edu>\n"
+       "//\n"
+       "// created: " (current-time-string) "\n"
+       "// commit: $" "Id" "$\n"
+       "//\n"
+       "///////////////////////////////////////////////////////////////////////\n"
+       "\n#ifndef " include-guard "_DEFINED\n"
+       "#define " include-guard "_DEFINED\n\n")
+
+      (goto-char (point-max))
+      (insert
+       "\n"
+       "static const char " vcid-string "[] = \"$" "Header" "$\";\n"
+       "#endif // !" include-guard "_DEFINED\n")
+      )
+    )
+  )
+
+(defun ccutil-nocopy (classname)
   (interactive "sName of class: ")
   (insert
    "  " classname "(const " classname "&);\n"
    "  " classname "& operator=(const " classname "&);\n\n"))
 
-(defun new-class (classname)
+(defun ccutil-new-class (classname)
   "Generate appropriate skeleton files 'classname.h' and
 'classname.cc' for a new class. Does nothing if either file already exists."
   (interactive "sName for new class: ")
@@ -148,18 +124,18 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
     (if (or (file-exists-p h-file) (file-exists-p cc-file))
         (message "files already exist.")
       (find-file h-file)
-      (init-cc-file)
+      (ccutil-init-source-file)
       (re-search-forward "#define")
       (forward-line 2)
       (insert
        "class " classname " {\n"          ;class declaration
-       "public:\n"                      ;access specifier
+       "public:\n"                        ;access specifier
        "\t" classname "();\n"             ;default constructor
        "\tvirtual ~" classname "();\n"    ;default destructor
        "};\n")
 
       (find-file cc-file)
-      (init-cc-file)
+      (ccutil-init-source-file)
       (re-search-forward "#define")
       (forward-line 2)
       (insert
@@ -169,74 +145,75 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
        classname "::~" classname " () {\n\n}\n"))))
 
 ;; Regex variables for C++ grammar
-(defvar cc-white "[ \t\n]+"
+(defvar ccutil-re-white
+  "[ \t\n]+"
   "Regex to match white space in C++ code.")
-(defvar cc-opt-white (concat "[ \t\n]*")
+
+(defvar ccutil-re-opt-white
+  (concat "[ \t\n]*")
   "Regex to match optional white space in C++ code.")
-(defvar cc-ident "[A-Za-z_][A-Za-z01-9_<>,]*"
+
+(defvar ccutil-re-ident
+  "[A-Za-z_][A-Za-z01-9_<>,]*"
   "Regex to match a C++ identifier.")
-(defvar cc-namespace
-  (concat "\\(" cc-ident "\\)?"
-          cc-opt-white "::" cc-opt-white)
+
+(defvar ccutil-re-namespace
+  (concat "\\(" ccutil-re-ident "\\)?"
+          ccutil-re-opt-white "::" ccutil-re-opt-white)
   "Regex to match a C++ namespace qualifier")
-(defvar cc-opt-namespace (concat "\\(" cc-namespace "\\)*")
+
+(defvar ccutil-re-opt-namespace
+  (concat "\\(" ccutil-re-namespace "\\)*")
   "Regex to match an optional C++ namespace qualifier")
-(defvar cc-qualified-ident
-  (concat cc-opt-namespace
-          cc-ident)
+
+(defvar ccutil-re-qualified-ident
+  (concat ccutil-re-opt-namespace ccutil-re-ident)
   "Regex to match a namespace-qualified C++ identifier.")
-(defvar cc-typename
-  (concat "\\(unsigned\\|const\\)*" cc-opt-white
-          cc-qualified-ident
-          cc-opt-white "[*&]*")
+
+(defvar ccutil-re-typename
+  (concat "\\(unsigned\\|const\\)*" ccutil-re-opt-white
+          ccutil-re-qualified-ident
+          ccutil-re-opt-white "[*&]*")
   "Regex to match a C++ type name.")
-(defvar cc-arg-list "([]\\[, \t\nA-Za-z_01-9\\*&\\:<>]*)"
+
+(defvar ccutil-re-arg-list "([]\\[, \t\nA-Za-z_01-9\\*&\\:<>]*)"
   "Regex to match a C++ argument list.")
-(defvar cc-func-decl
+
+(defvar ccutil-re-func-decl
   (concat "^"                            ;beginning of line
-          "\\(" cc-typename cc-white "\\)?" ;return type optional
+          "\\(" ccutil-re-typename ccutil-re-white "\\)?" ;return type optional
           "\\("
-            "\\(" cc-namespace "\\)*"   ;optional scope specifier
+            "\\(" ccutil-re-namespace "\\)*"   ;optional scope specifier
             "~?"                         ;optional ~ for destructor
-            "\\(" cc-ident cc-opt-white "\\)" ;function name
+            "\\(" ccutil-re-ident ccutil-re-opt-white "\\)" ;function name
           "\\)"                         ;fully qualified name
-          cc-arg-list)                   ;argument list
+          ccutil-re-arg-list)                   ;argument list
   "Regex to match a C++ function declaration.")
 
-(defun next-defun ()
+(defun ccutil-next-defun ()
   "Move to the beginning of the body of the next function."
   (interactive)
-  (re-search-forward cc-func-decl)
+  (re-search-forward ccutil-re-func-decl)
   (re-search-forward "{"))
 
-(defun prev-defun ()
+(defun ccutil-prev-defun ()
   "Move to the beginning of the body of the previous function."
   (interactive)
   (re-search-backward "^}")
-  (re-search-backward cc-func-decl)
+  (re-search-backward ccutil-re-func-decl)
   (re-search-forward "{"))
 
-(defun add-trace ()
+(defun ccutil-add-trace ()
   "Add a trace statement to the beginning of the current function body."
   (interactive)
   (save-excursion
-    (re-search-backward cc-func-decl)
+    (re-search-backward ccutil-re-func-decl)
     (setq str (match-string 5))
     (re-search-forward "{")
     (insert "\nDOTRACE(\"" str "\");")
     (message "traced %s." str)))
 
-(defun add-method (classname methodname access declaration)
-  (interactive "sclass name: \nsmethod name: \nsaccess specifier: \ndeclaration: ")
-  ;find relevant .h and .cc files
-  ;check if method exists already
-  ;see if access specifier exists
-  ;if not, add new access specifier
-  ;put function declaration in appropriate spot
-  ;put function definition skeleton in appropriate spot
-)
-
-(defun backward-nomenclature-kill ()
+(defun ccutil-backward-nomenclature-kill ()
   (interactive)
   (let ((end (point)))
     (c-backward-into-nomenclature 1)
@@ -244,7 +221,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
       (delete-region start end))))
 
 ;; Writestamps
-(defun update-writestamps ()
+(defun ccutil-update-writestamps ()
   "Find writestamps and replace them with the current time."
   (interactive)
   (save-excursion
@@ -257,7 +234,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
             (replace-match (current-time-string) t t nil 1))))))
   nil)
 
-(defun safe-fixup-whitespace ()
+(defun ccutil-fixup-whitespace ()
   "Untabify the buffer, and kill trailing whitespace on all lines."
   (interactive)
   ;; Skip fixup-whitespace for [.CH] files (i.e. those from iLab cvs system)
@@ -268,7 +245,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   ;;  )
   )
 
-(defun my-c++-mode-hook ()
+(defun ccutil-c++-mode-hook ()
   ;; Make underscore "_" be considered a word-character instead of a
   ;; whitespace character (so that characters on either side of an
   ;; underscore aren't seen as falling on word boundaries).
@@ -278,21 +255,25 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   ;; following:
   ;(modify-syntax-entry ?_ " ")
 
-  (add-hook 'local-write-file-hooks 'update-writestamps)
-  (add-hook 'local-write-file-hooks 'safe-fixup-whitespace)
+  ;; Have turned off this hook for now since I'm not actually using
+  ;; writestamps (i.e. "written: ...") in any of my source files at
+  ;; the moment:
+  ;(add-hook 'local-write-file-hooks 'ccutil-update-writestamps)
+
+  (add-hook 'local-write-file-hooks 'ccutil-fixup-whitespace)
 
   ;; key bindings
   (local-unset-key "\C-c\C-f")
-  (local-set-key "\C-c\C-f" 'init-cc-file)
+  (local-set-key "\C-c\C-f" 'ccutil-init-source-file)
 
   (local-unset-key "\C-c\C-t")
-  (local-set-key "\C-c\C-t" 'add-trace)
+  (local-set-key "\C-c\C-t" 'ccutil-add-trace)
 
   (local-unset-key "\C-c\C-n")
-  (local-set-key "\C-c\C-n" 'next-defun)
+  (local-set-key "\C-c\C-n" 'ccutil-next-defun)
 
   (local-unset-key "\C-c\C-p")
-  (local-set-key "\C-c\C-p" 'prev-defun)
+  (local-set-key "\C-c\C-p" 'ccutil-prev-defun)
 
 ;  (local-unset-key "\C-f")
 ;  (local-set-key "\C-f" 'c-forward-into-nomenclature)
@@ -301,12 +282,12 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 ;  (local-set-key "\C-b" 'c-backward-into-nomenclature)
 
   (local-unset-key "\M-\C-?")             ; i.e., ESC-DEL
-  (local-set-key "\M-\C-?" 'backward-nomenclature-kill)
+  (local-set-key "\M-\C-?" 'ccutil-backward-nomenclature-kill)
 
   (setq column-number-mode t)
 )
 
-(setq c++-mode-hook 'my-c++-mode-hook)
+(setq c++-mode-hook 'ccutil-c++-mode-hook)
 
 (provide 'ccutil)
 
