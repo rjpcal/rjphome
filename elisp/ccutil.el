@@ -14,44 +14,6 @@
   (font-lock-mode)
   (font-lock-mode))
 
-(defun tcl-obj-proc ()
-  (interactive)
-  (insert
-	"  Tcl_ObjCmdProc cmd_nameCmd;\n")
-  (function-header-comment)
-  (insert
-	"int pkg_name::cmd_nameCmd(ClientData, Tcl_Interp *interp,\n"
-	"                          int objc, Tcl_Obj *const objv[]) {\n"
-	"DOTRACE(\"pkg_name::cmd_nameCmd\");\n"
-	"  if (objc != num) {\n"
-   "    Tcl_WrongNumArgs(interp, 1, objv, NULL);\n"
-	"    return TCL_ERROR;\n"
-	"  }\n"
-	"  return TCL_OK;\n"
-	"}\n"
-	"  Tcl_CreateObjCommand(interp, \"cmd_name\", cmd_nameCmd,\n"
-	"                       (ClientData) NULL, (Tcl_CmdDeleteProc *) NULL);\n"))
-
-(defun function-header-comment ()
-  (interactive)
-  (insert
-	"//--------------------------------------------------------------------\n"
-	"//\n"
-	"// pkg_name::cmd_nameCmd --\n"
-	"//\n"
-	"//\n"
-	"//\n"
-	"// Results:\n"
-	"//\n"
-	"//\n"
-	"//\n"
-	"// Side effects:\n"
-	"//\n"
-	"//\n"
-	"//\n"
-	"//--------------------------------------------------------------------\n"
-	"\n"))
-
 (defun creators ()
   (interactive)
   (insert
@@ -140,7 +102,9 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 	  "///////////////////////////////////////////////////////////////////////\n"
 	  "//\n"
 	  "// " (buffer-name) "\n"
-	  "// Rob Peters rjpeters@klab.caltech.edu\n"
+	  "//\n"
+	  "// Copyright (c) 1998-2000 Rob Peters rjpeters@klab.caltech.edu\n"
+	  "//\n"
 	  "// created: " (current-time-string) "\n"
 	  "// written: " (current-time-string) "\n"
 	  "// $Id$\n"
@@ -256,17 +220,6 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 	 (c-backward-into-nomenclature 1)
 	 (let ((start (point)))
 		(delete-region start end))))
-
-;; Procedures for working with the Tcl C API
-(defvar tcl-cmd-proc-args 
-  (concat "(ClientData clientData, Tcl_Interp *interp,\n"
-			 "\tint objc, Tcl_Obj *const objv[]) {")
-  "Standard argument list for a Tcl_ObjCmdProc.")
-
-(defun tcl-args ()
-  "Insert the standard argument list for a Tcl_ObjCmdProc."
-  (interactive)
-  (insert tcl-cmd-proc-args))
 
 ;; Writestamps
 (defun update-writestamps ()
