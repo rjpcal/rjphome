@@ -14,6 +14,7 @@ $(HOME)/.inputrc \
 $(HOME)/.login \
 $(HOME)/.profile \
 $(HOME)/.signature \
+$(HOME)/.twmrc \
 $(HOME)/.Xdefaults \
 $(HOME)/.Xmodmap \
 $(HOME)/.Xresources \
