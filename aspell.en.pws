@@ -1,9 +1,11 @@
-personal_ws-1.1 en 186
+personal_ws-1.1 en 208
 AIC
+Acknowledgements
 Adami
 Akaike
 Allman
 ArabieKosslynNelson
+Asha
 AshbyAlfonso
 AshbyEll
 AshbyGott
@@ -37,8 +39,13 @@ GCM
 GPL
 Gabbiani
 Gabor
+GauthierAndersonTarr
+GauthierSkudlarskiGore
+GauthierTarrAnderson
+GauthierTarrMoylan
 Gazzaniga
 Geospatial
+GoodaleMilner
 GroovX
 HMAX
 HafedClark
@@ -54,6 +61,7 @@ Itti
 IttiKoch
 IttiKochBraun
 IttiKochNiebur
+Iyer
 JovicichPetersKoch
 Kanwisher
 KanwisherMcdermottChun
@@ -73,11 +81,14 @@ Marr
 MckinleyNosofsky
 MediaAnalyzer
 MiauItti
+MilnerGoodale
+MishkinUngerleiderMacko
 MooreArmstrongFallah
 MooreFallah
 Mundhenk
 MundhenkItti
 NGA
+NIMA
 NSS
 NelderMead
 Neuromorphic
@@ -103,6 +114,7 @@ RXM
 RiesenhuberPoggio
 RizzolattiRiggioDascola
 Rosch
+RoschMervisGray
 Rosseel
 RutishauserWaltherKoch
 SPC
@@ -117,9 +129,14 @@ SquireKnowlton
 StettlerDasBennett
 SugiharaEdelmanTanaka
 Tailarach
+TanakaShimojo
+TanakaTaylor
+TarrGauthier
 Treue
+UngerleiderMishkin
 VanhaterenVanderschaaf
 Varela
+VirsuRovamo
 Vogels
 WCVM
 WCVM's
@@ -137,11 +154,13 @@ chinrest
 conspicuity
 decorrelates
 discretization
+discriminability
 electrophysiogical
 electrophysiological
 electrophysiology
 eyeblink
 fMRI
+foveal
 grayscale
 gyrus
 hypercolumn
@@ -152,6 +171,7 @@ ij
 illuminator
 inferotemporal
 internet
+intersubject
 iso
 loglikelihood
 loglikelihoods
@@ -167,6 +187,7 @@ online
 opponency
 orthorectified
 photorealistic
+photoreceptors
 pre
 prefrontal
 prescientific
@@ -179,7 +200,10 @@ saccadic
 scalebar
 scanpath
 scanpaths
+spatiotemporal
 spectorKushnir
 striatal
 striatum
+strived
+synergize
 validities
