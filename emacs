@@ -117,6 +117,11 @@
   ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
   ;; Your init file should contain only one such instance.
  '(cursor ((t (:background "salmon1"))))
+ '(font-lock-comment-face ((((class color) (background dark)) (:foreground "firebrick1"))))
+ '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "dodger blue" :weight bold))))
+ '(font-lock-keyword-face ((((class color) (background dark)) (:foreground "Cyan" :weight bold))))
+ '(font-lock-string-face ((((class color) (background dark)) (:foreground "LightSalmon"))))
+ '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "gold"))))
  '(scroll-bar ((t (:background "gray60" :foreground "black")))))
 
 (put 'upcase-region 'disabled nil)
