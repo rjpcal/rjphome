@@ -160,6 +160,10 @@
 ;;-----------------------------------------------------------------------
 ;; Settings
 ;;-----------------------------------------------------------------------
+
+(set-foreground-color "white")
+(set-background-color "black")
+
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
 
