@@ -307,6 +307,9 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   (local-set-key "\M-\C-?" 'ccutil-backward-nomenclature-kill)
 
   (setq column-number-mode t)
+
+  ;; turn off abbrev mode (by passing a negative value)
+  (abbrev-mode -1)
 )
 
 (setq c++-mode-hook 'ccutil-c++-mode-hook)
