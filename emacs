@@ -185,13 +185,14 @@
 (setq display-time-day-and-date t) ; show date in addition to time
 (display-time)			   ; show time(+date) in mode line
 
-;;(setq directory-abbrev-alist
-;;      (quote (("^.*science/projects/" . "sp:")
-;;	      ("^.*projects/" . "p:")
-;;	      )))
+(defun abbreviate-frame-title (s)
+  (setq s (replace-regexp-in-string "^.*science/projects/" "sp::" s))
+  (setq s (replace-regexp-in-string "^.*projects/" "p::" s))
+  (setq s (replace-regexp-in-string "/$" "" s))
+  )
 
 (setq frame-title-format
-      (concat "+" (abbreviate-file-name default-directory)
+      (concat (abbreviate-frame-title default-directory)
 	      " [" (invocation-name) "@" (system-name) "]"))
 
 (put 'downcase-region 'disabled nil)
