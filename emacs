@@ -82,6 +82,8 @@
 (setq auto-mode-alist (cons '("\\.[ch]+$" . c++-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.dxy$" . c++-mode) auto-mode-alist))
 
+(setq auto-mode-alist (cons '("\\.xsl$" . sgml-mode) auto-mode-alist))
+
 (setq-default column-number-mode t)
 
 (setq fill-column 75)
