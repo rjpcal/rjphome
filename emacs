@@ -44,6 +44,11 @@
 	  (replace-match " " t t))
 
 	(goto-char (point-min))
+	(while (search-forward "=2E" nil t)
+	  ;; period
+	  (replace-match "." t t))
+
+	(goto-char (point-min))
 	(while (search-forward "=92" nil t)
 	  (replace-match "'" t t))
 
