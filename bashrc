@@ -7,6 +7,20 @@
 
 
 ######################################################################
+# Figure out which known location we're in
+
+function identify_location ()
+{
+    if test -r $HOME/.location; then
+	export LOCATION=`cat $HOME/.location`
+	echo "Location is '$LOCATION'"
+    else
+	echo "Warning! Location unknown!"
+	export LOCATION="unknown"
+    fi
+}
+
+######################################################################
 # Setup PS1 variable to define command-line prompt
 
 function setup_prompt ()
@@ -199,6 +213,7 @@ function setup_arch ()
 umask 077
 
 setup_arch
+identify_location
 
 export MANPATH=${HOME}/local/${ARCH}/man
 export MANPATH=${MANPATH}:/usr/share/man:/usr/man
