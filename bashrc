@@ -27,26 +27,32 @@ function setup_prompt ()
     # sequence \@ instead
 
     prompt_color="40;37;1;4"  # default color is bold-white-on-black
-    case $HOSTNAME in
-	sideswipe*)
-	    prompt_color="40;33;1;4" # yellow on black
+    case $USER in
+	# Only set the colors if the user is me!
+	rjpeters)
+	    case $HOSTNAME in
+		sideswipe*)
+		    prompt_color="40;33;1;4" # yellow on black
+		    ;;
+		*.klab.caltech.edu)
+		    prompt_color="40;32;1;4" # green on black
+		    ;;
+		ilab*|iLab*)
+		    prompt_color="40;31;1;4" # red on black
+		    ;;
+		fortune*)
+		    prompt_color="40;34;1;4" # blue on black
+		    ;;
+		quantum*)
+		    prompt_color="40;36;1;4" # cyan on black
+	    esac
 	    ;;
-	*.klab.caltech.edu)
-	    prompt_color="40;32;1;4" # green on black
-	    ;;
-	ilab*|iLab*)
-	    prompt_color="40;31;1;4" # red on black
-	    ;;
-	fortune*)
-	    prompt_color="40;34;1;4" # blue on black
-	    ;;
-	quantum*)
-	    prompt_color="40;36;1;4" # cyan on black
     esac
 
     escape1=""
     main_prompt=""
     prompt_content=""
+    prompt_token="$"
     escape2=""
     term_title=""
 
@@ -64,12 +70,22 @@ function setup_prompt ()
 	    ;;
     esac
 
-    case $SSH_CLIENT in
-	"")
-	    main_prompt="[${prompt_content}]$"
+    case $USER in
+	rjpeters)
+	    prompt_token="$"
 	    ;;
 	*)
-	    main_prompt="((${prompt_content}))$"
+	    prompt_content="\u@${prompt_content}"
+	    prompt_token="#"
+	    ;;
+    esac
+
+    case $SSH_CLIENT in
+	"")
+	    main_prompt="[${prompt_content}]$prompt_token"
+	    ;;
+	*)
+	    main_prompt="((${prompt_content}))$prompt_token"
 	    ;;
     esac
 
