@@ -80,6 +80,12 @@
   (save-excursion
     (save-restriction
       (save-match-data
+
+	;; this one needs to stay first
+	(goto-char (point-min))
+	(while (search-forward "=\n" nil t)
+	  (replace-match "" t t))
+
 	;; try man ascii or man iso_8859-1 to see character codes
 
 	(goto-char (point-min))
@@ -168,10 +174,6 @@
 	(goto-char (point-min))
 	(while (search-forward "’" nil t)
 	  (replace-match "'" t t))
-
-	(goto-char (point-min))
-	(while (search-forward "=\n" nil t)
-	  (replace-match "" t t))
 
 	(goto-char (point-min))
 	(while (search-forward "
