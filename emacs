@@ -30,6 +30,29 @@
 	  (while (re-search-forward rxp nil t)
 	    (replace-match "" t t)))))))
 
+(defun unhtml-region ()
+  "Kill HTML tags in emails."
+  (interactive)
+  (save-excursion
+    (save-restriction
+      (save-match-data
+
+	(narrow-to-region (point) (mark))
+
+	(goto-char (point-min))
+	(while (re-search-forward "<BR>" nil t)
+	  (replace-match "\n" t t))
+
+	(goto-char (point-min))
+	(while (re-search-forward "<[^>]+>" nil t)
+	  (replace-match "" t t))
+
+	(goto-char (point-min))
+	(while (search-forward "&nbsp;" nil t)
+	  (replace-match " " t t))
+
+	))))
+
 (defun unhtml-email ()
   "Kill HTML tags in emails."
   (interactive)
