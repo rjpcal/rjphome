@@ -8,8 +8,13 @@ umask 077
 
 if test -x /bin/arch; then
     export ARCH=`/bin/arch`
-elif test `uname -m` = "Power Macintosh"; then
+elif test -x /usr/bin/arch; then
+    export ARCH=`/usr/bin/arch`
+elif test "`uname -m`" = "Power Macintosh"; then
     export ARCH="ppc"
+else
+    echo "Warning: unknown architecture, setting ARCH to 'unknown'"
+    export ARCH="unknown"
 fi
 
 export MANPATH=${HOME}/local/${ARCH}/man
