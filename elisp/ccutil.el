@@ -167,27 +167,31 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 		 classname "::" classname " () {\n\n}\n\n"
 		 classname "::~" classname " () {\n\n}\n"))))
 
-;; Regular expression variables for C++ grammar
+;; Regex variables for C++ grammar
 (defvar cc-white "[ \t\n]+"
-  "Regular expression to match white space in C++ code.")
+  "Regex to match white space in C++ code.")
 (defvar cc-opt-white (concat "[ \t\n]*")
-  "Regular expression to match optional white space in C++ code.")
+  "Regex to match optional white space in C++ code.")
 (defvar cc-ident "[A-Za-z_][A-Za-z01-9_]*"
-  "Regular expression to match a C++ identifier.")
+  "Regex to match a C++ identifier.")
 (defvar cc-typename (concat "\\(unsigned\\)?" cc-opt-white cc-ident)
-  "Regurlar expression to match a C++ type name.")
-(defvar cc-arg-list "([]\\[, \t\nA-Za-z_01-9\\*&]*)"
-  "Regular expression to match a C++ argument list.")
+  "Regex to match a C++ type name.")
+(defvar cc-namespace (concat "\\(" cc-ident "\\)?" cc-opt-white "::" cc-opt-white)
+  "Regex to match a C++ namespace qualifier")
+(defvar cc-opt-namespace (concat "\\(" cc-namespace "\\)?")
+  "Regex to match an option C++ namespace qualifier")
+(defvar cc-arg-list "([]\\[, \t\nA-Za-z_01-9\\*&\\:]*)"
+  "Regex to match a C++ argument list.")
 (defvar cc-func-decl 
   (concat "^"									 ;beginning of line
 			 "\\(" cc-typename "[*&]*" cc-white "\\)?" ;return type optional
 			 "\\("
-			   "\\(" cc-ident "::\\)*"		 ;optional scope specifier
+			   "\\(" cc-namespace "\\)*"   ;optional scope specifier
 			   "~?"								 ;optional ~ for destructor
 			   "\\(" cc-ident cc-opt-white "\\)" ;function name
 			 "\\)"								 ;fully qualified name
 			 cc-arg-list)						 ;argument list
-  "Regular expression to match a C++ function declaration.")
+  "Regex to match a C++ function declaration.")
 
 (defun next-defun ()
   "Move to the beginning of the body of the next function."
