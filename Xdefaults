@@ -47,9 +47,10 @@
 
 emacs*cursorColor: salmon1
 
-xterm*font: 9x15
+/*xterm*font: 9x15*/
+xterm*font: -B&H-LucidaTypewriter-Medium-R-Normal-Sans-12-*-*-*-*-*-*-*
 xterm*background:		black
-xterm*foreground:		gold
+xterm*foreground:		light grey
 xterm*scrollbar.on:		true
 xterm*scrollbar.background:	dark slate grey
 xterm*scrollbar.foreground:	light grey
