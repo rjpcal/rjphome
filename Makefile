@@ -5,6 +5,7 @@
 # $Id$
 
 TARGETS := \
+$(HOME)/.aspell.en.pws \
 $(HOME)/.bashrc \
 $(HOME)/.cshrc \
 $(HOME)/.emacs \
