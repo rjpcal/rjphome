@@ -70,7 +70,7 @@ if test "$PS1" != ""; then
 	    ;;
     esac
 
-    case $HOST in
+    case $HOSTNAME in
 	goethe*)
 	    alias ls='ls -F'
 	    ;;
