@@ -110,7 +110,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
      "//\n"
      "// " (buffer-name) "\n"
      "//\n"
-     "// Copyright (c) 2002-2002 Rob Peters rjpeters@klab.caltech.edu\n"
+     "// Copyright (c) 2003-2003 Rob Peters rjpeters@klab.caltech.edu\n"
      "//\n"
      "// created: " (current-time-string) "\n"
      "// written: " (current-time-string) "\n"
@@ -254,19 +254,6 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
           (while (re-search-forward rxp nil t)
             (replace-match (current-time-string) t t nil 1))))))
   nil)
-
-(defun fixup-whitespace ()
-  "Untabify the buffer, and kill trailing whitespace on all lines."
-  (interactive)
-  (untabify (point-min) (point-max))
-  (save-excursion
-    (save-restriction
-      (save-match-data
-	(widen)
-	(goto-char (point-min))
-	(let ((rxp "[ \t]+$"))
-	  (while (re-search-forward rxp nil t)
-	    (replace-match "" t t)))))))
 
 (defun safe-fixup-whitespace ()
   "Untabify the buffer, and kill trailing whitespace on all lines."
