@@ -38,6 +38,10 @@
       (save-match-data
 
 	(goto-char (point-min))
+	(while (re-search-forward "<BR>" nil t)
+	  (replace-match "\n" t t))
+
+	(goto-char (point-min))
 	(while (re-search-forward "<[^>]+>" nil t)
 	  (replace-match "" t t))
 
