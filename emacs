@@ -1,3 +1,9 @@
+;; Application initialization file for emacs
+
+;; Rob Peters <rjpeters@klab.caltech.edu>
+
+;; $Id$
+
 ;;-----------------------------------------------------------------------
 ;; Turn off the "quit Emacs" key binding
 ;;-----------------------------------------------------------------------
