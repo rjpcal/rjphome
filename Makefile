@@ -5,6 +5,7 @@
 # $Id$
 
 TARGETS := \
+$(HOME)/.bashrc \
 $(HOME)/.cshrc \
 $(HOME)/.emacs \
 $(HOME)/.login \
