@@ -92,6 +92,14 @@
 	"//\n"
 	"//---------------------------------------------------------------------\n"))
 
+(defun small-comment ()
+  (interactive)
+  (insert 
+	"//---------------------------------------------------------------------\n"
+	"//\n"
+	"//\n"
+	"//\n"))
+
 (defun init-cc-file ()
   "Place an appropriate comment at the beginning of a C++ source file, and
 insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
