@@ -69,19 +69,19 @@ if test "$PS1" != ""; then
     # substituting the time in 24-hour format, so we use the 12-hour am/pm
     # sequence \@ instead
 
-    prompt_color="40;37;1"  # default color is bold-white-on-black
+    prompt_color="40;37;1;4"  # default color is bold-white-on-black
     case $HOSTNAME in
 	sideswipe*)
-	    prompt_color="40;33;1" # yellow on black
+	    prompt_color="40;33;1;4" # yellow on black
 	    ;;
 	*.klab.caltech.edu)
-	    prompt_color="40;32;1" # green on black
+	    prompt_color="40;32;1;4" # green on black
 	    ;;
 	ilab*|iLab*)
-	    prompt_color="40;31;1" # red on black
+	    prompt_color="40;31;1;4" # red on black
 	    ;;
 	fortune*)
-	    prompt_color="40;34;1" # blue on black
+	    prompt_color="40;34;1;4" # blue on black
 	    ;;
     esac
 
