@@ -3464,7 +3464,7 @@ $\\|%\\)"))))
   :group 'matlab-shell
   :type 'string)
 
-(defcustom matlab-shell-command-switches ""
+(defcustom matlab-shell-command-switches "-nojava"
   "*Command line parameters run with `matlab-shell-command'."
   :group 'matlab-shell
   :type '(string :tag "Switch: "))
