@@ -60,12 +60,30 @@
 	  (replace-match " " t t))
 
 	(goto-char (point-min))
+	(while (search-forward "=AD" nil t)
+	  ;; non-breaking space
+	  (replace-match "-" t t))
+
+	(goto-char (point-min))
+	(while (search-forward "=B2" nil t)
+	  (replace-match "\"" t t))
+
+	(goto-char (point-min))
+	(while (search-forward "=B3" nil t)
+	  (replace-match "\"" t t))
+
+	(goto-char (point-min))
 	(while (search-forward "=B7" nil t)
 	  ;; middle dot
 	  (replace-match "*" t t))
 
 	(goto-char (point-min))
 	(while (search-forward "=B9" nil t)
+	  ;; superscript numeral 1
+	  (replace-match "'" t t))
+
+	(goto-char (point-min))
+	(while (search-forward "¹" nil t)
 	  ;; superscript numeral 1
 	  (replace-match "'" t t))
 
