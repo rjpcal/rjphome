@@ -106,8 +106,6 @@
 
 (put 'downcase-region 'disabled nil)
 
-(load "bibtexutil")
-
 ;;-----------------------------------------------------------------------
 ;; Variables set by emacs' customize wizard
 ;;-----------------------------------------------------------------------
