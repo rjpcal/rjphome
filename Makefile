@@ -9,6 +9,7 @@ $(HOME)/.bashrc \
 $(HOME)/.cshrc \
 $(HOME)/.emacs \
 $(HOME)/.login \
+$(HOME)/.profile \
 $(HOME)/.Xdefaults \
 $(HOME)/.Xmodmap \
 $(HOME)/.Xresources \
