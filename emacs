@@ -249,14 +249,29 @@
 
 (make-face 'outline-todo-face)
 (set-face-attribute 'outline-todo-face nil
-		    :foreground "maroon"
+		    :foreground "firebrick1"
+		    :box '(:line-width 1)
+		    )
+
+(make-face 'outline-todo-home-face)
+(set-face-attribute 'outline-todo-home-face nil
+		    :foreground "gold1"
+		    :box '(:line-width 1)
+		    )
+
+(make-face 'outline-todo-lab-face)
+(set-face-attribute 'outline-todo-lab-face nil
+		    :foreground "springgreen1"
 		    :box '(:line-width 1)
 		    )
 
 (font-lock-add-keywords
  'outline-mode
  '( ("^[ \t]*<< \\(.*\\)$" 1 'outline-done-face t)
-    ("^[ \t]*>> \\(.*\\)$" 1 'outline-todo-face t) ))
+    ("^[ \t]*>> \\(.*\\)$" 1 'outline-todo-face t)
+    ("^[ \t]*>> \\(HOME.*\\)$" 1 'outline-todo-home-face t)
+    ("^[ \t]*>> \\(LAB.*\\)$" 1 'outline-todo-lab-face t)
+    ))
 
 ;;-----------------------------------------------------------------------
 ;; General settings
