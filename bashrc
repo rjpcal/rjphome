@@ -83,6 +83,8 @@ if test "$PS1" != ""; then
 	fortune*)
 	    prompt_color="40;34;1;4" # blue on black
 	    ;;
+	quantum*)
+	    prompt_color="40;36;1;4" # cyan on black
     esac
 
     case $TERM in
