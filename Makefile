@@ -8,6 +8,7 @@ TARGETS := \
 $(HOME)/.bashrc \
 $(HOME)/.cshrc \
 $(HOME)/.emacs \
+$(HOME)/.galeon \
 $(HOME)/.inputrc \
 $(HOME)/.login \
 $(HOME)/.profile \
