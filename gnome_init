@@ -8,6 +8,3 @@
 
 ### Turn off that pesky caps lock key...
 xmodmap -e "keycode 66 = "
-
-### Load X11 defaults
-xrdb -merge ~/.Xdefaults
