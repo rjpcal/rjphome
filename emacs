@@ -228,6 +228,9 @@
  '(font-lock-keyword-face ((((class color) (background dark)) (:foreground "Cyan" :weight bold))))
  '(font-lock-string-face ((((class color) (background dark)) (:foreground "LightSalmon"))))
  '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "gold"))))
- '(scroll-bar ((t (:background "gray60" :foreground "black")))))
+)
 
 (put 'upcase-region 'disabled nil)
+
+;; to get Mac OSX <return> key to do the same as <kp-enter>
+(define-key function-key-map [return] [?\C-m])
