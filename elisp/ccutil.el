@@ -263,10 +263,11 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   "Untabify the buffer, and kill trailing whitespace on all lines."
   (interactive)
   ;; Skip fixup-whitespace for [.CH] files (i.e. those from iLab cvs system)
-  (if (or (string= (substring (buffer-name) -2) ".C")
-	  (string= (substring (buffer-name) -2) ".H"))
-      ()
-    (fixup-whitespace)))
+  ;;(if (or (string= (substring (buffer-name) -2) ".C")
+  ;;	  (string= (substring (buffer-name) -2) ".H"))
+  ;;    ()
+  ;;  (fixup-whitespace)))
+  (fixup-whitespace))
 
 (defun my-c++-mode-hook ()
   (add-hook 'local-write-file-hooks 'update-writestamps)
