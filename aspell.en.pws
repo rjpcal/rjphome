@@ -1,9 +1,10 @@
-personal_ws-1.1 en 213
+personal_ws-1.1 en 235
 AIC
 Acknowledgements
 Adami
 Akaike
 Allman
+Anstis
 ArabieKosslynNelson
 Asha
 AshbyAlfonso
@@ -21,19 +22,24 @@ BriandLarrisonSereno
 Brockman
 Brunswik
 BrunswikReiter
+CarandiniHeegerSenn
 Christof
 Churchland
 Collett
+CrookKisvardayEysel
 DasGilbert
 Dawkins
+DeangelisRobsonOhzawa
 Dennett
 Edelman
 EdelmanGrill
+Elsevier
 FFA
 Fabrizio
 FiloteoMaddoxDavis
 Fodor
 FreedmanRiesenhuberPoggio
+FreemanDurandKiper
 Fritjof
 GCM
 GPL
@@ -53,8 +59,11 @@ Hateren
 Heeger
 HernsteinDeVilliers
 Herrnstein
+Hibino
 HoffmanSubramaniam
 HuberLenz
+ISCAN
+ImhoffVolbrechtNerger
 Ingber
 IshaiUngerleiderMartin
 Itti
@@ -70,11 +79,15 @@ Kauffman
 Knowlton
 KnowltonSquire
 KochUllman
+KolesnikBarlit
 KowlerAndersonDosher
+KriegerRentschlerHauske
 Kruschke
 KustovRobinson
+LauritzenKrukowskiMiller
 LeeIttiKoch
 LiGilbert
+LuLesmesSperling
 MDS
 MaddoxAshby
 Marr
@@ -85,6 +98,8 @@ MilnerGoodale
 MishkinUngerleiderMacko
 MooreArmstrongFallah
 MooreFallah
+MorroneBurrMaffei
+MullenLosada
 Mundhenk
 MundhenkItti
 NGA
@@ -109,9 +124,11 @@ PettetGilbert
 PoggioGirosi
 PolatSagi
 PosnerCohen
+PriviteraStark
 RSD
 RSDs
 RXM
+ReinagelZador
 RiesenhuberPoggio
 RizzolattiRiggioDascola
 Rosch
@@ -126,6 +143,7 @@ SigalaGabbianiLogothetis
 SigalaLogothetis
 SloutskyLo
 SmithMinda
+SomersNelsonSur
 SquireKnowlton
 StettlerDasBennett
 SugiharaEdelmanTanaka
@@ -146,6 +164,8 @@ WPSM
 WaltherIttiRiesenhuber
 Wandell
 Wilcoxon
+WorgotterKoch
+Yarbus
 ZengerBraunKoch
 ZengerSagi
 advisor
@@ -175,6 +195,7 @@ inferotemporal
 internet
 intersubject
 iso
+isoluminance
 loglikelihood
 loglikelihoods
 lowpass
@@ -211,4 +232,5 @@ striatal
 striatum
 strived
 synergize
+thalamocortical
 validities
