@@ -251,6 +251,8 @@ export PVM_ROOT=/usr/share/pvm3
 
 export CVS_RSH=ssh
 
+export SVN_EDITOR="emacs -nw"
+
 # to keep case-sensitive sorting for 'ls', for example
 export LC_COLLATE=C
 
