@@ -199,7 +199,6 @@ export PATH=${HOME}/local/bin:${HOME}/local/${ARCH}/bin:${PATH}
 # for interactive shells:
 if test "$PS1" != ""; then
 
-    set matchbeep nomatch # only beep for missing, but not for ambiguous, matches
     FIGNORE=""   # filename suffixes to be ignored by completion
     HISTSIZE=500 # number of commands to store in history
     HISTFILE=""  # don't save/load command history from a file
