@@ -268,6 +268,15 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   )
 
 (defun my-c++-mode-hook ()
+  ;; Make underscore "_" be considered a word-character instead of a
+  ;; whitespace character (so that characters on either side of an
+  ;; underscore aren't seen as falling on word boundaries).
+  (modify-syntax-entry ?_ "w")
+
+  ;; To make underscore "_" be considered whitespace again, do the
+  ;; following:
+  ;(modify-syntax-entry ?_ " ")
+
   (add-hook 'local-write-file-hooks 'update-writestamps)
   (add-hook 'local-write-file-hooks 'safe-fixup-whitespace)
 

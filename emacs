@@ -154,6 +154,16 @@
 ;; General settings
 ;;-----------------------------------------------------------------------
 
+
+; Make underscore "_" be considered a word-character instead of a
+; whitespace character (so that characters on either side of an
+; underscore aren't seen as falling on word boundaries).
+(modify-syntax-entry ?_ "w")
+
+; To make underscore "_" be considered whitespace again, do the
+; following:
+; (modify-syntax-entry ?_ " ")
+
 (setq-default case-fold-search nil)
 (setq-default case-replace nil)
 
