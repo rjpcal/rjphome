@@ -40,7 +40,7 @@
 #endif
 
 #ifdef WHITE_MOOD
-	emacs*background: gray90
+	emacs*background: white
 	emacs*foreground: black
 	emacs*pointerColor: IndianRed3
 	emacs*borderColor: black
