@@ -87,37 +87,53 @@ if test "$PS1" != ""; then
 	    prompt_color="40;36;1;4" # cyan on black
     esac
 
-    case $TERM in
-	dumb)
-	    PS1="[\h \@ \!]$ "
+    escape1=""
+    main_prompt=""
+    escape2=""
+    term_title=""
+
+    # This fragment: [\h \@ \!]$ is the actual prompt itself, giving
+    # the hostname, the current time, and the history number
+
+    case $BASH_VERSION in
+	2.02*|2.04*)
+	    # [hostname HH:MMam/pm]$
+	    main_prompt="[\h \@ \!]$"
 	    ;;
 	*)
+	    # [hostname HH:MM]$
+	    main_prompt="[\h \A \!]$"
+	    ;;
+    esac
 
+    case $TERM in
+	dumb)
+	    escape1=""
+	    escape2=""
+	    ;;
+	*)
             # This fragment: \[\e[${prompt_color}m\] is for setting
             # the text properties (color, bold, underlining, etc.) of
             # the prompt text
-
-	    # This fragment: [\h \@ \!]$ is the actual prompt itself,
-	    # giving the hostname, the current time, and the history
-	    # number
+            escape1="\[\e[${prompt_color}m\]"
 
 	    # This fragment: \[\e[0m\] is for restoring the text
 	    # properties to their default values following the prompt
+	    escape2="\[\e[0m\]"
+    esac
 
+    case $TERM in
+	xterm*)
 	    # This fragment: \[\e]0;\w@\H\a\] is for setting the
 	    # window title of the containing terminal
-
-	    case $BASH_VERSION in
-		2.02*|2.04*)
-		    # [hostname HH:MMam/pm]$
-		    PS1="\[\e[${prompt_color}m\][\h \@ \!]$\[\e[0m\]\[\e]0;\W@\H\a\] "
-		    ;;
-		*)
-		    # [hostname HH:MM]$
-		    PS1="\[\e[${prompt_color}m\][\h \A \!]$\[\e[0m\]\[\e]0;\W@\H\a\] "
-		    ;;
-	    esac
+	    term_title="\[\e]0;\W@\H\a\]"
+	    ;;
+	*)
+	    term_title=""
+	    ;;
     esac
+
+    PS1="${escape1}${main_prompt}${escape2}${term_title} "
 
     alias ls='ls -F --color=tty'
 
