@@ -1,3 +1,5 @@
+#!/bin/tcsh -*- shell-script -*-
+
 # Startup file for csh/tcsh login shells.
 
 # Rob Peters <rjpeters@klab.caltech.edu>
