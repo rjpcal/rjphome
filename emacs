@@ -236,6 +236,19 @@
 
 	))))
 
+(defun new-inbox-item ()
+  "Compose a new rmail message."
+  (interactive)
+  (let ((mail-archive-file-name nil))
+    (compose-mail nil "" (cons (cons "FCC" "~/home/gtd/in.rmail") ()) ))
+  (beginning-of-buffer)
+  (kill-line)
+  (kill-line)
+  (end-of-line)
+)
+
+(global-set-key "\C-cj" 'new-inbox-item)
+
 ;;-----------------------------------------------------------------------
 ;; Matlab mode
 ;;-----------------------------------------------------------------------
