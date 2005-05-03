@@ -22,9 +22,14 @@ $(HOME)/.Xresources \
 DARWIN_TARGETS := \
 $(HOME)/.xinitrc \
 
+CYGWIN_TARGETS := \
+$(HOME)/_emacs \
+
 default: $(TARGETS) worldread
 
 darwin: $(DARWIN_TARGETS)
+
+cygwin: $(CYGWIN_TARGETS)
 
 worldread:
 	@for f in plan; do \
@@ -41,3 +46,6 @@ $(HOME)/.%:
 
 $(HOME)/.Xresources:
 	ln -s `pwd`/Xdefaults $@
+
+$(HOME)/_emacs: ./emacs
+	cp $< $@
