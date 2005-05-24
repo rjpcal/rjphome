@@ -99,6 +99,11 @@
 	;; try man ascii or man iso_8859-1 to see character codes
 
 	(goto-char (point-min))
+	(while (search-forward "=0D" nil t)
+	  ;; newline
+	  (replace-match "\n" t t))
+
+	(goto-char (point-min))
 	(while (search-forward "=20" nil t)
 	  ;; space
 	  (replace-match " " t t))
@@ -450,7 +455,7 @@
  '(blink-cursor-interval 0.25)
  '(confirm-kill-emacs (quote yes-or-no-p))
  '(rmail-enable-mime t)
- '(rmail-user-mail-address-regexp ".*rjpeter.*")
+ '(rmail-user-mail-address-regexp ".*rjp.*")
  '(show-trailing-whitespace t)
  '(user-mail-address "rjpeters@klab.caltech.edu")
  '(widget-image-enable nil))
