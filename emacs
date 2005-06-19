@@ -282,6 +282,9 @@
 ;;-----------------------------------------------------------------------
 (load "ccutil")
 
+(setq auto-mode-alist (cons '("\\.[ch]+$" . c++-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.dxy$" . c++-mode) auto-mode-alist))
+
 ;;-----------------------------------------------------------------------
 ;; LaTeX
 ;;-----------------------------------------------------------------------
@@ -359,8 +362,8 @@
 
 (setq text-mode-hook 'turn-on-auto-fill)
 
-(setq auto-mode-alist (cons '("\\.[ch]+$" . c++-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\\.dxy$" . c++-mode) auto-mode-alist))
+; Handle temporary svn commit log files in text-mode
+(setq auto-mode-alist (cons '("svn-commit.*\\.tmp$" . text-mode) auto-mode-alist))
 
 ;Need to explicitly load "smgl-mode" in order to avoid weird problems
 ;where sgml documents (eg *.xsl) don't get fontified properly, UNLESS
