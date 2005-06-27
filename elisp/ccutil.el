@@ -57,10 +57,14 @@
 insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   (interactive)
   (save-excursion
+    (setq filename (buffer-file-name))
+    (if (string-match "/src/" filename)
+	(setq filename (replace-regexp-in-string ".*/src/" "" filename))
+      (setq filename (buffer-name)))
+
     (let ((include-guard
-           (upcase (replace-regexp-in-string "\\." "_" (buffer-name))))
-          (vcid-string
-           (concat "vcid_" (replace-regexp-in-string "\\." "_" (buffer-name))))
+           (upcase (replace-regexp-in-string
+		    "\\(\\.\\|-\\|/\\)" "_" filename)))
           )
 
       (goto-char (point-min))
@@ -73,39 +77,51 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
        "// Rob Peters <rjpeters at klab dot caltech dot edu>\n"
        "//\n"
        "// created: " (current-time-string) "\n"
-       "// commit: $" "Id" "$\n")
+       "// commit: $" "Id" "$\n"
+       "// $" "HeadURL" "$\n")
+
+      (setq pkg-prefix "")
       (if (string-match "groovx" (buffer-file-name))
-          (insert
-           "//\n"
-           "// --------------------------------------------------------------------\n"
-           "//\n"
-           "// This file is part of GroovX.\n"
-           "//   [http://www.klab.caltech.edu/rjpeters/groovx/]\n"
-           "//\n"
-           "// GroovX is free software; you can redistribute it and/or modify it\n"
-           "// under the terms of the GNU General Public License as published by\n"
-           "// the Free Software Foundation; either version 2 of the License, or\n"
-           "// (at your option) any later version.\n"
-           "//\n"
-           "// GroovX is distributed in the hope that it will be useful, but\n"
-           "// WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-           "// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
-           "// General Public License for more details.\n"
-           "//\n"
-           "// You should have received a copy of the GNU General Public License\n"
-           "// along with GroovX; if not, write to the Free Software Foundation,\n"
-           "// Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.\n"))
+	  (setq pkg-prefix "GROOVX_"))
+
+      (if (string-match "groovx" (buffer-file-name))
+	  (insert
+	   "//\n"
+	   "// --------------------------------------------------------------------\n"
+	   "//\n"
+	   "// This file is part of GroovX.\n"
+	   "//   [http://www.klab.caltech.edu/rjpeters/groovx/]\n"
+	   "//\n"
+	   "// GroovX is free software; you can redistribute it and/or modify it\n"
+	   "// under the terms of the GNU General Public License as published by\n"
+	   "// the Free Software Foundation; either version 2 of the License, or\n"
+	   "// (at your option) any later version.\n"
+	   "//\n"
+	   "// GroovX is distributed in the hope that it will be useful, but\n"
+	   "// WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+	   "// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n"
+	   "// General Public License for more details.\n"
+	   "//\n"
+	   "// You should have received a copy of the GNU General Public License\n"
+	   "// along with GroovX; if not, write to the Free Software Foundation,\n"
+	   "// Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA.\n"))
+
+      (setq date-string (format-time-string "_UTC%Y%m%d%H%M%S"
+					    (current-time) t))
+
+      (setq full-symname (concat pkg-prefix include-guard date-string))
+
       (insert
        "//\n"
        "///////////////////////////////////////////////////////////////////////\n"
-       "\n#ifndef " include-guard "_DEFINED\n"
-       "#define " include-guard "_DEFINED\n\n")
+       "\n#ifndef " full-symname "_DEFINED\n"
+       "#define " full-symname "_DEFINED\n\n")
 
       (goto-char (point-max))
       (insert
        "\n"
-       "static const char " vcid-string "[] = \"$" "Id" "$ $" "URL" "$\";\n"
-       "#endif // !" include-guard "_DEFINED\n")
+       "static const char vcid_" (downcase full-symname) "[] = \"$" "Id" "$ $" "URL" "$\";\n"
+       "#endif // !" full-symname "DEFINED\n")
       )
     )
   )
