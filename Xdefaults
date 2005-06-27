@@ -13,43 +13,43 @@
 #define LARGE_FONT
 
 #ifdef SMALL_FONT
-	emacs*font: -*-LucidaTypewriter-Medium-R-Normal-Sans-12-*-*-*-*-*-*-*
-	/*emacs*font: 7x13*/
+	Emacs*font: -*-LucidaTypewriter-Medium-R-Normal-Sans-12-*-*-*-*-*-*-*
+	/*Emacs*font: 7x13*/
 #  if (WIDTH < 1500) || (HEIGHT < 1000)
-	emacs*geometry: 150x56+5+5
+	Emacs*geometry: 150x56+5+5
 #  else
-	emacs*geometry: 150x64+5+5
+	Emacs*geometry: 150x64+5+5
 #  endif
 #endif
 
 #ifdef LARGE_FONT
-	emacs*font: -*-LucidaTypewriter-Medium-R-Normal-Sans-14-*-*-*-*-*-*-*
+	Emacs*font: -*-LucidaTypewriter-Medium-R-Normal-Sans-14-*-*-*-*-*-*-*
 #  if (WIDTH < 1500) || (HEIGHT < 1000)
-	emacs*geometry: 150x56+5+5
+	Emacs*geometry: 150x56+5+5
 #  else
-	emacs*geometry: 150x64+5+5
+	Emacs*geometry: 150x64+5+5
 #  endif
 #endif
 
-/* emacs*font: -misc-fixed-medium-r-normal--10-100-75-75-c-60-iso8859-1 */
-/* emacs*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso8859-1 */
-/* emacs*font: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-1 */
+/* Emacs*font: -misc-fixed-medium-r-normal--10-100-75-75-c-60-iso8859-1 */
+/* Emacs*font: -misc-fixed-medium-r-semicondensed--12-110-75-75-c-60-iso8859-1 */
+/* Emacs*font: -misc-fixed-medium-r-normal--13-120-75-75-c-70-iso8859-1 */
 
 #ifdef BLACK_MOOD
-	emacs*background: black
-	emacs*foreground: white
-	emacs*pointerColor: gold1
-	emacs*borderColor: white
+	Emacs*background: black
+	Emacs*foreground: white
+	Emacs*pointerColor: gold1
+	Emacs*borderColor: white
 #endif
 
 #ifdef WHITE_MOOD
-	emacs*background: white
-	emacs*foreground: black
-	emacs*pointerColor: IndianRed3
-	emacs*borderColor: black
+	Emacs*background: white
+	Emacs*foreground: black
+	Emacs*pointerColor: IndianRed3
+	Emacs*borderColor: black
 #endif
 
-emacs*cursorColor: salmon1
+Emacs*toolBar: off
 
 /*xterm*font: 9x15*/
 xterm*font: -B&H-LucidaTypewriter-Medium-R-Normal-Sans-12-*-*-*-*-*-*-*
