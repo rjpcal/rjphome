@@ -227,7 +227,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
     (re-search-backward ccutil-re-func-decl)
     (setq str (match-string 5))
     (re-search-forward "{")
-    (insert "\nDOTRACE(\"" str "\");")
+    (insert "\nGVX_TRACE(\"" str "\");")
     (message "traced %s." str)))
 
 (defun ccutil-backward-nomenclature-kill ()
