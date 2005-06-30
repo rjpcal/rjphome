@@ -120,7 +120,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
       (goto-char (point-max))
       (insert
        "\n"
-       "static const char vcid_" (downcase full-symname) "[] = \"$" "Id" "$ $" "URL" "$\";\n"
+       "static const char vcid_" (downcase full-symname) "[] = \"$" "Id" "$ $" "HeadURL" "$\";\n"
        "#endif // !" full-symname "DEFINED\n")
       )
     )
