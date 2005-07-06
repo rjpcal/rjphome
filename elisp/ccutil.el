@@ -69,12 +69,12 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 
       (goto-char (point-min))
       (insert
+       "/** @file " filename " */\n"
+       "\n"
        "///////////////////////////////////////////////////////////////////////\n"
        "//\n"
-       "// " (buffer-name) "\n"
-       "//\n"
        "// Copyright (c) 2005-2005\n"
-       "// Rob Peters <rjpeters at klab dot caltech dot edu>\n"
+       "// Rob Peters <rjpeters at usc dot edu>\n"
        "//\n"
        "// created: " (current-time-string) "\n"
        "// commit: $" "Id" "$\n"
