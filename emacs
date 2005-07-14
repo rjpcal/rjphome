@@ -26,11 +26,11 @@
   (save-excursion
     (save-restriction
       (save-match-data
-	(widen)
-	(goto-char (point-min))
-	(let ((rxp "[ \t]+$"))
-	  (while (re-search-forward rxp nil t)
-	    (replace-match "" t t)))))))
+        (widen)
+        (goto-char (point-min))
+        (let ((rxp "[ \t]+$"))
+          (while (re-search-forward rxp nil t)
+            (replace-match "" t t)))))))
 
 (defun unhtml-region ()
   "Kill HTML tags in emails."
@@ -39,25 +39,25 @@
     (save-restriction
       (save-match-data
 
-	(narrow-to-region (point) (mark))
+        (narrow-to-region (point) (mark))
 
-	(goto-char (point-min))
-	(while (re-search-forward "<BR>" nil t)
-	  (replace-match "\n" t t))
+        (goto-char (point-min))
+        (while (re-search-forward "<BR>" nil t)
+          (replace-match "\n" t t))
 
-	(goto-char (point-min))
-	(while (re-search-forward "\\(<[^>]+>\\)+" nil t)
-	  (replace-match " " t t))
+        (goto-char (point-min))
+        (while (re-search-forward "\\(<[^>]+>\\)+" nil t)
+          (replace-match " " t t))
 
-	(goto-char (point-min))
-	(while (search-forward "&nbsp;" nil t)
-	  (replace-match " " t t))
+        (goto-char (point-min))
+        (while (search-forward "&nbsp;" nil t)
+          (replace-match " " t t))
 
-	(goto-char (point-min))
-	(while (search-forward "&gt;" nil t)
-	  (replace-match ">" t t))
+        (goto-char (point-min))
+        (while (search-forward "&gt;" nil t)
+          (replace-match ">" t t))
 
-	))))
+        ))))
 
 (defun unhtml-email ()
   "Kill HTML tags in emails."
@@ -66,23 +66,23 @@
     (save-restriction
       (save-match-data
 
-	(goto-char (point-min))
-	(while (re-search-forward "<BR>" nil t)
-	  (replace-match "\n" t t))
+        (goto-char (point-min))
+        (while (re-search-forward "<BR>" nil t)
+          (replace-match "\n" t t))
 
-	(goto-char (point-min))
-	(while (re-search-forward "\\(<[^>]+>\\)+" nil t)
-	  (replace-match " " t t))
+        (goto-char (point-min))
+        (while (re-search-forward "\\(<[^>]+>\\)+" nil t)
+          (replace-match " " t t))
 
-	(goto-char (point-min))
-	(while (search-forward "&nbsp;" nil t)
-	  (replace-match " " t t))
+        (goto-char (point-min))
+        (while (search-forward "&nbsp;" nil t)
+          (replace-match " " t t))
 
-	(goto-char (point-min))
-	(while (search-forward "&gt;" nil t)
-	  (replace-match ">" t t))
+        (goto-char (point-min))
+        (while (search-forward "&gt;" nil t)
+          (replace-match ">" t t))
 
-	))))
+        ))))
 
 (defun unmangle-email ()
   "Fix formatting stuff in emails."
@@ -91,155 +91,155 @@
     (save-restriction
       (save-match-data
 
-	;; this one needs to stay first
-	(goto-char (point-min))
-	(while (search-forward "=\n" nil t)
-	  (replace-match "" t t))
+        ;; this one needs to stay first
+        (goto-char (point-min))
+        (while (search-forward "=\n" nil t)
+          (replace-match "" t t))
 
-	;; try man ascii or man iso_8859-1 to see character codes
+        ;; try man ascii or man iso_8859-1 to see character codes
 
-	(goto-char (point-min))
-	(while (search-forward "=0D" nil t)
-	  ;; newline
-	  (replace-match "\n" t t))
+        (goto-char (point-min))
+        (while (search-forward "=0D" nil t)
+          ;; newline
+          (replace-match "\n" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=20" nil t)
-	  ;; space
-	  (replace-match " " t t))
+        (goto-char (point-min))
+        (while (search-forward "=20" nil t)
+          ;; space
+          (replace-match " " t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=2E" nil t)
-	  ;; period
-	  (replace-match "." t t))
+        (goto-char (point-min))
+        (while (search-forward "=2E" nil t)
+          ;; period
+          (replace-match "." t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=3D" nil t)
-	  (replace-match "=" t t))
+        (goto-char (point-min))
+        (while (search-forward "=3D" nil t)
+          (replace-match "=" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=92" nil t)
-	  (replace-match "'" t t))
+        (goto-char (point-min))
+        (while (search-forward "=92" nil t)
+          (replace-match "'" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=93" nil t)
-	  (replace-match "\"" t t))
+        (goto-char (point-min))
+        (while (search-forward "=93" nil t)
+          (replace-match "\"" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=94" nil t)
-	  (replace-match "\"" t t))
+        (goto-char (point-min))
+        (while (search-forward "=94" nil t)
+          (replace-match "\"" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=96" nil t)
-	  (replace-match "-" t t))
+        (goto-char (point-min))
+        (while (search-forward "=96" nil t)
+          (replace-match "-" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=A0" nil t)
-	  ;; non-breaking space
-	  (replace-match " " t t))
+        (goto-char (point-min))
+        (while (search-forward "=A0" nil t)
+          ;; non-breaking space
+          (replace-match " " t t))
 
-	(goto-char (point-min))
-	(while (search-forward "  " nil t)
-	  ;; space
-	  (replace-match " " t t))
+        (goto-char (point-min))
+        (while (search-forward "  " nil t)
+          ;; space
+          (replace-match " " t t))
 
-	(goto-char (point-min))
-	(while (search-forward " " nil t)
-	  ;; space
-	  (replace-match " " t t))
+        (goto-char (point-min))
+        (while (search-forward " " nil t)
+          ;; space
+          (replace-match " " t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=AD" nil t)
-	  ;; non-breaking space
-	  (replace-match "-" t t))
+        (goto-char (point-min))
+        (while (search-forward "=AD" nil t)
+          ;; non-breaking space
+          (replace-match "-" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=B2" nil t)
-	  (replace-match "\"" t t))
+        (goto-char (point-min))
+        (while (search-forward "=B2" nil t)
+          (replace-match "\"" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=B3" nil t)
-	  (replace-match "\"" t t))
+        (goto-char (point-min))
+        (while (search-forward "=B3" nil t)
+          (replace-match "\"" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=B7" nil t)
-	  ;; middle dot
-	  (replace-match "*" t t))
+        (goto-char (point-min))
+        (while (search-forward "=B7" nil t)
+          ;; middle dot
+          (replace-match "*" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=B9" nil t)
-	  ;; superscript numeral 1
-	  (replace-match "'" t t))
+        (goto-char (point-min))
+        (while (search-forward "=B9" nil t)
+          ;; superscript numeral 1
+          (replace-match "'" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "=E9" nil t)
-	  ;; 'e' with accent acute
-	  (replace-match "e" t t))
+        (goto-char (point-min))
+        (while (search-forward "=E9" nil t)
+          ;; 'e' with accent acute
+          (replace-match "e" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "¹" nil t)
-	  ;; superscript numeral 1
-	  (replace-match "'" t t))
+        (goto-char (point-min))
+        (while (search-forward "¹" nil t)
+          ;; superscript numeral 1
+          (replace-match "'" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "²" nil t)
-	  ;; superscript numeral 2
-	  (replace-match "\"" t t))
+        (goto-char (point-min))
+        (while (search-forward "²" nil t)
+          ;; superscript numeral 2
+          (replace-match "\"" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "³" nil t)
-	  ;; superscript numeral 3
-	  (replace-match "\"" t t))
+        (goto-char (point-min))
+        (while (search-forward "³" nil t)
+          ;; superscript numeral 3
+          (replace-match "\"" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "“" nil t)
-	  (replace-match "\"" t t))
+        (goto-char (point-min))
+        (while (search-forward "“" nil t)
+          (replace-match "\"" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "”" nil t)
-	  (replace-match "\"" t t))
+        (goto-char (point-min))
+        (while (search-forward "”" nil t)
+          (replace-match "\"" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "’" nil t)
-	  (replace-match "'" t t))
+        (goto-char (point-min))
+        (while (search-forward "’" nil t)
+          (replace-match "'" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "‘" nil t)
-	  (replace-match "'" t t))
+        (goto-char (point-min))
+        (while (search-forward "‘" nil t)
+          (replace-match "'" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "–" nil t)
-	  (replace-match "--" t t))
+        (goto-char (point-min))
+        (while (search-forward "–" nil t)
+          (replace-match "--" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "" nil t)
-	  (replace-match "..." t t))
+        (goto-char (point-min))
+        (while (search-forward "" nil t)
+          (replace-match "..." t t))
 
-	(goto-char (point-min))
-	(while (search-forward "…" nil t)
-	  (replace-match "..." t t))
+        (goto-char (point-min))
+        (while (search-forward "…" nil t)
+          (replace-match "..." t t))
 
-	(goto-char (point-min))
-	(while (search-forward "" nil t)
-	  (replace-match "'" t t))
+        (goto-char (point-min))
+        (while (search-forward "" nil t)
+          (replace-match "'" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "" nil t)
-	  (replace-match "'" t t))
+        (goto-char (point-min))
+        (while (search-forward "" nil t)
+          (replace-match "'" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "" nil t)
-	  (replace-match "\"" t t))
+        (goto-char (point-min))
+        (while (search-forward "" nil t)
+          (replace-match "\"" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "" nil t)
-	  (replace-match "\"" t t))
+        (goto-char (point-min))
+        (while (search-forward "" nil t)
+          (replace-match "\"" t t))
 
-	(goto-char (point-min))
-	(while (search-forward "" nil t)
-	  (replace-match "---" t t))
+        (goto-char (point-min))
+        (while (search-forward "" nil t)
+          (replace-match "---" t t))
 
-	))))
+        ))))
 
 (defun new-gtd-project ()
   "Compose a new GTD project file."
@@ -307,27 +307,27 @@
 
 (make-face 'outline-done-face)
 (set-face-attribute 'outline-done-face nil
-		    :foreground "dodgerblue4"
-		    :strike-through t
-		    )
+                    :foreground "dodgerblue4"
+                    :strike-through t
+                    )
 
 (make-face 'outline-todo-face)
 (set-face-attribute 'outline-todo-face nil
-		    :foreground "firebrick1"
-		    :box '(:line-width 1)
-		    )
+                    :foreground "firebrick1"
+                    :box '(:line-width 1)
+                    )
 
 (make-face 'outline-todo-home-face)
 (set-face-attribute 'outline-todo-home-face nil
-		    :foreground "gold1"
-		    :box '(:line-width 1)
-		    )
+                    :foreground "gold1"
+                    :box '(:line-width 1)
+                    )
 
 (make-face 'outline-todo-lab-face)
 (set-face-attribute 'outline-todo-lab-face nil
-		    :foreground "springgreen1"
-		    :box '(:line-width 1)
-		    )
+                    :foreground "springgreen1"
+                    :box '(:line-width 1)
+                    )
 
 (font-lock-add-keywords
  'outline-mode
@@ -381,7 +381,7 @@
 ;(setq display-time-24hr-format t)  ; show time in 24hr format
 ;(setq display-time-day-and-date t) ; show date in addition to time
 (setq display-time-format "%a%b%d:%H%M") ; specify mode line date format
-(display-time)			   ; show time(+date) in mode line
+(display-time)                     ; show time(+date) in mode line
 
 (defun abbreviate-frame-title (s)
   (setq s (replace-regexp-in-string "^.*science/projects/" "sp::" s))
@@ -405,11 +405,11 @@
 
 (setq frame-title-format
       (concat (abbreviate-frame-title default-directory)
-	      " [" (abbreviate-system-name system-name) "]"))
+              " [" (abbreviate-system-name system-name) "]"))
 
 (setq icon-title-format
       (concat (abbreviate-frame-title default-directory)
-	      " [" (abbreviate-system-name system-name) "]"))
+              " [" (abbreviate-system-name system-name) "]"))
 
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
@@ -450,26 +450,24 @@
 ;;-----------------------------------------------------------------------
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
   ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
  '(blink-cursor-delay 1.0)
  '(blink-cursor-interval 0.25)
  '(confirm-kill-emacs (quote yes-or-no-p))
- '(rmail-enable-mime t)
- '(rmail-user-mail-address-regexp ".*rjp.*")
+ '(rmail-enable-mime t t)
+ '(rmail-user-mail-address-regexp ".*rjp.*" t)
  '(show-trailing-whitespace t)
  '(user-mail-address "rjpeters@klab.caltech.edu")
  '(widget-image-enable nil))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
   ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(cursor ((t (:background "salmon1"))) t)
- '(font-lock-comment-face ((((class color) (background dark)) (:foreground "firebrick1"))))
+ '(cursor ((t (:background "salmon1"))))
+ '(font-lock-comment-face ((((class color) (background dark)) (:foreground "FireBrick1"))))
+ '(font-lock-constant-face ((((class color) (background dark)) (:foreground "Purple1"))))
  '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "dodger blue" :weight bold))))
  '(font-lock-keyword-face ((((class color) (background dark)) (:foreground "Cyan" :weight bold))))
- '(font-lock-string-face ((((class color) (background dark)) (:foreground "LightSalmon"))))
+ '(font-lock-string-face ((((class color) (background dark)) (:foreground "Sienna2"))))
+ '(font-lock-type-face ((((class color) (background dark)) (:foreground "LawnGreen"))))
  '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "gold")))))
