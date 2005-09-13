@@ -84,7 +84,16 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
       (if (string-match "groovx" (buffer-file-name))
 	  (setq pkg-prefix "GROOVX_"))
 
-      (if (string-match "groovx" (buffer-file-name))
+      (if (string-match "src/rutz" (buffer-file-name))
+	  (setq pkg-prefix "GROOVX_"))
+
+      (if (string-match "src/tcl" (buffer-file-name))
+	  (setq pkg-prefix "GROOVX_"))
+
+      (if (string-match "src/nub" (buffer-file-name))
+	  (setq pkg-prefix "GROOVX_"))
+
+      (if (string-match "GROOVX_" pkg-prefix)
 	  (insert
 	   "//\n"
 	   "// --------------------------------------------------------------------\n"
