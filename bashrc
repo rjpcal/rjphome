@@ -38,7 +38,7 @@ function setup_prompt ()
     # substituting the time in 24-hour format, so we use the 12-hour am/pm
     # sequence \@ instead
 
-    prompt_color="40;37;1;4"  # default color is bold-white-on-black
+    local prompt_color="40;37;1;4"  # default color is bold-white-on-black
     case $USER in
 	# Only set the colors if the user is me!
 	rjpeters)
@@ -64,12 +64,12 @@ function setup_prompt ()
 	    ;;
     esac
 
-    escape1=""
-    main_prompt=""
-    prompt_content=""
-    prompt_token="$"
-    escape2=""
-    term_title=""
+    local escape1=""
+    local main_prompt=""
+    local prompt_content=""
+    local prompt_token="$"
+    local escape2=""
+    local term_title=""
 
     # This fragment: [\h \@ \!]$ is the actual prompt itself, giving
     # the hostname, the current time, and the history number
@@ -168,15 +168,17 @@ function setup_ls_colors ()
     LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:'
 
     # file extensions for archive files
-    archive_style="01;31"
-    archive_exts="tar tgz arj taz lzh zip z Z gz bz2 deb rpm jar"
+    local archive_style="01;31"
+    local archive_exts="tar tgz arj taz lzh zip z Z gz bz2 deb rpm jar"
+    local ext
     for ext in $archive_exts; do
 	LS_COLORS="${LS_COLORS}*.${ext}=${archive_style}:"
     done
 
     # file extensions for media files
-    media_style="01;35"
-    media_exts="jpg jpeg gif bmp pbm pgm ppm pnm tga xbm xpm tif tiff png mpg mpeg avi fli gl dl xcf xwd ogg mp3 wav"
+    local media_style="01;35"
+    local media_exts="jpg jpeg gif bmp pbm pgm ppm pnm tga xbm xpm tif tiff png mpg mpeg avi fli gl dl xcf xwd ogg mp3 wav"
+    local ext
     for ext in $media_exts; do
 	LS_COLORS="${LS_COLORS}*.${ext}=${media_style}:"
     done
@@ -249,7 +251,8 @@ case $- in
 
 	FIGNORE=""   # filename suffixes to be ignored by completion
 	HISTSIZE=500 # number of commands to store in history
-	HISTFILE=""  # don't save/load command history from a file
+	HISTTIMEFORMAT="[%c] " # stftime format for storing in history
+	unset -v HISTFILE # don't save/load command history from a file
 
 	setup_prompt
 
@@ -290,3 +293,9 @@ export MATLABPATH=./matlab:${HOME}/science/matlab
 if test -r ~/.bashrc_local; then
     . ~/.bashrc_local
 fi
+
+### Clean up now-unneeded function definitions
+unset -f identify_location
+unset -f setup_prompt
+unset -f setup_ls_colors
+unset -f setup_arch
