@@ -109,6 +109,22 @@
           (replace-match " " t t))
 
         (goto-char (point-min))
+        (while (search-forward "=21" nil t)
+          (replace-match "!" t t))
+
+        (goto-char (point-min))
+        (while (search-forward "=22" nil t)
+          (replace-match "\"" t t))
+
+        (goto-char (point-min))
+        (while (search-forward "=23" nil t)
+          (replace-match "#" t t))
+
+        (goto-char (point-min))
+        (while (search-forward "=24" nil t)
+          (replace-match "$" t t))
+
+        (goto-char (point-min))
         (while (search-forward "=2E" nil t)
           ;; period
           (replace-match "." t t))
@@ -116,6 +132,10 @@
         (goto-char (point-min))
         (while (search-forward "=3D" nil t)
           (replace-match "=" t t))
+
+        (goto-char (point-min))
+        (while (search-forward "=40" nil t)
+          (replace-match "@" t t))
 
         (goto-char (point-min))
         (while (search-forward "=92" nil t)
