@@ -220,6 +220,9 @@ export MANPATH=${MANPATH}:/usr/share/man:/usr/man
 export MANPATH=${MANPATH}:/usr/local/share/man:/usr/local/man
 export MANPATH=${MANPATH}:/usr/X11R6/man
 
+# default width to which man pages are formatted
+export MANWIDTH=74
+
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/sbin:/sbin
 
 export LD_LIBRARY_PATH=${HOME}/local/${ARCH}/lib
