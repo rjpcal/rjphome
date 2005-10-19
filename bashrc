@@ -75,7 +75,7 @@ function setup_prompt ()
     # the hostname, the current time, and the history number
 
     case $BASH_VERSION in
-	2.02*|2.04*)
+	2.02*|2.04*|2.05.0*)
 	    # [hostname HH:MMam/pm]$
 	    prompt_content="\h \@ \!"
 	    ;;
@@ -101,6 +101,7 @@ function setup_prompt ()
 	    ;;
 	*)
 	    main_prompt="((${prompt_content}))$prompt_token"
+	    export SSH_CLIENT
 	    ;;
     esac
 
@@ -261,7 +262,11 @@ case $- in
 
 	setup_ls_colors
 
-	alias ls='ls -F --color=tty'
+	if ls -F --color=tty ~/.bashrc > /dev/null 2>&1; then
+	    alias ls='ls -F --color=tty'
+	elif ls -F ~/.bashrc > /dev/null 2>&1; then
+	    alias ls='ls -F'
+	fi
 	alias pwd='dirs -l'
 	alias matlab='matlab -nojvm -nosplash'
 
