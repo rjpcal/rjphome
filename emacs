@@ -14,6 +14,7 @@
 ;;-----------------------------------------------------------------------
 (setq load-path (append load-path (list "~/home/base/elisp")))
 
+(load "~/home/base/elisp/vc-svn.el")
 (add-to-list 'vc-handled-backends 'SVN)
 
 ;;-----------------------------------------------------------------------
