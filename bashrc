@@ -5,7 +5,17 @@
 # $Id$
 ######################################################################
 
-set -o pipefail
+case $BASH_VERSION in
+    2.*)
+	:
+	;;
+    3.*)
+	set -o pipefail
+	;;
+    *)
+	echo "unknown bash version $BASH_VERSION"
+	;;
+esac
 
 ######################################################################
 # Figure out which known location we're in
