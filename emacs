@@ -34,7 +34,7 @@
             (replace-match "" t t)))))))
 
 (defun unhtml-region ()
-  "Kill HTML tags in emails."
+  "Kill HTML tags."
   (interactive)
   (save-excursion
     (save-restriction
@@ -58,30 +58,9 @@
         (while (search-forward "&gt;" nil t)
           (replace-match ">" t t))
 
-        ))))
-
-(defun unhtml-email ()
-  "Kill HTML tags in emails."
-  (interactive)
-  (save-excursion
-    (save-restriction
-      (save-match-data
-
         (goto-char (point-min))
-        (while (re-search-forward "<BR>" nil t)
-          (replace-match "\n" t t))
-
-        (goto-char (point-min))
-        (while (re-search-forward "\\(<[^>]+>\\)+" nil t)
-          (replace-match " " t t))
-
-        (goto-char (point-min))
-        (while (search-forward "&nbsp;" nil t)
-          (replace-match " " t t))
-
-        (goto-char (point-min))
-        (while (search-forward "&gt;" nil t)
-          (replace-match ">" t t))
+        (while (search-forward "&lt;" nil t)
+          (replace-match "<" t t))
 
         ))))
 
@@ -282,6 +261,22 @@
 )
 
 (global-set-key "\C-cp" 'new-gtd-project)
+
+(require 'sort)
+(require 'rmail)
+
+(defun rmail-sort-by-spam-level (reverse)
+  "Sort messages of current Rmail file by X-Spam-Level.
+If prefix argument REVERSE is non-nil, sort them in reverse order."
+  (interactive "P")
+  (rmail-sort-messages reverse
+		       (function
+			(lambda (msg)
+			  (let ((key (or (rmail-fetch-field msg "X-Spam-Status") ""))
+				(case-fold-search t))
+			    (if (string-match "score=\\(-?[0-9]+.[0-9]+\\)" key)
+				(string-to-number (substring key (match-beginning 1) (match-end 1)))
+			      0))))))
 
 ;;-----------------------------------------------------------------------
 ;; Matlab mode
