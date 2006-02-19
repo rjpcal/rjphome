@@ -308,7 +308,9 @@ export LC_COLLATE=C
 # complains of a 'duplicate directory'
 export MATLABPATH=./matlab:${HOME}/science/matlab
 
-### Source a system-local init file, if it exists
+### Source a system-local init file, if it exists, and reset important env vars beforehand
+export CPPFLAGS=""
+export LDFLAGS=""
 if test -r ~/.bashrc_local; then
     . ~/.bashrc_local
 fi
