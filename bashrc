@@ -101,8 +101,15 @@ function setup_prompt ()
 	    prompt_token="$"
 	    ;;
 	*)
-	    prompt_content="\u@${prompt_content}"
-	    prompt_token="#"
+	    case $USERNAME in
+		rjpeters)
+		    prompt_token="$"
+		    ;;
+		*)
+		    prompt_content="\u@${prompt_content}"
+		    prompt_token="#"
+		    ;;
+	    esac
 	    ;;
     esac
 
@@ -222,6 +229,8 @@ function setup_arch ()
 ######################################################################
 # main initialization code
 
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/sbin:/sbin
+
 umask 077
 
 setup_arch
@@ -234,8 +243,6 @@ export MANPATH=${MANPATH}:/usr/X11R6/man
 
 # default width to which man pages are formatted
 export MANWIDTH=74
-
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/sbin:/sbin
 
 export LD_LIBRARY_PATH=${HOME}/local/${ARCH}/lib
 
