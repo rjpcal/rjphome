@@ -288,6 +288,13 @@ case $- in
 	alias pwd='dirs -l'
 	alias matlab='matlab -nojvm -nosplash'
 
+	if which less > /dev/null 2>&1; then
+	    alias more='less'
+	fi
+
+	# keep this last
+	alias which='alias | which -i'
+
         # specify location of readline startup file
 	export INPUTRC=${HOME}/.inputrc
 
