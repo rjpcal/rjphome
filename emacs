@@ -15,6 +15,11 @@
 (global-set-key "\eO5C" 'forward-word)       ; ctrl-right-arrow
 (global-set-key "\eO5D" 'backward-word)      ; ctrl-left-arrow
 
+(global-set-key "\e[1;5A" 'backward-paragraph) ; ctrl-up-arrow
+(global-set-key "\e[1;5B" 'forward-paragraph)  ; ctrl-down-arrow
+(global-set-key "\e[1;5C" 'forward-word)       ; ctrl-right-arrow
+(global-set-key "\e[1;5D" 'backward-word)      ; ctrl-left-arrow
+
 ;;-----------------------------------------------------------------------
 ;; LISP search path
 ;;-----------------------------------------------------------------------
