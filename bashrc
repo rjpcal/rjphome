@@ -69,7 +69,7 @@ function setup_prompt ()
 		fortune*)
 		    prompt_color="40;34;1;4" # blue on black
 		    ;;
-		quantum*|hpc-master*)
+		quantum*|hpc-master*|bumblebee)
 		    prompt_color="40;36;1;4" # cyan on black
 	    esac
 	    ;;
