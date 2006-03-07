@@ -9,6 +9,12 @@
 ;;-----------------------------------------------------------------------
 ;;(global-unset-key "\C-x\C-c")
 
+;(global-set-key "O5A" 'backward-paragraph) ; ctrl-up-arrow
+(global-set-key "\eO5A" 'backward-paragraph) ; ctrl-up-arrow
+(global-set-key "\eO5B" 'forward-paragraph)  ; ctrl-down-arrow
+(global-set-key "\eO5C" 'forward-word)       ; ctrl-right-arrow
+(global-set-key "\eO5D" 'backward-word)      ; ctrl-left-arrow
+
 ;;-----------------------------------------------------------------------
 ;; LISP search path
 ;;-----------------------------------------------------------------------
