@@ -143,7 +143,12 @@ function setup_prompt ()
 	xterm*)
 	    # This fragment: \[\e]0;\w@\H\a\] is for setting the
 	    # window title of the containing terminal
-	    term_title="\[\e]0;\W@\H\a\]"
+	    #term_title="\[\e]0;\W@\H\a\]"
+
+	    # hmm, with gnome-terminal 2.14, we need to drop the
+	    # bracketing \[ and \], because with those we get extra
+	    # cursor flicker
+	    term_title="\e]0;\W@\H\a"
 	    ;;
 	*)
 	    term_title=""
