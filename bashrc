@@ -241,8 +241,7 @@ umask 077
 setup_arch
 identify_location
 
-export MANPATH=${HOME}/local/${ARCH}/man
-export MANPATH=${MANPATH}:/usr/share/man:/usr/man
+export MANPATH=/usr/man:/usr/share/man
 export MANPATH=${MANPATH}:/usr/local/share/man:/usr/local/man
 export MANPATH=${MANPATH}:/usr/X11R6/man
 
