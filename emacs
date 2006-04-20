@@ -20,6 +20,11 @@
 (global-set-key "\e[5C" 'forward-word)       ; ctrl-right-arrow
 (global-set-key "\e[5D" 'backward-word)      ; ctrl-left-arrow
 
+(global-set-key "\e[A" 'backward-paragraph) ; ctrl-up-arrow
+(global-set-key "\e[B" 'forward-paragraph)  ; ctrl-down-arrow
+(global-set-key "\e[C" 'forward-word)       ; ctrl-right-arrow
+(global-set-key "\e[D" 'backward-word)      ; ctrl-left-arrow
+
 (global-set-key "\e[1;5A" 'backward-paragraph) ; ctrl-up-arrow
 (global-set-key "\e[1;5B" 'forward-paragraph)  ; ctrl-down-arrow
 (global-set-key "\e[1;5C" 'forward-word)       ; ctrl-right-arrow
