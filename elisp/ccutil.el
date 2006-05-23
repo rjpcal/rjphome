@@ -260,16 +260,10 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
             (replace-match (current-time-string) t t nil 1))))))
   nil)
 
-(defun ccutil-fixup-whitespace ()
-  "Untabify the buffer, and kill trailing whitespace on all lines."
-  (interactive)
-  ;; Skip fixup-whitespace for [.CH] files (i.e. those from iLab cvs system)
-  ;;(if (or (string= (substring (buffer-name) -2) ".C")
-  ;;        (string= (substring (buffer-name) -2) ".H"))
-  ;;    ()
-  (fixup-whitespace)
-  ;;  )
-  )
+(defun ccutil-write-file-hook ()
+  (if do-fixup-whitespace
+      (fixup-whitespace)
+    ()))
 
 (defun ccutil-c++-mode-hook ()
   ;; Make underscore "_" be considered a word-character instead of a
@@ -286,7 +280,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   ;; the moment:
   ;(add-hook 'local-write-file-hooks 'ccutil-update-writestamps)
 
-  (add-hook 'local-write-file-hooks 'ccutil-fixup-whitespace)
+  (add-hook 'local-write-file-hooks 'ccutil-write-file-hook)
 
   ;; key bindings
   (local-unset-key "\C-c\C-f")
@@ -311,6 +305,11 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   (local-set-key "\M-\C-?" 'ccutil-backward-nomenclature-kill)
 
   (setq column-number-mode t)
+
+  (defvar do-fixup-whitespace t
+    "*Whether to fixup whitespace when the current buffer is saved.")
+  (make-variable-buffer-local 'do-fixup-whitespace)
+  (setq do-fixup-whitespace t)
 
   ;; turn off abbrev mode (by passing a negative value)
   (abbrev-mode -1)
