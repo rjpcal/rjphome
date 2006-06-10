@@ -334,7 +334,7 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 ;; LaTeX
 ;;-----------------------------------------------------------------------
 (defun my-latex-mode-hook ()
-  (setq line-spacing 4)
+  ;;(setq line-spacing 4)
   (turn-on-auto-fill)
   ;;(set-face-attribute 'default nil :font "-*-LucidaTypewriter-Medium-R-Normal-Sans-12-120-*-*-*-*-*-*")
 )
