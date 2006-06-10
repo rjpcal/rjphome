@@ -299,6 +299,8 @@ case $- in
 	alias pwd='dirs -l'
 	alias matlab='matlab -nojvm -nosplash'
 
+	alias semacs='emacs --font "-*-LucidaTypewriter-Medium-R-Normal-Sans-12-*-*-*-*-*-*-*"'
+
 	if which less > /dev/null 2>&1; then
 	    alias more='less'
 	fi
