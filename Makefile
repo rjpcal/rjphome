@@ -34,9 +34,9 @@ cygwin: $(CYGWIN_TARGETS)
 worldread:
 	@for f in plan; do \
 		install \
-			--mode=0444 \
-			--preserve-timestamps \
-			--verbose \
+			-m 0444 \
+			-p \
+			-v \
 			$$f $(HOME)/.$$f; \
 	done
 
