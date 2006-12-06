@@ -399,8 +399,10 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 (setq-default case-fold-search nil)
 (setq-default case-replace nil)
 
-(set-foreground-color "white")
-(set-background-color "black")
+;(set-foreground-color "white")
+;(set-background-color "black")
+(set-foreground-color "black")
+(set-background-color "gray95")
 
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
@@ -475,7 +477,9 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
   ;; enable wheelmouse support by default
   (mwheel-install)
   ;; make switching frames works properly under the default click-to-focus
-  (setq focus-follows-mouse nil))
+  (setq focus-follows-mouse nil)
+  ;; set default font
+  (set-face-attribute 'default nil :font "-*-LucidaTypewriter-Medium-R-Normal-Sans-14-*-*-*-*-*-*-*"))
 
 ;; automatically read compressed files
 (auto-compression-mode t)
@@ -494,13 +498,19 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 ;; Variables set by emacs' customize wizard
 ;;-----------------------------------------------------------------------
 
+(unless x-no-window-manager
+)
+
 (custom-set-variables
   ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
   ;; Your init file should contain only one such instance.
  '(blink-cursor-delay 1.0)
  '(blink-cursor-interval 0.25)
  '(confirm-kill-emacs (quote yes-or-no-p))
- '(rmail-enable-mime t t)
+ '(pc-select-meta-moves-sexps t)
+ '(pc-select-selection-keys-only t)
+ '(pc-selection-mode t t)
+ '(rmail-enable-mime t)
  '(rmail-user-mail-address-regexp ".*rjp.*" t)
  '(show-trailing-whitespace t)
  '(user-mail-address "rjpeters@klab.caltech.edu")
@@ -509,10 +519,17 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
   ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
   ;; Your init file should contain only one such instance.
  '(cursor ((t (:background "salmon1"))))
- '(font-lock-comment-face ((((class color) (background dark)) (:foreground "FireBrick1"))))
- '(font-lock-constant-face ((((class color) (background dark)) (:foreground "Purple1"))))
- '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "dodger blue" :weight bold))))
- '(font-lock-keyword-face ((((class color) (background dark)) (:foreground "Cyan" :weight bold))))
- '(font-lock-string-face ((((class color) (background dark)) (:foreground "Sienna2"))))
- '(font-lock-type-face ((((class color) (background dark)) (:foreground "LawnGreen"))))
- '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "gold")))))
+ '(font-lock-comment-face ((((class color) (background dark)) (:foreground "FireBrick1"))
+			   (((class color) (background light)) (:foreground "FireBrick3"))))
+ '(font-lock-constant-face ((((class color) (background dark)) (:foreground "Purple1"))
+			    (((class color) (background light)) (:foreground "Purple1"))))
+ '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "dodger blue" :weight bold))
+				 (((class color) (background light)) (:foreground "blue" :weight bold))))
+ '(font-lock-keyword-face ((((class color) (background dark)) (:foreground "Cyan" :weight bold))
+			   (((class color) (background light)) (:foreground "DarkCyan" :weight bold)))) ;; Purple
+ '(font-lock-string-face ((((class color) (background dark)) (:foreground "Sienna2"))
+			  (((class color) (background light)) (:foreground "chocolate4")))) ;; RosyBrown
+ '(font-lock-type-face ((((class color) (background dark)) (:foreground "LawnGreen"))
+			(((class color) (background light)) (:foreground "ForestGreen")))) ;; ForestGreen
+ '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "gold"))
+				 (((class color) (background light)) (:foreground "DarkGoldenRod"))))) ;; DarkGoldenRod
