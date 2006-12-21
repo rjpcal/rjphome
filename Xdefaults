@@ -9,7 +9,7 @@
 */
 
 
-#define BLACK_MOOD
+#define WHITE_MOOD
 #define LARGE_FONT
 
 #ifdef SMALL_FONT
