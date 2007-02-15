@@ -54,7 +54,7 @@ function setup_prompt ()
 	# Only set the colors if the user is me!
 	rjpeters)
 	    case $HOSTNAME in
-		sideswipe*)
+		sideswipe*|laserbeak*)
 		    prompt_color="40;33;1;4" # yellow on black
 		    ;;
 		mirage*)
@@ -263,7 +263,10 @@ case $ARCH in
         export MANPATH=${MANPATH}:/opt/langtools/share/man:/opt/audio/share/man
         breaksw
 	;;
-    ppc)
+esac
+
+case `uname -s` in
+    Darwin)
 	# Initialize Fink if we're on ppc and it's available
 	if test -r /sw/bin/init.sh; then
 	    . /sw/bin/init.sh
