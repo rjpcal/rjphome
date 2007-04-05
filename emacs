@@ -100,6 +100,11 @@
         ;; try man ascii or man iso_8859-1 to see character codes
 
         (goto-char (point-min))
+        (while (search-forward "=0A" nil t)
+          ;; newline
+          (replace-match "\n" t t))
+
+        (goto-char (point-min))
         (while (search-forward "=0D" nil t)
           ;; newline
           (replace-match "\n" t t))
@@ -402,7 +407,7 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 ;(set-foreground-color "white")
 ;(set-background-color "black")
 (set-foreground-color "black")
-(set-background-color "gray95")
+(set-background-color "white")
 
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
