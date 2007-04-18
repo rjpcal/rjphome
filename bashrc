@@ -53,11 +53,11 @@ function setup_prompt ()
     case $USER in
 	# Only set the colors if the user is me!
 	rjpeters)
-	    case $HOSTNAME in
+	    case `hostname` in
 		sideswipe*|laserbeak*)
 		    prompt_color="40;33;1;4" # yellow on black
 		    ;;
-		mirage*)
+		mirage*|computron*)
 		    prompt_color="40;35;1;4" # magenta on black
 		    ;;
 		*.klab.caltech.edu|montaigne|hume*)
