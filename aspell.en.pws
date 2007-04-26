@@ -1,4 +1,4 @@
-personal_ws-1.1 en 268 
+personal_ws-1.1 en 284 
 AIC
 Acknowledgements
 Adami
@@ -46,6 +46,7 @@ GPL
 Gabbiani
 Gabor
 GameCube
+Gaussians
 GauthierAndersonTarr
 GauthierSkudlarskiGore
 GauthierTarrAnderson
@@ -88,6 +89,7 @@ Kruschke
 Kullback
 KustovRobinson
 LGN
+Laplacian
 LauritzenKrukowskiMiller
 LeeIttiKoch
 Leibler
@@ -132,9 +134,11 @@ PolatSagi
 PosnerCohen
 Privitera
 PriviteraStark
+RGB
 RSD
 RSDs
 RXM
+Reichardt
 Reinagel
 ReinagelZador
 RiesenhuberPoggio
@@ -185,13 +189,17 @@ analyses
 auditorily
 automata
 axonal
+bilinearly
 biomimetic
 chinrest
 chrominance
 conspicuity
+convolving
 decorrelates
+deemphasized
 discretization
 discriminability
+discriminable
 dissociations
 distractor
 downloadable
@@ -205,6 +213,7 @@ foveal
 gabor
 grayscale
 gyrus
+heuristic's
 hypercolumn
 hypercolumns
 iLab
@@ -226,11 +235,13 @@ microsaccades
 neurobiological
 neurobiologically
 neurocomputational
+neuromorphic
 neurophysiological
 neuropsychological
 neuroscientist
 oculomotor
 online
+operationalize
 opponency
 orthorectified
 photorealistic
@@ -260,10 +271,15 @@ spectorKushnir
 striatal
 striatum
 strived
+subchannel
+subchannels
+subcomponents
 subpanel
 subpanels
+subsampling
 synergize
 thalamocortical
 transsaccadic
+upscaled
 validities
 videogame
