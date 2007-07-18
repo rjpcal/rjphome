@@ -33,10 +33,27 @@
 ;;-----------------------------------------------------------------------
 ;; LISP search path
 ;;-----------------------------------------------------------------------
-(setq load-path (append load-path (list "~/home/base/elisp")))
+(setq load-path (append (list "~/home/base/elisp") load-path))
 
 (load "~/home/base/elisp/vc-svn.el")
 (add-to-list 'vc-handled-backends 'SVN)
+
+;;-----------------------------------------------------------------------
+;; Org mode
+;;-----------------------------------------------------------------------
+
+;; (add-to-list 'load-path "PATH_TO_WHERE_YOU_UNPACKED_ORGMODE")
+(require 'org-install)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
+(setq org-agenda-files (list "~/home/org/gtd.org"))
+(setq org-agenda-custom-commands
+      '(("w" todo "WAITING" nil)
+	("W" tags-todo "WORK" nil)
+	("n" todo "NEXT" nil)
+	("N" tags-todo "WORK/NEXT" nil)))
 
 ;;-----------------------------------------------------------------------
 ;; General function definitions
@@ -275,19 +292,6 @@
 
         ))))
 
-(defun new-gtd-project ()
-  "Compose a new GTD project file."
-  (interactive)
-  (let ((mail-archive-file-name nil))
-    (compose-mail nil "" (cons (cons "FCC" "~/home/gtd/projects.rmail") ()) ))
-  (beginning-of-buffer)
-  (kill-line)
-  (kill-line)
-  (end-of-line)
-)
-
-(global-set-key "\C-cp" 'new-gtd-project)
-
 (require 'sort)
 (require 'rmail)
 
@@ -478,7 +482,7 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 ;; don't load site-lisp/default.el
 (setq inhibit-default-init t)
 
-(when window-system
+(when (string-equal window-system "x")
   ;; enable wheelmouse support by default
   (mwheel-install)
   ;; make switching frames works properly under the default click-to-focus
