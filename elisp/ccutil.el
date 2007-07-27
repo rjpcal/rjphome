@@ -306,6 +306,8 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 
   (setq column-number-mode t)
 
+  (setq case-fold-search nil)
+
   (defvar do-fixup-whitespace t
     "*Whether to fixup whitespace when the current buffer is saved.")
   (make-variable-buffer-local 'do-fixup-whitespace)
@@ -315,7 +317,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
   (abbrev-mode -1)
 
   ;; turn off "electric indentation" (toggle with C-c C-l)
-  (c-toggle-electric-state -1)
+  ;; (c-toggle-electric-state -1)
 )
 
 (setq c++-mode-hook 'ccutil-c++-mode-hook)

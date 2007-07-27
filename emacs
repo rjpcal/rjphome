@@ -50,10 +50,23 @@
 (setq org-log-done t)
 (setq org-agenda-files (list "~/home/org/gtd.org"))
 (setq org-agenda-custom-commands
-      '(("w" todo "WAITING" nil)
-	("W" tags-todo "WORK" nil)
-	("n" todo "NEXT" nil)
-	("N" tags-todo "WORK/NEXT" nil)))
+      '(("f" tags "FUTUREPROJECT" nil)
+
+	("n" tags-todo "WORK/NEXT" nil)
+	("o" tags-todo "HOME/NEXT" nil)
+	("p" tags-todo "HOMECOMPUTER/NEXT" nil)
+	("q" tags-todo "ERRAND/NEXT" nil)
+	("r" tags-todo "COMMUTE/NEXT" nil)
+
+	("u" tags-todo "-WORK-HOME-HOMECOMPUTER-ERRAND-COMMUTE" nil)
+	("v" tags-todo "WORK" nil)
+	("w" tags-todo "HOME" nil)
+	("x" tags-todo "HOMECOMPUTER" nil)
+	("y" tags-todo "ERRAND" nil)
+	("z" tags-todo "COMMUTE" nil)
+
+	("W" todo "WAITING" nil)
+	))
 
 ;;-----------------------------------------------------------------------
 ;; General function definitions
@@ -405,8 +418,8 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 ; following:
 ; (modify-syntax-entry ?_ " ")
 
-(setq-default case-fold-search nil)
 (setq-default case-replace nil)
+(setq-default tags-case-fold-search nil)
 
 ;(set-foreground-color "white")
 ;(set-background-color "black")
@@ -511,22 +524,28 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 )
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(blink-cursor-delay 1.0)
  '(blink-cursor-interval 0.25)
  '(confirm-kill-emacs (quote yes-or-no-p))
+ '(org-stuck-projects (quote ("+LEVEL=2/-DONE" ("NEXT" "WAITING") ("FUTUREPROJECT" "ONGOING" "DONEPROJECT") "")))
  '(pc-select-meta-moves-sexps t)
  '(pc-select-selection-keys-only t)
- '(pc-selection-mode t t)
+ '(pc-selection-mode t nil (pc-select))
  '(rmail-enable-mime t)
- '(rmail-user-mail-address-regexp ".*rjp.*" t)
+ '(rmail-user-mail-address-regexp ".*rjp.*")
+ '(safe-local-variable-values (quote ((do-fixup-whitespace))))
  '(show-trailing-whitespace t)
  '(user-mail-address "rjpeters@klab.caltech.edu")
  '(widget-image-enable nil))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "salmon1"))))
  '(font-lock-comment-face ((((class color) (background dark)) (:foreground "FireBrick1"))
 			   (((class color) (background light)) (:foreground "FireBrick3"))))
