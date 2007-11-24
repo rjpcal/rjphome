@@ -54,17 +54,16 @@
 
 	("n" tags-todo "WORK/NEXT" nil)
 	("o" tags-todo "HOME/NEXT" nil)
-	("p" tags-todo "HOMECOMPUTER/NEXT" nil)
-	("q" tags-todo "ERRAND/NEXT" nil)
-	("r" tags-todo "COMMUTE/NEXT" nil)
+	("p" tags-todo "ERRAND/NEXT" nil)
+	("q" tags-todo "COMMUTE/NEXT" nil)
 
-	("u" tags-todo "-WORK-HOME-HOMECOMPUTER-ERRAND-COMMUTE" nil)
+	("u" tags-todo "-WORK-HOME-ERRAND-COMMUTE" nil)
 	("v" tags-todo "WORK" nil)
 	("w" tags-todo "HOME" nil)
-	("x" tags-todo "HOMECOMPUTER" nil)
-	("y" tags-todo "ERRAND" nil)
-	("z" tags-todo "COMMUTE" nil)
+	("x" tags-todo "ERRAND" nil)
+	("y" tags-todo "COMMUTE" nil)
 
+	("N" todo "NEXT" nil)
 	("W" todo "WAITING" nil)
 	))
 
