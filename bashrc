@@ -288,9 +288,11 @@ case $- in
 	FIGNORE=""   # filename suffixes to be ignored by completion
 	HISTSIZE=500 # number of commands to store in history
 	HISTTIMEFORMAT="[%c] " # stftime format for storing in history
-	unset -v HISTFILE # don't save/load command history from a file
+	HISTFILE=$HOME/home/history/`date +%Y%m%d`-`hostname`-$(basename `tty`)
 
 	setup_prompt
+
+	PROMPT_COMMAND="history 1 >> ${HISTFILE}.raw; echo -n [\`pwd\`] >> ${HISTFILE}.raw; "
 
 	setup_ls_colors
 
