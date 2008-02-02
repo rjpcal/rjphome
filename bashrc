@@ -290,6 +290,8 @@ case $- in
 	HISTTIMEFORMAT="[%Y-%m-%d %H:%M:%S %Z %a] " # stftime format for storing in history
 	HISTFILE=$HOME/home/history/`date +%Y%m%d`-$LOCATION-`hostname`-$(basename `tty`)
 
+	mkdir -p $HOME/home/history
+
 	setup_prompt
 
 	PREV_PWD=$PWD
