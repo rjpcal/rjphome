@@ -114,12 +114,14 @@
 
         ))))
 
-(defun unmangle-email ()
+(defun unmangle-region ()
   "Fix formatting stuff in emails."
   (interactive)
   (save-excursion
     (save-restriction
       (save-match-data
+
+	(narrow-to-region (point) (mark))
 
         ;; this one needs to stay first
         (goto-char (point-min))
