@@ -239,6 +239,14 @@ function setup_arch ()
 }
 
 ######################################################################
+# No-op function to facilitate comments in the history files
+
+function histnote ()
+{
+    :
+}
+
+######################################################################
 # main initialization code
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/sbin:/sbin
