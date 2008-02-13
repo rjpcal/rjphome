@@ -317,8 +317,14 @@ case $- in
 
 	setup_prompt
 
+	if test "x$SSH_CONNECTION" = "x"; then
+	    GET_LAST_HISTORY_COMMAND="echo console login `tty`"
+	else
+	    GET_LAST_HISTORY_COMMAND="echo ssh connection $SSH_CONNECTION"
+	fi
+
 	PREV_PWD=$PWD
-	PROMPT_COMMAND="echo \"pwd=\$PREV_PWD user=\$USER uid=\$UID //// \`history 1\`\" >> ${HISTFILE}.raw; PREV_PWD=\$PWD"
+	PROMPT_COMMAND="echo \"pwd=\$PREV_PWD user=\$USER uid=\$UID //// \`\$GET_LAST_HISTORY_COMMAND\`\" >> ${HISTFILE}.raw; PREV_PWD=\$PWD; GET_LAST_HISTORY_COMMAND='history 1'"
 
 	setup_ls_colors
 
