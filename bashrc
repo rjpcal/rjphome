@@ -311,20 +311,22 @@ case $- in
 	FIGNORE=""   # filename suffixes to be ignored by completion
 	HISTSIZE=500 # number of commands to store in history
 	HISTTIMEFORMAT="[%Y-%m-%d %H:%M:%S %Z %a] " # stftime format for storing in history
-	HISTFILE=$HOME/home/history/`date +%Y%m%d`-$LOCATION-`hostname`-$(basename `tty`)
+	#HISTFILE=$HOME/home/history/`date +%Y%m%d`-$LOCATION-`hostname`-$(basename `tty`)
+	HISTFILE=""
+	HISTFILERAW=$HOME/home/history/`date +%Y%m%d`-$LOCATION-`hostname`-$(basename `tty`).raw
 
 	mkdir -p $HOME/home/history
 
 	setup_prompt
 
 	if test "x$SSH_CONNECTION" = "x"; then
-	    GET_LAST_HISTORY_COMMAND="echo console login `tty`"
+	    GET_LAST_HISTORY_COMMAND="echo 0 `date \"+$HISTTIMEFORMAT\"` console login `tty`"
 	else
-	    GET_LAST_HISTORY_COMMAND="echo ssh connection $SSH_CONNECTION"
+	    GET_LAST_HISTORY_COMMAND="echo 0 `date \"+$HISTTIMEFORMAT\"` ssh connection $SSH_CONNECTION"
 	fi
 
 	PREV_PWD=$PWD
-	PROMPT_COMMAND="echo \"pwd=\$PREV_PWD user=\$USER uid=\$UID //// \`\$GET_LAST_HISTORY_COMMAND\`\" >> ${HISTFILE}.raw; PREV_PWD=\$PWD; GET_LAST_HISTORY_COMMAND='history 1'"
+	PROMPT_COMMAND="echo \"pwd=\$PREV_PWD user=\$USER uid=\$UID //// \`\$GET_LAST_HISTORY_COMMAND\`\" >> $HISTFILERAW; PREV_PWD=\$PWD; GET_LAST_HISTORY_COMMAND='history 1'"
 
 	setup_ls_colors
 
