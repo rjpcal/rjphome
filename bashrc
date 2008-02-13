@@ -34,6 +34,12 @@ function identify_location ()
 
 function setup_prompt ()
 {
+    if test $# -gt 0; then
+	local default_prompt_token=$1
+    else
+	local default_prompt_token="$"
+    fi
+
     #"\e[" is the start of the escape sequence
     #"1" means bold
     #"m" is end of escape sequence.
@@ -78,7 +84,6 @@ function setup_prompt ()
     local escape1=""
     local main_prompt=""
     local prompt_content=""
-    local prompt_token="$"
     local escape2=""
     local term_title=""
 
@@ -98,12 +103,12 @@ function setup_prompt ()
 
     case $USER in
 	rjpeters)
-	    prompt_token="$"
+	    prompt_token=$default_prompt_token
 	    ;;
 	*)
 	    case $USERNAME in
 		rjpeters)
-		    prompt_token="$"
+		    prompt_token=$default_prompt_token
 		    ;;
 		*)
 		    prompt_content="\u@${prompt_content}"
@@ -247,6 +252,16 @@ function histnote ()
 }
 
 ######################################################################
+# No-op function to facilitate comments in the history files
+
+function offtherecord ()
+{
+    unset PROMPT_COMMAND
+    unset HISTFILE
+    setup_prompt '*'
+}
+
+######################################################################
 # main initialization code
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/sbin:/sbin
@@ -356,6 +371,6 @@ fi
 
 ### Clean up now-unneeded function definitions
 unset -f identify_location
-unset -f setup_prompt
+#unset -f setup_prompt
 unset -f setup_ls_colors
 unset -f setup_arch
