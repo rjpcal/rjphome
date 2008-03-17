@@ -341,7 +341,9 @@ case $- in
 	alias semacs='emacs --font "-*-LucidaTypewriter-Medium-R-Normal-Sans-12-*-*-*-*-*-*-*"'
 
 	# keep this last
-	alias which='alias | which -i'
+	if which -i which > /dev/null 2>&1; then
+	    alias which='alias | which -i'
+	fi
 
         # specify location of readline startup file
 	export INPUTRC=${HOME}/.inputrc
