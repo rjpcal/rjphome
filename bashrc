@@ -341,7 +341,7 @@ case $- in
 	alias semacs='emacs --font "-*-LucidaTypewriter-Medium-R-Normal-Sans-12-*-*-*-*-*-*-*"'
 
 	# keep this last
-	if which -i which > /dev/null 2>&1; then
+	if which -i which < /dev/null > /dev/null 2>&1; then
 	    alias which='alias | which -i'
 	fi
 
