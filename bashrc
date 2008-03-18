@@ -370,7 +370,13 @@ export LC_COLLATE=C
 # we don't need to add ${HOME}/matlab because this is done
 # automatically (somehow); if it is added explicitly here, then MATLAB
 # complains of a 'duplicate directory'
-export MATLABPATH=./matlab:${HOME}/science/matlab
+export MATLABPATH=./matlab
+if test -d ${HOME}/science/matlab; then
+    export MATLABPATH="${MATLABPATH}:${HOME}/science/matlab"
+fi
+if test -d ${HOME}/projects/matlab; then
+    export MATLABPATH="${MATLABPATH}:${HOME}/projects/matlab"
+fi
 
 ### Source a system-local init file, if it exists, and reset important env vars beforehand
 export CPPFLAGS=""
