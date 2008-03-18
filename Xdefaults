@@ -50,6 +50,7 @@
 #endif
 
 Emacs*toolBar: off
+Emacs*FontBackend: xft
 
 /*xterm*font: 9x15*/
 xterm*font: -B&H-LucidaTypewriter-Medium-R-Normal-Sans-12-*-*-*-*-*-*-*
