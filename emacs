@@ -33,10 +33,15 @@
 ;;-----------------------------------------------------------------------
 ;; LISP search path
 ;;-----------------------------------------------------------------------
-(setq load-path (append (list "~/home/base/elisp") load-path))
+(setq load-path (append load-path (list "~/home/base/elisp")))
 
-(load "~/home/base/elisp/vc-svn.el")
-(add-to-list 'vc-handled-backends 'SVN)
+(if (member 'SVN vc-handled-backends)
+    ()
+  (load "~/home/base/elisp/vc-svn.el")
+  (add-to-list 'vc-handled-backends 'SVN))
+
+;(load "~/home/base/elisp/vc-svn.el")
+;(add-to-list 'vc-handled-backends 'SVN)
 
 ;;-----------------------------------------------------------------------
 ;; Org mode
@@ -502,7 +507,8 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
   ;; make switching frames works properly under the default click-to-focus
   (setq focus-follows-mouse nil)
   ;; set default font
-  (set-face-attribute 'default nil :font "-*-LucidaTypewriter-Medium-R-Normal-Sans-14-*-*-*-*-*-*-*"))
+  ; (set-face-attribute 'default nil :font "-*-LucidaTypewriter-Medium-R-Normal-Sans-14-*-*-*-*-*-*-*")
+  )
 
 ;; automatically read compressed files
 (auto-compression-mode t)
