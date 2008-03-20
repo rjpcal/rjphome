@@ -527,29 +527,29 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 ;; File-save history
 ;;-----------------------------------------------------------------------
 
-(defvar emacs-history-save-filename "~/home/history/emacs-history"
+(defvar emacs-history-filename "~/home/history/emacs-history"
   "*File to which emacs history (record of file opens and saves)
 should be written.")
 
-(defvar emacs-history-last-save-time
+(defvar emacs-history-last-save-time 0
   "Time when emacs save history was last updated for the current
 buffer.")
 (make-variable-buffer-local 'emacs-history-last-save-time)
 
 (defvar emacs-history-save-interval 120
   "*Minimum interval, in seconds, between consecutive writes to
-emacs-history-save-filename, for a given buffer.")
+emacs-history-filename, for a given buffer.")
 
 (defun save-history-line (type)
   "Generate a history line of the given type, and write it to the
-file specified by emacs-history-save-filename."
+file specified by emacs-history-filename."
   (condition-case error-data
-      (if (and emacs-history-save-filename
-	       (> (length emacs-history-save-filename) 0)
-	       (file-writable-p emacs-history-save-filename))
+      (if (and emacs-history-filename
+	       (> (length emacs-history-filename) 0)
+	       (file-writable-p emacs-history-filename))
 	  (let ((file-name-to-save (buffer-file-name)))
 	    (with-temp-buffer
-	      (insert (format "%s | host=%s | location=%s | type=%s | user=%s | uid=%d | pid=%d | file=%s \n"
+	      (insert (format "%s | host=%s | location=%s | type=%s | user=%s | uid=%d | pid=%d | file=%s\n"
 			      (format-time-string "%Y-%m-%d %H:%M:%S %Z %a")
 			      (system-name)
 			      (getenv "LOCATION")
@@ -559,28 +559,34 @@ file specified by emacs-history-save-filename."
 			      (emacs-pid)
 			      file-name-to-save))
 	      (append-to-file (point-min) (point-max)
-			      emacs-history-save-filename))))
+			      emacs-history-filename))))
     (error (message "caught an error in save-history-line"))))
 
 (defun update-history-for-file-save ()
-  "Hook for updating the file specified by emacs-history-save-filename
+  "Hook for updating the file specified by emacs-history-filename
 whenever a buffer is saved, but not more often than the interal given
 by emacs-history-save-interval."
-  (if (time-less-p (seconds-to-time emacs-history-save-interval)
-		   (time-since emacs-history-last-save-time))
+
+; this is not in emacs 21.3
+;  (if (time-less-p (seconds-to-time emacs-history-save-interval)
+;		   (time-since emacs-history-last-save-time))
+
+  (if (or (not emacs-history-last-save-time)
+	  (< emacs-history-save-interval
+	     (- (float-time) emacs-history-last-save-time)))
       (progn
 	(save-history-line "emacs-save")
-	(setq emacs-history-last-save-time (current-time))))
+	(setq emacs-history-last-save-time (float-time))))
   nil)
 
 (defun update-history-for-file-open ()
-  "Hook for updating the file specified by emacs-history-save-filename
+  "Hook for updating the file specified by emacs-history-filename
 whenever a file is opened into a buffer."
   (save-history-line "emacs-open")
   nil)
 
-(add-hook 'write-file-hooks 'update-history-for-file-save)
-(add-hook 'find-file-hook 'update-history-for-file-open)
+(add-hook 'after-save-hook 'update-history-for-file-save)
+(add-hook 'find-file-hooks 'update-history-for-file-open) ; switch to find-file-hook (no 's') after emacs 22.1
 
 ;;-----------------------------------------------------------------------
 ;; Variables set by emacs' customize wizard
