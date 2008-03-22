@@ -1,0 +1,18 @@
+# -*- shell-script -*-
+
+# $HeadURL$
+# $Id$
+
+export PATH=${PATH}:/Users/rjpeters/local/groovx-aqua/bin
+export TERM=xterm-color
+export GPG_IDENTITY="rjpcal@yahoo.com"
+
+export PATH="/usr/local/subversion-1.2.3/bin:$PATH"
+export PATH=${PATH}:/usr/games
+
+#export QTDIR=/usr/local/Trolltech/qt-mac-free-3.3.5
+#export PATH="${PATH}:${QTDIR}/bin"
+#export DYLD_LIBRARY_PATH="${DYLD_LIBRARY_PATH}:${QTDIR}/lib"
+#export QMAKESPEC="${QTDIR}/mkspecs/darwin-g++"
+
+#export BUMBLEBEE=192.168.0.137
