@@ -1,0 +1,6 @@
+# -*- shell-script -*-
+
+# $HeadURL$
+# $Id$
+
+alias xftemacs='emacs-snapshot -fn "Monospace-11"'
