@@ -1,0 +1,53 @@
+# -*- shell-script -*-
+
+# $HeadURL$
+# $Id$
+
+export PATH=$HOME/local/groovx/bin:${PATH}
+export PATH=$HOME/local/firefox:${PATH}
+alias matlab='/lab/local/bin/matlab -nojvm -nosplash'
+
+# this is a cue to the 'nvidia' driver to force glXSwapBuffers to sync
+# to the monitor's vertical refresh rate
+export __GL_SYNC_TO_VBLANK=1
+
+case `hostname` in
+    ilab9.usc.edu)
+	#export CPPFLAGS="$CPPFLAGS -I/usr/local/xerces-c-1.7.0/include"
+	#export LDFLAGS="$LDFLAGS -L/usr/local/xerces-c-1.7.0/lib"
+
+	#export CPPFLAGS="$CPPFLAGS -I$HOME/local/libdc1394-2.0.1/include"
+	#export LDFLAGS="$LDFLAGS -L$HOME/local/libdc1394-2.0.1/lib"
+
+	export CPPFLAGS="$CPPFLAGS -I$HOME/local/qwt-5.0.0/include"
+	export LDFLAGS="$LDFLAGS -L$HOME/local/qwt-5.0.0/lib"
+
+	#export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:$HOME/local/libdc1394-1.1.0/lib"
+
+	export PERL5LIB="$HOME/projects/saliency/bin"
+	;;
+
+    iMaster.usc.edu)
+	export PERL5LIB="$HOME/alt/saliency-imaster/bin"
+	;;
+
+    iBeo.usc.edu)
+	export PERL5LIB="/home/tmp/u/rjpeters/saliency/bin"
+	export CPPFLAGS="$CPPFLAGS -I/usr/local/include"
+	export LDFLAGS="$LDFLAGS -L/usr/local/lib"
+	;;
+esac
+
+export PYTHONPATH=/usr/lib/python2.2/site-packages
+
+export OMNINAMES_LOGDIR=$HOME/local/var/omninames
+
+if test -d /usr/include/kde; then
+    export CPPFLAGS="$CPPFLAGS -I/usr/include/kde"
+fi
+
+if alias rm > /dev/null 2>&1; then
+    unalias rm
+fi
+
+alias xftemacs='~/local/emacs-cvs/bin/emacs -fn "Monospace-10"'
