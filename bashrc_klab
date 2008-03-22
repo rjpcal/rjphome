@@ -1,0 +1,26 @@
+#!/bin/bash -*- shell-script -*-
+
+# klab-local additions to ~/.bashrc
+
+# Rob Peters <rjpeters@klab.caltech.edu>
+
+# $HeadURL$
+# $Id$
+
+export PATH=${PATH}:${HOME}/alt/local/groovx/bin:/klab/software/bin
+
+export PRINTER=nature
+
+export MAIL=/var/mail/rjpeters
+
+export MOZILLA_FIVE_HOME=/usr/lib/mozilla-1.4.1
+
+# ArcExplorer: http://www.esri.com/software/arcexplorer/download9.html#linux
+#export AEJHOME=/home/rjpeters/local/ArcExplorer/aej40exe
+#export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${AEJHOME}/lib
+#export PATH=${PATH}:${AEJHOME}/bin
+
+# Java
+#export JAVA_HOME=/usr/java/j2sdk1.4.2_05
+
+export GPG_IDENTITY="rjpeters@klab.caltech.edu"
