@@ -1,0 +1,27 @@
+#!/bin/sh
+
+export CPPFLAGS="$CPPFLAGS -I$HOME/local/ffmpeg-svn/include"
+export LDFLAGS="$LDFLAGS -L$HOME/local/ffmpeg-svn/lib"
+
+export CPPFLAGS="$CPPFLAGS -I$HOME/local/opencv-1.0.0/include"
+export LDFLAGS="$LDFLAGS -L$HOME/local/opencv-1.0.0/lib"
+
+export CPPFLAGS="$CPPFLAGS -I$HOME/local/libdc1394-2.0.1/include"
+export LDFLAGS="$LDFLAGS -L$HOME/local/libdc1394-2.0.1/lib"
+
+export CPPFLAGS="$CPPFLAGS -I$HOME/local/fftw-3.1.2/include"
+export LDFLAGS="$LDFLAGS -L$HOME/local/fftw-3.1.2/lib"
+
+export PATH="/Applications/Inkscape.app/Contents/Resources/bin:$PATH"
+
+#export PATH="/usr/local/graphviz-2.12/bin:$PATH"
+export PERL5LIB="/usr/local/graphviz-2.12/lib/graphviz/perl:$PERL5LIB"
+
+export PATH="$PATH:$HOME/local/groovx/bin"
+
+alias matlab='/Applications/MATLAB74/bin/matlab -nojvm -nodesktop -nosplash'
+
+# Setting the path for DarwinPorts.
+#export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs'

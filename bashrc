@@ -378,11 +378,20 @@ if test -d ${HOME}/projects/matlab; then
     export MATLABPATH="${MATLABPATH}:${HOME}/projects/matlab"
 fi
 
+### home computer
+# export HOMEIP=24.205.94.103 # expired 2008-Mar-20
+export HOMEIP=75.142.48.226
+
 ### Source a system-local init file, if it exists, and reset important env vars beforehand
 export CPPFLAGS=""
 export LDFLAGS=""
 if test -r ~/.bashrc_local; then
     . ~/.bashrc_local
+fi
+
+if test -r ~/home/base/bashrc_$LOCATION; then
+    echo "loading ~/home/base/bashrc_$LOCATION"
+    . ~/home/base/bashrc_$LOCATION
 fi
 
 ### Clean up now-unneeded function definitions
