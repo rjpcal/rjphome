@@ -390,7 +390,6 @@ if test -r ~/.bashrc_local; then
 fi
 
 if test -r ~/home/base/bashrc_$LOCATION; then
-    echo "loading ~/home/base/bashrc_$LOCATION"
     . ~/home/base/bashrc_$LOCATION
 fi
 
