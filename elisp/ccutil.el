@@ -265,6 +265,10 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
       (fixup-whitespace)
     ()))
 
+(defvar do-fixup-whitespace t
+  "*Whether to fixup whitespace when the current buffer is saved.")
+(make-variable-buffer-local 'do-fixup-whitespace)
+
 (defun ccutil-c++-mode-hook ()
   ;; Make underscore "_" be considered a word-character instead of a
   ;; whitespace character (so that characters on either side of an
@@ -308,10 +312,12 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 
   (setq case-fold-search nil)
 
-  (defvar do-fixup-whitespace t
-    "*Whether to fixup whitespace when the current buffer is saved.")
-  (make-variable-buffer-local 'do-fixup-whitespace)
   (setq do-fixup-whitespace t)
+
+  (if (string-match "lighttpd" (buffer-file-name))
+      (progn
+	(setq do-fixup-whitespace nil)
+	(setq c-file-style "linux")))
 
   ;; turn off abbrev mode (by passing a negative value)
   (abbrev-mode -1)
