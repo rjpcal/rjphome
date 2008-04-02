@@ -48,7 +48,7 @@
 ;;-----------------------------------------------------------------------
 
 ;; (add-to-list 'load-path "PATH_TO_WHERE_YOU_UNPACKED_ORGMODE")
-(load "~/home/base/elisp/org.el")
+(load "~/home/base/elisp/org.elc")
 
 (require 'org-install)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
