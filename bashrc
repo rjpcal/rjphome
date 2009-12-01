@@ -60,7 +60,7 @@ function setup_prompt ()
 	# Only set the colors if the user is me!
 	rjpeters)
 	    case `hostname` in
-		sideswipe*|laserbeak*)
+		sideswipe*|laserbeak*|cosmos*)
 		    prompt_color="40;33;1;4" # yellow on black
 		    ;;
 		mirage*|computron*)
@@ -332,6 +332,8 @@ case $- in
 
 	if ls -F --color=tty ~/.bashrc > /dev/null 2>&1; then
 	    alias ls='ls -F --color=tty'
+	elif ls -FG ~/.bashrc > /dev/null 2>&1; then
+	    alias ls='ls -FG'
 	elif ls -F ~/.bashrc > /dev/null 2>&1; then
 	    alias ls='ls -F'
 	fi

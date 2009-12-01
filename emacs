@@ -594,9 +594,6 @@ whenever a file is opened into a buffer."
 ;; Variables set by emacs' customize wizard
 ;;-----------------------------------------------------------------------
 
-(unless x-no-window-manager
-)
-
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
