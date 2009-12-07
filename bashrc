@@ -79,6 +79,10 @@ function setup_prompt ()
 		    prompt_color="40;36;1;4" # cyan on black
 	    esac
 	    ;;
+
+	root)
+	    prompt_color="41;37;1;4" # root gets bold-white-on-red
+	    ;;
     esac
 
     local escape1=""
@@ -236,7 +240,6 @@ function setup_arch ()
     elif test "`uname -m`" = "Power Macintosh"; then
 	ARCH="ppc"
     else
-	echo "Warning: unknown architecture, setting ARCH to 'unknown'"
 	ARCH="unknown"
     fi
 
@@ -301,6 +304,10 @@ export PATH=${HOME}/local/bin:${HOME}/local/${ARCH}/bin:${PATH}
 
 case $- in
     *i*)  # interactive shell
+
+	if test x$ARCH = xunknown; then
+	    echo "Warning: unknown architecture, setting ARCH to 'unknown'"
+	fi
 
 	if test x$LOCATION = xunknown; then
 	    echo "Warning! Location unknown!"
@@ -382,7 +389,11 @@ fi
 
 ### home computer
 # export HOMEIP=24.205.94.103 # expired 2008-Mar-20
-export HOMEIP=75.142.48.226
+# export HOMEIP=75.142.48.226
+# export HOMEIP=76.167.221.245 # rr
+# export HOMEIP=76.172.150.216 # rr
+#export HOMEIP=76.94.45.138 # rr
+export HOMEIP=76.91.31.24 # rr
 
 ### Source a system-local init file, if it exists, and reset important env vars beforehand
 export CPPFLAGS=""
