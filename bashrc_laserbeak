@@ -19,6 +19,8 @@ export PERL5LIB="/usr/local/graphviz-2.12/lib/graphviz/perl:$PERL5LIB"
 
 export PATH="$PATH:$HOME/local/groovx/bin"
 
+export ECTEST="64.81.40.28"
+
 alias matlab='/Applications/MATLAB74/bin/matlab -nojvm -nodesktop -nosplash'
 
 # Setting the path for DarwinPorts.
