@@ -169,6 +169,11 @@
           (replace-match "$" t t))
 
         (goto-char (point-min))
+        (while (search-forward "=2C" nil t)
+          ;; comma
+          (replace-match "," t t))
+
+        (goto-char (point-min))
         (while (search-forward "=2E" nil t)
           ;; period
           (replace-match "." t t))
