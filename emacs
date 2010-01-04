@@ -47,13 +47,14 @@
 ;; Org mode
 ;;-----------------------------------------------------------------------
 
-;; (add-to-list 'load-path "PATH_TO_WHERE_YOU_UNPACKED_ORGMODE")
-(load "~/home/base/elisp/org.elc")
+(setq load-path (cons "~/home/base/elisp/org-6.33f/lisp" load-path))
+;; (load "~/home/base/elisp/org.elc")
 
 (require 'org-install)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
 (setq org-log-done t)
 (setq org-agenda-files (list "~/home/org/gtd.org"))
 (setq org-agenda-custom-commands
