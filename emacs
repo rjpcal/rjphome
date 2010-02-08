@@ -437,8 +437,8 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 
 ;(set-foreground-color "white")
 ;(set-background-color "black")
-(set-foreground-color "black")
-(set-background-color "white")
+;(set-foreground-color "black")
+;(set-background-color "white")
 
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
@@ -624,17 +624,10 @@ whenever a file is opened into a buffer."
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "salmon1"))))
- '(font-lock-comment-face ((((class color) (background dark)) (:foreground "FireBrick1"))
-			   (((class color) (background light)) (:foreground "FireBrick3"))))
- '(font-lock-constant-face ((((class color) (background dark)) (:foreground "Purple1"))
-			    (((class color) (background light)) (:foreground "Purple1"))))
- '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "dodger blue" :weight bold))
-				 (((class color) (background light)) (:foreground "blue" :weight bold))))
- '(font-lock-keyword-face ((((class color) (background dark)) (:foreground "Cyan" :weight bold))
-			   (((class color) (background light)) (:foreground "DarkCyan" :weight bold)))) ;; Purple
- '(font-lock-string-face ((((class color) (background dark)) (:foreground "Sienna2"))
-			  (((class color) (background light)) (:foreground "chocolate4")))) ;; RosyBrown
- '(font-lock-type-face ((((class color) (background dark)) (:foreground "LawnGreen"))
-			(((class color) (background light)) (:foreground "ForestGreen")))) ;; ForestGreen
- '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "gold"))
-				 (((class color) (background light)) (:foreground "DarkGoldenRod"))))) ;; DarkGoldenRod
+ '(font-lock-comment-face ((((class color) (background dark)) (:foreground "FireBrick1")) (((class color) (background light)) (:foreground "FireBrick3"))))
+ '(font-lock-constant-face ((((class color) (background dark)) (:foreground "Purple1")) (((class color) (background light)) (:foreground "Purple1"))))
+ '(font-lock-function-name-face ((((class color) (background dark)) (:foreground "dodger blue" :weight bold)) (((class color) (background light)) (:foreground "blue" :weight bold))))
+ '(font-lock-keyword-face ((((class color) (background dark)) (:foreground "Cyan" :weight bold)) (((class color) (background light)) (:foreground "DarkCyan" :weight bold))))
+ '(font-lock-string-face ((((class color) (background dark)) (:foreground "Sienna2")) (((class color) (background light)) (:foreground "chocolate4"))))
+ '(font-lock-type-face ((((class color) (background dark)) (:foreground "LawnGreen")) (((class color) (background light)) (:foreground "ForestGreen"))))
+ '(font-lock-variable-name-face ((((class color) (background dark)) (:foreground "gold")) (((class color) (background light)) (:foreground "DarkGoldenRod")))))
