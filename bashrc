@@ -55,28 +55,29 @@ function setup_prompt ()
     # substituting the time in 24-hour format, so we use the 12-hour am/pm
     # sequence \@ instead
 
-    local prompt_color="40;37;1;4"  # default color is bold-white-on-black
+    local bkg=40
+    local prompt_color="$bkg;37;1;4"  # default color is bold-white-on-black
     case $USER in
 	# Only set the colors if the user is me!
 	rjpeters)
 	    case `hostname` in
 		sideswipe*|laserbeak*|cosmos*)
-		    prompt_color="40;33;1;4" # yellow on black
+		    prompt_color="$bkg;33;1;4" # yellow on black
 		    ;;
 		mirage*|computron*)
-		    prompt_color="40;35;1;4" # magenta on black
+		    prompt_color="$bkg;35;1;4" # magenta on black
 		    ;;
 		*.klab.caltech.edu|montaigne|hume*)
-		    prompt_color="40;32;1;4" # green on black
+		    prompt_color="$bkg;32;1;4" # green on black
 		    ;;
 		ilab*|iLab*)
-		    prompt_color="40;31;1;4" # red on black
+		    prompt_color="$bkg;31;1;4" # red on black
 		    ;;
 		fortune*)
-		    prompt_color="40;34;1;4" # blue on black
+		    prompt_color="$bkg;34;1;4" # blue on black
 		    ;;
 		quantum*|hpc-master*|bumblebee|buzzsaw*)
-		    prompt_color="40;36;1;4" # cyan on black
+		    prompt_color="$bkg;36;1;4" # cyan on black
 	    esac
 	    ;;
 
@@ -313,6 +314,15 @@ case $- in
 	    echo "Warning! Location unknown!"
 	else
 	    echo "Location is '$LOCATION'"
+	fi
+
+	if test x$COLORTERM = xgnome-terminal && test x$TERM = xxterm; then
+	    # Ubunutu default bashrc looks for "xterm-color" when
+	    # deciding whether to colorize the prompt; however
+	    # xterm-color does not support fancy lsb init-functions
+	    # because "/usr/bin/tput hpa 60" does not work with
+	    # xterm-color
+	    export TERM=xterm-color
 	fi
 
 	FIGNORE=""   # filename suffixes to be ignored by completion
