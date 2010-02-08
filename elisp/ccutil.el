@@ -312,7 +312,15 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 
   (setq case-fold-search nil)
 
-  (setq do-fixup-whitespace t)
+  (setq do-fixup-whitespace nil)
+
+  (if (string-match "saliency" (buffer-file-name))
+      (progn
+	(setq do-fixup-whitespace t)))
+
+  (if (string-match "groovx" (buffer-file-name))
+      (progn
+	(setq do-fixup-whitespace t)))
 
   (if (string-match "lighttpd" (buffer-file-name))
       (progn
