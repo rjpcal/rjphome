@@ -412,8 +412,8 @@ if test -r ~/.bashrc_local; then
     . ~/.bashrc_local
 fi
 
-if test -r ~/home/base/bashrc_$LOCATION; then
-    . ~/home/base/bashrc_$LOCATION
+if test -r ~/.bashrc_$LOCATION; then
+    . ~/.bashrc_$LOCATION
 fi
 
 ### Clean up now-unneeded function definitions

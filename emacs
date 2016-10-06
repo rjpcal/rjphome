@@ -33,22 +33,16 @@
 ;;-----------------------------------------------------------------------
 ;; LISP search path
 ;;-----------------------------------------------------------------------
-(setq load-path (append load-path (list "~/home/base/elisp")))
+(setq load-path (append load-path (list "~/.elisp")))
 
 (if (member 'SVN vc-handled-backends)
     ()
-  (load "~/home/base/elisp/vc-svn.el")
+  (load "~/.elisp/vc-svn.el")
   (add-to-list 'vc-handled-backends 'SVN))
-
-;(load "~/home/base/elisp/vc-svn.el")
-;(add-to-list 'vc-handled-backends 'SVN)
 
 ;;-----------------------------------------------------------------------
 ;; Org mode
 ;;-----------------------------------------------------------------------
-
-(setq load-path (cons "~/home/base/elisp/org-6.33f/lisp" load-path))
-;; (load "~/home/base/elisp/org.elc")
 
 (require 'org-install)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))

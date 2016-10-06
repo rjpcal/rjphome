@@ -8,8 +8,8 @@ TARGETS := \
 $(HOME)/.aspell.en.pws \
 $(HOME)/.bashrc \
 $(HOME)/.cshrc \
+$(HOME)/.elisp \
 $(HOME)/.emacs \
-$(HOME)/.galeon \
 $(HOME)/.inputrc \
 $(HOME)/.login \
 $(HOME)/.profile \
