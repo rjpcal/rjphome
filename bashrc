@@ -76,7 +76,7 @@ function setup_prompt ()
 		fortune*)
 		    prompt_color="$bkg;34;1;4" # blue on black
 		    ;;
-		quantum*|hpc-master*|bumblebee|buzzsaw*)
+		quantum*|hpc-master*|bumblebee|buzzsaw*|bluestreak*)
 		    prompt_color="$bkg;36;1;4" # cyan on black
 	    esac
 	    ;;
