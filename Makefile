@@ -10,6 +10,7 @@ $(HOME)/.bashrc \
 $(HOME)/.cshrc \
 $(HOME)/.elisp \
 $(HOME)/.emacs \
+$(HOME)/.git-prompt.sh \
 $(HOME)/.inputrc \
 $(HOME)/.login \
 $(HOME)/.profile \

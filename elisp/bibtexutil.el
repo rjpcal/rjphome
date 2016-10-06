@@ -1,5 +1,3 @@
-;;; $Id$
-
 (defvar bibtex-uniqid-re "uniqid[ \t\n]*=[ \t\n]*\\([01-9]+\\),")
 
 (defvar bibtex-last-uniqid 0)

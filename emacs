@@ -2,8 +2,6 @@
 
 ;; Rob Peters <rjpeters@klab.caltech.edu>
 
-;; $Id$
-
 ;;-----------------------------------------------------------------------
 ;; Turn off the "quit Emacs" key binding
 ;;-----------------------------------------------------------------------
@@ -359,6 +357,11 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 
 (setq auto-mode-alist (cons '("\\.[ch]+$" . c++-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.dxy$" . c++-mode) auto-mode-alist))
+
+(c-add-style "fish"
+             '("linux"
+	       (c-offsets-alist
+		(inline-open . 0))))
 
 ;;-----------------------------------------------------------------------
 ;; LaTeX

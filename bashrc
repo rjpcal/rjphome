@@ -2,14 +2,13 @@
 #
 # Rob Peters <rjpeters at klab dot caltech dot edu>
 #
-# $Id$
 ######################################################################
 
 case $BASH_VERSION in
     2.*)
 	:
 	;;
-    3.*)
+    3.*|4.*)
 	set -o pipefail
 	;;
     *)
@@ -64,7 +63,7 @@ function setup_prompt ()
 		sideswipe*|laserbeak*|cosmos*)
 		    prompt_color="$bkg;33;1;4" # yellow on black
 		    ;;
-		mirage*|computron*)
+		mirage*|computron*|nosecone*)
 		    prompt_color="$bkg;35;1;4" # magenta on black
 		    ;;
 		*.klab.caltech.edu|montaigne|hume*)
@@ -123,20 +122,11 @@ function setup_prompt ()
 	    ;;
     esac
 
-    case $SSH_CLIENT in
-	"")
-	    main_prompt="[${prompt_content}]$prompt_token"
-	    ;;
-	*)
-	    main_prompt="((${prompt_content}))$prompt_token"
-	    export SSH_CLIENT
-	    ;;
-    esac
-
     case $TERM in
 	dumb)
 	    escape1=""
 	    escape2=""
+	    gitescape=""
 	    ;;
 	*)
             # This fragment: \[\e[${prompt_color}m\] is for setting
@@ -147,6 +137,18 @@ function setup_prompt ()
 	    # This fragment: \[\e[0m\] is for restoring the text
 	    # properties to their default values following the prompt
 	    escape2="\[\e[0m\]"
+
+	    gitescape="\[\e[31;1;4m\]"
+    esac
+
+    case $SSH_CLIENT in
+	"")
+	    main_prompt="${escape1}[${prompt_content}]${gitescape}\$(__git_ps1)${escape1}$prompt_token${escape2}"
+	    ;;
+	*)
+	    main_prompt="${escape1}((${prompt_content}))${gitescape}\$(__git_ps1)${escape1}$prompt_token${escape2}"
+	    export SSH_CLIENT
+	    ;;
     esac
 
     case $TERM in
@@ -156,14 +158,14 @@ function setup_prompt ()
 	            # hmm, with gnome-terminal 2.14, we need to drop
 	            # the bracketing \[ and \], because with those we
 	            # get extra cursor flicker
-		    term_title="\e]0;\W@\H\a"
+		    term_title="\e]0;\W\$(__git_ps1)@\H\a"
 		    ;;
 
 		*)
 
 	            # This fragment: \[\e]0;\w@\H\a\] is for setting
 	            # the window title of the containing terminal
-		    term_title="\[\e]0;\W@\H\a\]"
+		    term_title="\[\e]0;\W\$(__git_ps1)@\H\a\]"
 		    ;;
 	    esac
 	    ;;
@@ -172,7 +174,7 @@ function setup_prompt ()
 	    ;;
     esac
 
-    PS1="${escape1}${main_prompt}${escape2}${term_title} "
+    PS1="${main_prompt}${term_title} "
 }
 
 ######################################################################
@@ -305,6 +307,8 @@ export PATH=${HOME}/local/bin:${HOME}/local/${ARCH}/bin:${PATH}
 
 case $- in
     *i*)  # interactive shell
+
+	source $HOME/.git-prompt.sh
 
 	if test x$ARCH = xunknown; then
 	    echo "Warning: unknown architecture, setting ARCH to 'unknown'"
