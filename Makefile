@@ -11,6 +11,7 @@ $(HOME)/.cshrc \
 $(HOME)/.elisp \
 $(HOME)/.emacs \
 $(HOME)/.git-prompt.sh \
+$(HOME)/.gitconfig \
 $(HOME)/.inputrc \
 $(HOME)/.login \
 $(HOME)/.profile \
