@@ -63,7 +63,7 @@ function setup_prompt ()
 		sideswipe*|laserbeak*|cosmos*)
 		    prompt_color="$bkg;33;1;4" # yellow on black
 		    ;;
-		mirage*|computron*|nosecone*)
+		mirage*|computron*|nosecone*|wheeljack*)
 		    prompt_color="$bkg;35;1;4" # magenta on black
 		    ;;
 		*.klab.caltech.edu|montaigne|hume*)
