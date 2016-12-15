@@ -71,12 +71,10 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
        "\n"
        "///////////////////////////////////////////////////////////////////////\n"
        "//\n"
-       "// Copyright (c) 2007-2007 University of Southern California\n"
-       "// Rob Peters <rjpeters at usc dot edu>\n"
+       "// Copyright (c) 2016-2016 Robert J. Peters\n"
+       "// Rob Peters <https://github.com/rjpcal/>\n"
        "//\n"
-       "// created: " (current-time-string) "\n"
-       "// commit: $" "Id" "$\n"
-       "// $" "HeadURL" "$\n")
+       "// created: " (current-time-string) "\n")
 
       (setq pkg-prefix "")
       (if (string-match "groovx" (buffer-file-name))
@@ -97,7 +95,7 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 	   "// --------------------------------------------------------------------\n"
 	   "//\n"
 	   "// This file is part of GroovX.\n"
-	   "//   [http://www.klab.caltech.edu/rjpeters/groovx/]\n"
+	   "//   [https://github.com/rjpcal/groovx]\n"
 	   "//\n"
 	   "// GroovX is free software; you can redistribute it and/or modify it\n"
 	   "// under the terms of the GNU General Public License as published by\n"
@@ -127,7 +125,6 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
       (goto-char (point-max))
       (insert
        "\n"
-       "static const char vcid_" (downcase full-symname) "[] = \"$" "Id" "$ $" "HeadURL" "$\";\n"
        "#endif // !" full-symname "DEFINED\n")
       )
     )
@@ -136,8 +133,8 @@ insert the appropriate include guards (i.e. #ifndef filename_DEFINED, etc.)"
 (defun ccutil-nocopy (classname)
   (interactive "sName of class: ")
   (insert
-   "  " classname "(const " classname "&);\n"
-   "  " classname "& operator=(const " classname "&);\n\n"))
+   "  " classname "(const " classname "&) = delete;\n"
+   "  " classname "& operator=(const " classname "&) = delete;\n\n"))
 
 (defun ccutil-new-class (classname)
   "Generate appropriate skeleton files 'classname.h' and
