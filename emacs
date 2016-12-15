@@ -3,6 +3,27 @@
 ;; Rob Peters <rjpeters@klab.caltech.edu>
 
 ;;-----------------------------------------------------------------------
+;; Melpa package manager
+;;-----------------------------------------------------------------------
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+
+;;-----------------------------------------------------------------------
+;; Magit
+;;-----------------------------------------------------------------------
+
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+
+;;-----------------------------------------------------------------------
 ;; Turn off the "quit Emacs" key binding
 ;;-----------------------------------------------------------------------
 ;;(global-unset-key "\C-x\C-c")
@@ -27,6 +48,9 @@
 (global-set-key "\e[1;5B" 'forward-paragraph)  ; ctrl-down-arrow
 (global-set-key "\e[1;5C" 'forward-word)       ; ctrl-right-arrow
 (global-set-key "\e[1;5D" 'backward-word)      ; ctrl-left-arrow
+
+(global-set-key "\M-," 'tags-loop-continue)
+(global-set-key "\M-." 'find-tag)
 
 ;;-----------------------------------------------------------------------
 ;; LISP search path
@@ -593,19 +617,27 @@ whenever a file is opened into a buffer."
 (add-hook 'after-save-hook 'update-history-for-file-save)
 (add-hook 'find-file-hooks 'update-history-for-file-open) ; switch to find-file-hook (no 's') after emacs 22.1
 
+(setq ns-pop-up-frames 'nil)
+
 ;;-----------------------------------------------------------------------
 ;; Variables set by emacs' customize wizard
 ;;-----------------------------------------------------------------------
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(blink-cursor-delay 1.0)
  '(blink-cursor-interval 0.25)
  '(confirm-kill-emacs (quote yes-or-no-p))
- '(org-stuck-projects (quote ("+LEVEL=2/-DONE" ("NEXT" "WAITING") ("FUTUREPROJECT" "ONGOING" "DONEPROJECT") "")))
+ '(org-stuck-projects
+   (quote
+    ("+LEVEL=2/-DONE"
+     ("NEXT" "WAITING")
+     ("FUTUREPROJECT" "ONGOING" "DONEPROJECT")
+     "")))
+ '(package-selected-packages (quote (magit)))
  '(pc-select-meta-moves-sexps t)
  '(pc-select-selection-keys-only t)
  '(pc-selection-mode t nil (pc-select))
@@ -616,10 +648,10 @@ whenever a file is opened into a buffer."
  '(user-mail-address "rjpeters@klab.caltech.edu")
  '(widget-image-enable nil))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(cursor ((t (:background "salmon1"))))
  '(font-lock-comment-face ((((class color) (background dark)) (:foreground "FireBrick1")) (((class color) (background light)) (:foreground "FireBrick3"))))
  '(font-lock-constant-face ((((class color) (background dark)) (:foreground "Purple1")) (((class color) (background light)) (:foreground "Purple1"))))
