@@ -375,6 +375,11 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 (autoload 'matlab-shell "matlab" "Interactive Matlab mode." t)
 
 ;;-----------------------------------------------------------------------
+;; JavaScript mode
+;;-----------------------------------------------------------------------
+(setq js-indent-level 2)
+
+;;-----------------------------------------------------------------------
 ;; C++
 ;;-----------------------------------------------------------------------
 (load "ccutil")
@@ -637,7 +642,7 @@ whenever a file is opened into a buffer."
      ("NEXT" "WAITING")
      ("FUTUREPROJECT" "ONGOING" "DONEPROJECT")
      "")))
- '(package-selected-packages (quote (magit)))
+ '(package-selected-packages (quote (swift-mode magit)))
  '(pc-select-meta-moves-sexps t)
  '(pc-select-selection-keys-only t)
  '(pc-selection-mode t nil (pc-select))
