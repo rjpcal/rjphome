@@ -378,6 +378,9 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 ;; JavaScript mode
 ;;-----------------------------------------------------------------------
 (setq js-indent-level 2)
+(setq js-mode-hook
+      '(lambda () (progn
+		    (set-variable 'indent-tabs-mode nil))))
 
 ;;-----------------------------------------------------------------------
 ;; C++
@@ -642,10 +645,10 @@ whenever a file is opened into a buffer."
      ("NEXT" "WAITING")
      ("FUTUREPROJECT" "ONGOING" "DONEPROJECT")
      "")))
- '(package-selected-packages (quote (swift-mode magit)))
+ '(package-selected-packages (quote (yaml-mode swift-mode magit)))
  '(pc-select-meta-moves-sexps t)
  '(pc-select-selection-keys-only t)
- '(pc-selection-mode t nil (pc-select))
+ '(pc-selection-mode t)
  '(rmail-enable-mime t)
  '(rmail-user-mail-address-regexp ".*rjp.*")
  '(safe-local-variable-values (quote ((do-fixup-whitespace))))
