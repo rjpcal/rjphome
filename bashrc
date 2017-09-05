@@ -386,6 +386,8 @@ export CVS_RSH=ssh
 
 export SVN_EDITOR="emacs -nw"
 
+export EDITOR="emacs -nw"
+
 # to keep case-sensitive sorting for 'ls', for example
 export LC_COLLATE=C
 
