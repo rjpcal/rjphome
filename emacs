@@ -24,6 +24,14 @@
 (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
 ;;-----------------------------------------------------------------------
+;; Matching parentheses
+;;-----------------------------------------------------------------------
+
+;; https://www.gnu.org/software/emacs/manual/html_node/efaq/Matching-parentheses.html
+
+(show-paren-mode 1)
+
+;;-----------------------------------------------------------------------
 ;; Turn off the "quit Emacs" key binding
 ;;-----------------------------------------------------------------------
 ;;(global-unset-key "\C-x\C-c")
@@ -377,6 +385,7 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 ;;-----------------------------------------------------------------------
 ;; JavaScript mode
 ;;-----------------------------------------------------------------------
+(setq auto-mode-alist (cons '("\\.js$" . js2-mode) auto-mode-alist))
 (setq js-indent-level 2)
 (setq js-mode-hook
       '(lambda () (progn
@@ -461,8 +470,8 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 ; following:
 ; (modify-syntax-entry ?_ " ")
 
-(setq-default case-replace nil)
-(setq-default tags-case-fold-search nil)
+(setq-default case-replace t)
+(setq-default tags-case-fold-search t)
 
 ;(set-foreground-color "white")
 ;(set-background-color "black")
@@ -639,13 +648,17 @@ whenever a file is opened into a buffer."
  '(blink-cursor-delay 1.0)
  '(blink-cursor-interval 0.25)
  '(confirm-kill-emacs (quote yes-or-no-p))
+ '(js2-strict-missing-semi-warning nil)
+ '(js2-strict-trailing-comma-warning nil)
  '(org-stuck-projects
    (quote
     ("+LEVEL=2/-DONE"
      ("NEXT" "WAITING")
      ("FUTUREPROJECT" "ONGOING" "DONEPROJECT")
      "")))
- '(package-selected-packages (quote (yaml-mode swift-mode magit)))
+ '(package-selected-packages
+   (quote
+    (rjsx-mode js2-mode web-mode yaml-mode swift-mode magit)))
  '(pc-select-meta-moves-sexps t)
  '(pc-select-selection-keys-only t)
  '(pc-selection-mode t)
