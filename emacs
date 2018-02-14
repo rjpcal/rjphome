@@ -57,8 +57,9 @@
 (global-set-key "\e[1;5C" 'forward-word)       ; ctrl-right-arrow
 (global-set-key "\e[1;5D" 'backward-word)      ; ctrl-left-arrow
 
-(global-set-key "\M-," 'tags-loop-continue)
-(global-set-key "\M-." 'find-tag)
+;(global-set-key "\M-," 'tags-loop-continue)
+;(global-set-key "\M-." 'find-tag)
+(global-unset-key "\M-.")
 
 ;;-----------------------------------------------------------------------
 ;; LISP search path
@@ -391,6 +392,22 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
       '(lambda () (progn
 		    (set-variable 'indent-tabs-mode nil))))
 
+(require 'js2-refactor)
+(require 'xref-js2)
+
+;(add-hook 'js2-mode-hook #'js2-refactor-mode)
+;(js2r-add-keybindings-with-prefix "C-c C-r")
+;(define-key js2-mode-map (kbd "C-k") #'js2r-kill)
+
+;; js-mode (which js2 is based on) binds "M-." which conflicts with xref, so
+;; unbind it.
+(define-key js-mode-map (kbd "M-.") nil)
+(define-key js2-mode-map (kbd "M-.") nil)
+
+(add-hook 'js2-mode-hook
+	  (lambda ()
+	    (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t)))
+
 ;;-----------------------------------------------------------------------
 ;; C++
 ;;-----------------------------------------------------------------------
@@ -658,7 +675,7 @@ whenever a file is opened into a buffer."
      "")))
  '(package-selected-packages
    (quote
-    (rjsx-mode js2-mode web-mode yaml-mode swift-mode magit)))
+    (ag js2-refactor xref-js2 go-mode rjsx-mode js2-mode web-mode yaml-mode swift-mode magit)))
  '(pc-select-meta-moves-sexps t)
  '(pc-select-selection-keys-only t)
  '(pc-selection-mode t)
