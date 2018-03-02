@@ -666,6 +666,7 @@ whenever a file is opened into a buffer."
  '(confirm-kill-emacs (quote yes-or-no-p))
  '(js2-strict-missing-semi-warning nil)
  '(js2-strict-trailing-comma-warning nil)
+ '(mode-require-final-newline (quote ask))
  '(org-stuck-projects
    (quote
     ("+LEVEL=2/-DONE"
@@ -678,6 +679,7 @@ whenever a file is opened into a buffer."
  '(pc-select-meta-moves-sexps t)
  '(pc-select-selection-keys-only t)
  '(pc-selection-mode t)
+ '(require-final-newline nil)
  '(rmail-enable-mime t)
  '(rmail-user-mail-address-regexp ".*rjp.*")
  '(safe-local-variable-values (quote ((do-fixup-whitespace))))
