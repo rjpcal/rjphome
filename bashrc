@@ -272,7 +272,7 @@ function offtherecord ()
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/local/sbin:/usr/sbin:/sbin
 
-umask 077
+umask 022
 
 setup_arch
 identify_location
