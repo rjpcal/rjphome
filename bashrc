@@ -75,8 +75,9 @@ function setup_prompt ()
 		fortune*)
 		    prompt_color="$bkg;34;1;4" # blue on black
 		    ;;
-		quantum*|hpc-master*|bumblebee|buzzsaw*|bluestreak*)
+		quantum*|hpc-master*|bumblebee|buzzsaw*|bluestreak*|jetfire*)
 		    prompt_color="$bkg;36;1;4" # cyan on black
+		    ;;
 	    esac
 	    ;;
 
@@ -97,11 +98,11 @@ function setup_prompt ()
     case $BASH_VERSION in
 	2.02*|2.04*|2.05.0*)
 	    # [hostname HH:MMam/pm]$
-	    prompt_content="\h \@ \!"
+	    prompt_content="\h \$LANG \@ \!"
 	    ;;
 	*)
 	    # [hostname HH:MM]$
-	    prompt_content="\h \A \!"
+	    prompt_content="\h \$LANG \A \!"
 	    ;;
     esac
 
