@@ -16,6 +16,10 @@
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 
+(require 'keyfreq)
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)
+
 ;;-----------------------------------------------------------------------
 ;; Magit
 ;;-----------------------------------------------------------------------
@@ -675,7 +679,7 @@ whenever a file is opened into a buffer."
      "")))
  '(package-selected-packages
    (quote
-    (ag js2-refactor xref-js2 go-mode rjsx-mode js2-mode web-mode yaml-mode swift-mode magit)))
+    (keyfreq ag js2-refactor xref-js2 go-mode rjsx-mode js2-mode web-mode yaml-mode swift-mode magit)))
  '(pc-select-meta-moves-sexps t)
  '(pc-select-selection-keys-only t)
  '(pc-selection-mode t)
