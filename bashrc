@@ -269,6 +269,19 @@ function offtherecord ()
 }
 
 ######################################################################
+# paginated JSON viewing
+
+function jv ()
+{
+    if test $# -lt 1; then
+	echo "usage: $0 filename" 1>&2
+	return 1
+    fi
+    echo $#
+    jq . < $1 | less
+}
+
+######################################################################
 # main initialization code
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/X11R6/bin:/usr/local/sbin:/usr/sbin:/sbin
