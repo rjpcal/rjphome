@@ -61,7 +61,7 @@
 (global-set-key "\e[1;5C" 'forward-word)       ; ctrl-right-arrow
 (global-set-key "\e[1;5D" 'backward-word)      ; ctrl-left-arrow
 
-(global-set-key "\M-," 'tags-loop-continue)
+(global-set-key "\M-," 'fileloop-continue)
 (global-set-key "\M-." 'find-tag)
 
 ;;-----------------------------------------------------------------------
@@ -667,26 +667,25 @@ whenever a file is opened into a buffer."
  ;; If there is more than one, they won't work right.
  '(blink-cursor-delay 1.0)
  '(blink-cursor-interval 0.25)
- '(confirm-kill-emacs (quote yes-or-no-p))
+ '(confirm-kill-emacs 'yes-or-no-p)
+ '(fileloop-revert-buffers 'silent)
  '(js2-strict-missing-semi-warning nil)
  '(js2-strict-trailing-comma-warning nil)
- '(mode-require-final-newline (quote ask))
+ '(mode-require-final-newline 'ask)
  '(org-stuck-projects
-   (quote
-    ("+LEVEL=2/-DONE"
+   '("+LEVEL=2/-DONE"
      ("NEXT" "WAITING")
      ("FUTUREPROJECT" "ONGOING" "DONEPROJECT")
-     "")))
+     ""))
  '(package-selected-packages
-   (quote
-    (keyfreq ag js2-refactor xref-js2 go-mode rjsx-mode js2-mode web-mode yaml-mode swift-mode magit)))
+   '(json-mode rjsx-mode keyfreq ag js2-refactor xref-js2 go-mode js2-mode web-mode yaml-mode swift-mode magit))
  '(pc-select-meta-moves-sexps t)
  '(pc-select-selection-keys-only t)
  '(pc-selection-mode t)
  '(require-final-newline nil)
  '(rmail-enable-mime t)
  '(rmail-user-mail-address-regexp ".*rjp.*")
- '(safe-local-variable-values (quote ((do-fixup-whitespace))))
+ '(safe-local-variable-values '((do-fixup-whitespace)))
  '(show-trailing-whitespace t)
  '(user-mail-address "rjpeters@klab.caltech.edu")
  '(widget-image-enable nil))
