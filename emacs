@@ -14,7 +14,7 @@
 
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
+             '("melpa" . "https://melpa.org/packages/") t)
 
 (require 'keyfreq)
 (keyfreq-mode 1)
@@ -78,7 +78,7 @@
 ;; Org mode
 ;;-----------------------------------------------------------------------
 
-(require 'org-install)
+;; (require 'org-install) ; not needed anymore since org mode is built-in?
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
@@ -390,6 +390,7 @@ If prefix argument REVERSE is non-nil, sort them in reverse order."
 ;; JavaScript mode
 ;;-----------------------------------------------------------------------
 (setq auto-mode-alist (cons '("\\.js$" . js2-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.mjs$" . js2-mode) auto-mode-alist))
 (setq js-indent-level 2)
 (setq js-mode-hook
       '(lambda () (progn
@@ -683,11 +684,8 @@ whenever a file is opened into a buffer."
  '(pc-select-selection-keys-only t)
  '(pc-selection-mode t)
  '(require-final-newline nil)
- '(rmail-enable-mime t)
- '(rmail-user-mail-address-regexp ".*rjp.*")
  '(safe-local-variable-values '((do-fixup-whitespace)))
  '(show-trailing-whitespace t)
- '(user-mail-address "rjpeters@klab.caltech.edu")
  '(widget-image-enable nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
