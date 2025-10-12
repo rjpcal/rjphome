@@ -18,5 +18,6 @@ installed "Awesome Emacs Keymap" extension
 | toggle block comment | Shift+Option+A
 | inline Copilot | Cmd+I
 | Copilot sidebar | Shift+Cmd+I
+| preview markdown | Shift+Cmd+V
 
 also see https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf
