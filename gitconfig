@@ -3,6 +3,7 @@
 	email = rjpcal@gmail.com
 [push]
 	default = current
+	autoSetupRemote = true
 [color]
 	diff = auto
 	status = auto
@@ -10,6 +11,7 @@
 	ui = auto
 [credential]
 	helper = cache --timeout=1200
+	helper = /usr/local/share/gcm-core/git-credential-manager
 [pull]
 	rebase = true
 [filter "lfs"]
@@ -17,3 +19,9 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[diff]
+	algorithm = minimal
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+[rebase]
+	updateRefs = true

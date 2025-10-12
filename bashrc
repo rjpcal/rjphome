@@ -392,7 +392,7 @@ case $- in
 esac
 
 ### Output from cron jobs gets sent to $MAILTO
-export MAILTO=rjpeters@klab.caltech.edu
+export MAILTO=rjpcal@gmail.com
 
 export PVM_ROOT=/usr/share/pvm3
 
@@ -416,14 +416,6 @@ fi
 if test -d ${HOME}/projects/matlab; then
     export MATLABPATH="${MATLABPATH}:${HOME}/projects/matlab"
 fi
-
-### home computer
-# export HOMEIP=24.205.94.103 # expired 2008-Mar-20
-# export HOMEIP=75.142.48.226
-# export HOMEIP=76.167.221.245 # rr
-# export HOMEIP=76.172.150.216 # rr
-#export HOMEIP=76.94.45.138 # rr
-export HOMEIP=76.91.31.24 # rr
 
 ### Source a system-local init file, if it exists, and reset important env vars beforehand
 export CPPFLAGS=""
